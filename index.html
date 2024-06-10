@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond Pages Trust</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="icon" href="./images/logo.png" type="image/png">
+</head>
+
+<body class="bg-white">
+    <nav class="bg-white border-gray-200 relative">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" />
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto absolute top-full left-0 md:relative md:top-0 z-20"
+                id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100  bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">About</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Services</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <div class="relative w-full overflow-hidden flex flex-col">
+                <img src="./images/1.jpeg" alt="Descriptive Alt Text" class="w-full h-auto mt-4 order-1">
+                <div class="mx-auto mt-[-2rem] bg-white rounded-lg shadow-md p-4 w-4/5 order-1">
+                    <!-- Vision Statement -->
+                    <div class="max-w-screen-xl mx-auto">
+                        <p class="text-center text-gray-900 font-bold text-2xl mb-4 sm:text-lg">Vision</span>
+                        <div class="text-center text-gray-900">
+                            <p class="text-sm">"Envisioning a world where the transformative power of education,
+                                environmental
+                                sustainability, and compassionate community support integrate together to uplift lives.
+                                We
+                                aspire
+                                to create a future where every individual has the tools to thrive, and hope transcends
+                                boundaries"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+
+        </section>
+    </main>
+    <footer class="bg-white rounded-lg shadow m-4 mt-auto">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" />
+                </a>
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2023 <a href="#" class="hover:underline">BEYOND PAGES TRUST</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
+    
+    
+    <!--Footer Ends Here-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector('[data-collapse-toggle="navbar-default"]');
+            const navbarMenu = document.getElementById('navbar-default');
+
+            toggleButton.addEventListener('click', function () {
+                navbarMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+

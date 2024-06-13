@@ -8,65 +8,70 @@
     <link href="./output.css" rel="stylesheet">
     <link href="./service.css" rel="stylesheet">
     <link rel="icon" href="./images/logo.png" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 
 <body class="bg-white">
-    <nav class="bg-white border-gray-200 relative">
+    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" />
+                <img src="./images/Logo.png" class="h-8" alt="Flowbite Logo">
             </a>
-            <button data-collapse-toggle="navbar-default" type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-700"
-                aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M1 1h15M1 7h15M1 13h15" />
-                </svg>
-            </button>
-            <div class="hidden w-full md:block md:w-auto absolute top-full left-0 md:relative md:top-0 z-20"
-                id="navbar-default">
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 :text-gray-400"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            <div class="items-right justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
-                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100  bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                    class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                     <li>
-                        <a href="#"
+                        <a href="#Home"
                             class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-600 md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-900 md:p-0">About</a>
+                        <a href="#About"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">About</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-900 md:p-0">Services</a>
+                        <a href="#services"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Services</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-900 md:p-0">Contact</a>
+                        <a href="#contact"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <main>
-        <section>
+        <section id="Home">
             <div class="relative w-full overflow-hidden flex flex-col">
                 <img src="./images/1.jpeg" alt="Descriptive Alt Text"
                     class="w-full h-64 mt-4 sm:h-80 md:h-96 lg:h-auto">
-                <div class="mx-auto mt-[-2rem] bg-white rounded-lg shadow-md p-4 w-4/5 order-1 mb-4">
+                <div
+                    class="mx-auto mt-[-2rem] bg-white rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
                     <!-- Vision Statement -->
                     <div class="max-w-screen-xl mx-auto">
-                        <p class="text-center text-gray-900 font-bold text-2xl mb-4 sm:text-lg">Vision</span>
+                        <p class="Title text-center text-gray-900 font-bold text-md mb-4 sm:text-lg md:text-xl">Our
+                            Vision</p>
                         <div class="text-center text-gray-900">
-                            <p class="text-sm">"Envisioning a world where the transformative power of education,
-                                environmental
-                                sustainability, and compassionate community support integrate together to uplift lives.
-                                We
-                                aspire
-                                to create a future where every individual has the tools to thrive, and hope transcends
+                            <p class="Content text-xs sm:text-lg md:text-sm">"Envisioning a world where the
+                                transformative power
+                                of education,
+                                environmental sustainability, and compassionate community support integrate together to
+                                uplift lives. We
+                                aspire to create a future where every individual has the tools to thrive, and hope
+                                transcends
                                 boundaries"</p>
                         </div>
                     </div>
@@ -74,8 +79,8 @@
             </div>
         </section>
         <!--About Us Starts Here-->
-        <section>
-            <div id="about" class="relative bg-white overflow-hidden mt-[-6.5rem] z-[-10]">
+        <section id="About">
+            <div id="about" class="relative overflow-hidden mt-[-6.5rem] z-[-10]">
                 <div class="max-w-7xl mx-auto">
                     <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
                         <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
@@ -83,14 +88,15 @@
                             <polygon points="50,0 100,0 50,100 0,100"></polygon>
                         </svg>
                         <div class="pt-1"></div>
-                        <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                        <main class="mt-10 mx-auto max-w-8xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                             <div class="sm:text-center lg:text-left">
+                                <br>
+                                <br>
                                 <h2
-                                    class="my-6 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl md:text-4xl">
+                                    class="my-8 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
                                     About Us
                                 </h2>
-
-                                <p class="flex flex-col text-sm text-justify">
+                                <p class="text-sm text-justify">
                                     Beyond Pages Trust, founded in February 2024 by Mr. Nirmal Repakula, is dedicated to
                                     holistic community development through education, environmental sustainability,
                                     sports development, and humanitarian relief. Our vision is to integrate these
@@ -118,7 +124,7 @@
         <!--About us Ends Here-->
 
         <!--Services Starts here-->
-        <section class="bg-yellow-900 p-5">
+        <section id=services class="bg-yellow-900 p-5">
             <div class="container mx-auto mt-10">
                 <div class="py-28 bgImage text-white text-center rounded-xl">
                     <h2 class="text-5xl font-bold">Our Services</h2>
@@ -264,10 +270,12 @@
         <!--Services end here-->
 
         <!--Contact Us Starts Here-->
-        <section class="contact mt-10 mb-10 px-4 md:px-0 flex flex-col justify-center items-center">
+        <section id="contact" class="contact mt-10 mb-10 px-4 md:px-0 flex flex-col justify-center items-center">
             <div class="content max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl font-semibold">Contact Us</h2>
-                <p class="mt-4">We'd love to hear from you! Whether you have questions about our programs, need assistance, or want to get involved, the Beyond Pages Trust team is here to help. Please use the information below to get in touch with us.</p>
+                <p class="mt-4">We'd love to hear from you! Whether you have questions about our programs, need
+                    assistance, or want to get involved, the Beyond Pages Trust team is here to help. Please use the
+                    information below to get in touch with us.</p>
             </div>
             <div class="container flex flex-col justify-center items-center mt-10 md:flex-row md:items-start md:w-full">
                 <div class="contactInfo w-full md:w-1/2 mx-auto justify-center lg:ml-20">
@@ -306,7 +314,7 @@
                                     name="logo-linkedin" class="h-8 w-8 mt-3"></ion-icon></a></li>
                     </ul>
                 </div>
-                <div class="LocationCard w-full md:w-1/2 bg-white py-12 px-8 rounded-lg shadow-2xl mt-10 md:mt-0">
+                <div class="LocationCard w-full md:w-1/2 bg-white py-12 px-8 rounded-lg shadow-lg mt-10 md:mt-0">
                     <h2 class="text-2xl text-gray-900 font-semibold mb-4">Our Location</h2>
                     <div class="map-container w-full h-64">
                         <iframe
@@ -349,14 +357,42 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const toggleButton = document.querySelector('[data-collapse-toggle="navbar-default"]');
-            const navbarMenu = document.getElementById('navbar-default');
 
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+            const menu = document.getElementById('navbar-sticky');
+            const menuItems = document.querySelectorAll('#navbar-sticky a');
+      
             toggleButton.addEventListener('click', function () {
-                navbarMenu.classList.toggle('hidden');
+              const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+              toggleButton.setAttribute('aria-expanded', !isExpanded);
+              menu.classList.toggle('hidden');
+            });
+      
+            menuItems.forEach(item => {
+              item.addEventListener('click', function () {
+                if (window.innerWidth < 768) {  // Only for mobile view
+                  toggleButton.setAttribute('aria-expanded', false);
+                  menu.classList.add('hidden');
+                }
+              });
+            });
+          });
+        // Select all links with hashes
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
+
     </script>
 </body>
 

@@ -54,6 +54,10 @@
                     </li>
                     <li>
                         <a href="#contact"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
+                    </li>
+                    <li>
+                        <a href="#contact"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Contact</a>
                     </li>
                 </ul>
@@ -91,7 +95,7 @@
                 <div class="max-w-7xl mx-auto">
                     <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
                         <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-                            fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                            fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="false">
                             <polygon points="50,0 100,0 50,100 0,100"></polygon>
                         </svg>
                         <div class="pt-1"></div>
@@ -283,63 +287,57 @@
             <div class="content max-w-4xl mx-auto text-center">
                 <h2 class="mt-10 text-3xl font-semibold">Gallery</h2>
             </div>
+            <br>
             <div id="gallery" class="relative w-full" data-carousel="slide">
                 <!-- Carousel wrapper -->
-                <div class="relative py-28 overflow-hidden rounded-lg md:h-96">
+                <div class="relative overflow-hidden h-56 md:h-96 lg:h-[600px]">
                     <!-- Item 1 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-                            class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="">
+                        <img src="https://via.placeholder.com/800x600?text=1"
+                            class="absolute block w-full h-full object-cover" alt="Image 1">
                     </div>
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
-                            class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="">
+                        <img src="https://via.placeholder.com/800x600?text=2"
+                            class="absolute block w-full h-full object-cover" alt="Image 2">
                     </div>
                     <!-- Item 3 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
-                            class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="">
+                        <img src="https://via.placeholder.com/800x600?text=3"
+                            class="absolute block w-full h-full object-cover" alt="Image 3">
                     </div>
                     <!-- Item 4 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
-                            class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="">
+                        <img src="https://via.placeholder.com/800x600?text=4"
+                            class="absolute block w-full h-full object-cover" alt="Image 4">
                     </div>
                     <!-- Item 5 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
-                            class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="">
+                        <img src="https://via.placeholder.com/800x600?text=5"
+                            class="absolute block w-full h-full object-cover" alt="Image 5">
                     </div>
                 </div>
                 <!-- Slider controls -->
                 <button type="button"
-                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    class="absolute top-0 left-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                     data-carousel-prev>
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 1 1 5l4 4" />
+                        <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
                         <span class="sr-only">Previous</span>
                     </span>
                 </button>
                 <button type="button"
-                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    class="absolute top-0 right-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                     data-carousel-next>
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 9 4-4-4-4" />
+                        <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                         <span class="sr-only">Next</span>
                     </span>
@@ -432,68 +430,69 @@
         </div>
     </footer>
     <!--Footer Ends Here-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const carouselItems = document.querySelectorAll('[data-carousel-item]');
-            const prevButton = document.querySelector('[data-carousel-prev]');
-            const nextButton = document.querySelector('[data-carousel-next]');
-            let currentIndex = 0;
-            let timer = null;
-    
-            // Function to show current item
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+            const menu = document.getElementById('navbar-sticky');
+            const menuItems = document.querySelectorAll('#navbar-sticky a');
+      
+            toggleButton.addEventListener('click', function () {
+              const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+              toggleButton.setAttribute('aria-expanded', !isExpanded);
+              menu.classList.toggle('hidden');
+            });
+      
+            menuItems.forEach(item => {
+              item.addEventListener('click', function () {
+                if (window.innerWidth < 768) {  // Only for mobile view
+                  toggleButton.setAttribute('aria-expanded', false);
+                  menu.classList.add('hidden');
+                }
+              });
+            });
+          });
+        // Select all links with hashes
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('[data-carousel-item]');
+            let activeIndex = 0;
+
             function showItem(index) {
-                carouselItems.forEach((item, i) => {
-                    if (i === index) {
-                        item.classList.add('block');
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.remove('block');
-                        item.classList.add('hidden');
-                    }
+                items.forEach((item, idx) => {
+                    item.classList.toggle('hidden', idx !== index);
+                    item.classList.toggle('block', idx === index);
                 });
             }
-    
-            // Function to move to next item
+
             function nextItem() {
-                currentIndex = (currentIndex + 1) % carouselItems.length;
-                showItem(currentIndex);
-                smoothScrollTo(carouselItems[currentIndex]);
+                activeIndex = (activeIndex + 1) % items.length;
+                showItem(activeIndex);
             }
-    
-            // Function to move to previous item
+
             function prevItem() {
-                currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-                showItem(currentIndex);
-                smoothScrollTo(carouselItems[currentIndex]);
+                activeIndex = (activeIndex - 1 + items.length) % items.length;
+                showItem(activeIndex);
             }
-    
-            // Function for smooth scrolling to an element
-            function smoothScrollTo(element) {
-                window.scrollTo({
-                    top: element.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-    
-            // Show initial active item
-            showItem(currentIndex);
-    
-            // Next button click handler
-            nextButton.addEventListener('click', function () {
-                clearInterval(timer); // Clear interval to reset timer
-                nextItem();
-                timer = setInterval(nextItem, 6000); // Restart timer
-            });
-    
-            // Previous button click handler
-            prevButton.addEventListener('click', function () {
-                clearInterval(timer); // Clear interval to reset timer
-                prevItem();
-                timer = setInterval(nextItem, 6000); // Restart timer
-            });
-    
-            // Auto slide every 6000ms (6s)
-            timer = setInterval(nextItem, 6000);
+
+            document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
+            document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
+
+            showItem(activeIndex);
         });
     </script>
 </body>

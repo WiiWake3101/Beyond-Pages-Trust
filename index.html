@@ -389,14 +389,18 @@
                                     class="h-8 w-8 mt-3"></ion-icon></a></li>
                         <li><a href="https://www.linkedin.com/in/beyond-pages-trust-29b9202b8/"><ion-icon
                                     name="logo-linkedin" class="h-8 w-8 mt-3"></ion-icon></a></li>
+                        <li><a href="https://www.facebook.com/beyondpagestrust/"><ion-icon
+                                    name="logo-facebook" class="h-8 w-8 mt-3"></ion-icon></a></li>   
+                        <li><a href="https://www.instagram.com/beyondpagestrust?igsh=dWx0dnZvYXd3cjMx"><ion-icon
+                                    name="logo-instagram" class="h-8 w-8 mt-3"></ion-icon></a></li> 
+                        <li><a href="https://youtube.com/@beyondpagestrust?si=bilQw8E-_MWV8ext"><ion-icon
+                                    name="logo-youtube" class="h-8 w-8 mt-3"></ion-icon></a></li>        
                     </ul>
                 </div>
                 <div class="LocationCard w-full md:w-1/2 bg-white py-12 px-8 rounded-lg shadow-lg mt-10 md:mt-0">
                     <h2 class="text-2xl text-gray-900 font-semibold mb-4">Our Location</h2>
                     <div class="map-container w-full h-64">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.1405478888934!2d144.95592831531968!3d-37.81720987975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf57721e59bbf27f7!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1623178348671!5m2!1sen!2sau"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.595013019831!2d80.19186561482655!3d12.958012990855166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f6cfe7d73553%3A0x2e053fa9e2ce0c4e!2s12%C2%B057'28.9%22N%2080%C2%B011'30.7%22E!5e0!3m2!1sen!2sin!4v1623743328290!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -434,66 +438,108 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
 
-        document.addEventListener('DOMContentLoaded', function () {
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+        
+            // Function to remove active class from all links
+            function removeActiveClass() {
+                navLinks.forEach(link => {
+                    link.classList.remove('bg-yellow-900', 'text-white');
+                    link.classList.add('text-gray-900');
+                });
+            }
+        
+            // Set the active class on page load based on current hash
+            function setActiveLink() {
+                const currentHash = window.location.hash || '#Home';
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === currentHash) {
+                        link.classList.add('bg-yellow-900', 'text-white');
+                        link.classList.remove('text-gray-900');
+                    }
+                });
+            }
+        
+            // Initial setup
+            setActiveLink();
+        
+            // Update active class on link click
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    removeActiveClass();
+                    this.classList.add('bg-yellow-900', 'text-white');
+                    this.classList.remove('text-gray-900');
+                });
+            });
+        
+            // Update active class on hash change (e.g., back/forward navigation)
+            window.addEventListener('hashchange', function() {
+                removeActiveClass();
+                setActiveLink();
+            });
+        
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-      
+        
             toggleButton.addEventListener('click', function () {
-              const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-              toggleButton.setAttribute('aria-expanded', !isExpanded);
-              menu.classList.toggle('hidden');
+                const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                toggleButton.setAttribute('aria-expanded', !isExpanded);
+                menu.classList.toggle('hidden');
             });
-      
+        
             menuItems.forEach(item => {
-              item.addEventListener('click', function () {
-                if (window.innerWidth < 768) {  // Only for mobile view
-                  toggleButton.setAttribute('aria-expanded', false);
-                  menu.classList.add('hidden');
-                }
-              });
+                item.addEventListener('click', function () {
+                    if (window.innerWidth < 768) {  // Only for mobile view
+                        toggleButton.setAttribute('aria-expanded', false);
+                        menu.classList.add('hidden');
+                    }
+                });
             });
-          });
-        // Select all links with hashes
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+        
+            // Smooth scrolling for anchors
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        });
-        document.addEventListener('DOMContentLoaded', function() {
+        
             const items = document.querySelectorAll('[data-carousel-item]');
             let activeIndex = 0;
-
+        
             function showItem(index) {
                 items.forEach((item, idx) => {
                     item.classList.toggle('hidden', idx !== index);
                     item.classList.toggle('block', idx === index);
                 });
             }
-
+        
             function nextItem() {
                 activeIndex = (activeIndex + 1) % items.length;
                 showItem(activeIndex);
             }
-
+        
             function prevItem() {
                 activeIndex = (activeIndex - 1 + items.length) % items.length;
                 showItem(activeIndex);
             }
-
+        
             document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
             document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
-
+        
             showItem(activeIndex);
         });
+        
+        
+        
     </script>
 </body>
 </html>

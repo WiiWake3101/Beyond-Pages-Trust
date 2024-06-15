@@ -617,11 +617,6 @@ video {
   bottom: 0px;
 }
 
-.inset-y-1 {
-  top: 0.25rem;
-  bottom: 0.25rem;
-}
-
 .end-0 {
   inset-inline-end: 0px;
 }
@@ -883,14 +878,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-0 {
-  width: 0px;
-}
-
-.w-2 {
-  width: 0.5rem;
 }
 
 .max-w-4xl {

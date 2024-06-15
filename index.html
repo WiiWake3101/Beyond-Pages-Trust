@@ -37,31 +37,30 @@
                 </button>
             </div>
             <div class="items-right justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                <ul
-                    class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white" id="navigation">
                     <li>
-                        <a href="#Home"
+                        <a href="#Home" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#About"
+                        <a href="#About" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">About</a>
                     </li>
                     <li>
-                        <a href="#services"
+                        <a href="#services" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
                     </li>
                     <li>
-                        <a href="#Gallery"
+                        <a href="#Gallery" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
                     </li>
                     <li>
-                        <a href="#contact"
+                        <a href="#" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
                     </li>
                     <li>
-                        <a href="#contact"
+                        <a href="#contact" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Contact</a>
                     </li>
                 </ul>
@@ -507,8 +506,57 @@
     
             showItem(activeIndex);
         });
-    </script>
-    
-</body>
 
+        //trail
+        function changeActive(event, clickedElement) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Get all <a> elements inside the navigation menu
+            const links = document.querySelectorAll('#navigation a');
+            
+            // Loop through each link to reset their classes
+            links.forEach(link => {
+                link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
+            });
+            
+            // Set the clicked link to active style
+            clickedElement.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
+        }
+ // Function to determine which section is currently in view
+ function getActiveSection() {
+    const sections = document.querySelectorAll('section'); // Adjust this selector to match your sections
+    let scrollPosition = window.scrollY + 200; // Adjust offset as needed
+    
+    for (const section of sections) {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            return section.getAttribute('id');
+        }
+    }
+    return 'Home'; // Default to Home if no section is in view
+}
+
+// Function to update active navigation link based on scroll
+function updateActiveLink() {
+    const currentSection = getActiveSection();
+    const links = document.querySelectorAll('#navigation a');
+    
+    links.forEach(link => {
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
+        } else {
+            link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
+        }
+    });
+}
+
+// Initial call to set active link on page load
+updateActiveLink();
+
+// Event listener for scroll to update active link
+window.addEventListener('scroll', updateActiveLink);
+    </script>
+</body>
 </html>

@@ -120,13 +120,16 @@
             </div>
     
             <!-- Donation Information -->
-            <div class="mt-4 relative z-0 w-full mb-5 group">
+            <!-- Amount (in rupees) -->
+            <div class="relative z-0 w-full mt-8 group">
                 <input id="amount" type="number"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                     placeholder=" " autocomplete="off">
                 <label for="amount"
-                    class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Donation
-                    Amount</label>
+                    class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount
+                    (in rupees)</label>
+                <!-- Error message for amount validation -->
+                <div id="amount-error" class="text-sm text-red-500 mt-1 hidden">Minimum donation amount is ₹250.</div>
             </div>
     
             <!-- Need Tax Exemption -->
@@ -147,7 +150,7 @@
             </div>
     
             <!-- Payment Method -->
-            <div class="mt-6">
+            <div class="mt-8">
                 <span class="text-gray-700">Payment Method</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
@@ -159,7 +162,7 @@
             </div>
     
             <!-- Submit Button -->
-            <div class="mt-6">
+            <div class="mt-8">
                 <button type="submit"
                     class="px-4 py-2 text-white bg-yellow-900 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-800 focus:ring-opacity-50">Donate
                     Now</button>
@@ -456,6 +459,37 @@
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const amountInput = document.getElementById('amount');
+            const amountError = document.getElementById('amount-error');
+        
+            amountInput.addEventListener('input', function () {
+                const amount = parseFloat(amountInput.value);
+        
+                if (amount < 250) {
+                    amountInput.classList.add('border-red-500'); // Add a red border for visual indication
+                    amountError.classList.remove('hidden'); // Show the error message
+                } else {
+                    amountInput.classList.remove('border-red-500'); // Remove red border if amount is valid
+                    amountError.classList.add('hidden'); // Hide the error message
+                }
+            });
+        
+            amountInput.addEventListener('blur', function () {
+                const amount = parseFloat(amountInput.value);
+        
+                if (amount < 250) {
+                    amountInput.classList.add('border-red-500'); // Add red border on blur if amount is still less than 250
+                    amountError.classList.remove('hidden'); // Show the error message
+                } else {
+                    amountInput.classList.remove('border-red-500'); // Remove red border if amount is valid on blur
+                    amountError.classList.add('hidden'); // Hide the error message
+                }
+            });
+        });
+        
+
     </script>
 </body>
 </html>

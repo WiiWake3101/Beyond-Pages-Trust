@@ -40,7 +40,7 @@
                     class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                     <li>
                         <a href="index.html#Home"
-                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:text-yellow-700 md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
@@ -294,6 +294,28 @@
         }
     </style>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+            const menu = document.getElementById('navbar-sticky');
+            const menuItems = document.querySelectorAll('#navbar-sticky a');
+      
+            toggleButton.addEventListener('click', function () {
+              const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+              toggleButton.setAttribute('aria-expanded', !isExpanded);
+              menu.classList.toggle('hidden');
+            });
+      
+            menuItems.forEach(item => {
+              item.addEventListener('click', function () {
+                if (window.innerWidth < 768) {  // Only for mobile view
+                  toggleButton.setAttribute('aria-expanded', false);
+                  menu.classList.add('hidden');
+                }
+              });
+            });
+          });
+
+
         document.addEventListener("DOMContentLoaded", function () {
             const carouselItems = document.querySelectorAll('[data-carousel-item]');
             const prevButton = document.querySelector('[data-carousel-prev]');

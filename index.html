@@ -8,7 +8,9 @@
     <link href="./output.css" rel="stylesheet">
     <link href="./service.css" rel="stylesheet">
     <link rel="icon" href="./images/logo.png" type="image/png">
-
+    <!-- Include Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite/css/flowbite.min.css" rel="stylesheet">
+    <!-- Include Flowbite JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite/js/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
@@ -443,68 +445,29 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-
-
         document.addEventListener('DOMContentLoaded', function () {
-            const navLinks = document.querySelectorAll('nav ul li a');
-
-            // Function to remove active class from all links
-            function removeActiveClass() {
-                navLinks.forEach(link => {
-                    link.classList.remove('bg-yellow-900', 'text-white');
-                    link.classList.add('text-gray-900');
-                });
-            }
-
-            // Set the active class on page load based on current hash
-            function setActiveLink() {
-                const currentHash = window.location.hash || '#Home';
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === currentHash) {
-                        link.classList.add('bg-yellow-900', 'text-white');
-                        link.classList.remove('text-gray-900');
-                    }
-                });
-            }
-
-            // Initial setup
-            setActiveLink();
-
-            // Update active class on link click
-            navLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    removeActiveClass();
-                    this.classList.add('bg-yellow-900', 'text-white');
-                    this.classList.remove('text-gray-900');
-                });
-            });
-
-            // Update active class on hash change (e.g., back/forward navigation)
-            window.addEventListener('hashchange', function () {
-                removeActiveClass();
-                setActiveLink();
-            });
-
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-
+    
+            // Toggle menu visibility on button click
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-                toggleButton.setAttribute('aria-expanded', !isExpanded);
+                toggleButton.setAttribute('aria-expanded', String(!isExpanded));
                 menu.classList.toggle('hidden');
             });
-
+    
+            // Hide menu on item click (only for mobile view)
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
-                    if (window.innerWidth < 768) {  // Only for mobile view
-                        toggleButton.setAttribute('aria-expanded', false);
+                    if (window.innerWidth < 768) {
+                        toggleButton.setAttribute('aria-expanded', 'false');
                         menu.classList.add('hidden');
                     }
                 });
             });
-
-            // Smooth scrolling for anchors
+    
+            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -517,33 +480,34 @@
                     }
                 });
             });
-
+    
+            // Carousel functionality
             const items = document.querySelectorAll('[data-carousel-item]');
             let activeIndex = 0;
-
+    
             function showItem(index) {
                 items.forEach((item, idx) => {
                     item.classList.toggle('hidden', idx !== index);
                     item.classList.toggle('block', idx === index);
                 });
             }
-
+    
             function nextItem() {
                 activeIndex = (activeIndex + 1) % items.length;
                 showItem(activeIndex);
             }
-
+    
             function prevItem() {
                 activeIndex = (activeIndex - 1 + items.length) % items.length;
                 showItem(activeIndex);
             }
-
+    
             document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
             document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
-
+    
             showItem(activeIndex);
         });
-    </script>
+    </script>    
 </body>
 
 </html>

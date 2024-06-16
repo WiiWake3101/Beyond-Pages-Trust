@@ -26,7 +26,15 @@
             /* Internet Explorer/Edge */
             user-select: none;
             /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-        }
+         }
+         img {
+    -webkit-touch-callout: none; /* Disable iOS and Android callouts/context menu */
+    touch-action: none; /* Disable default touch actions like pan and zoom */
+    -webkit-user-drag: none; /* Disable dragging on older versions of Safari */
+    user-select: none; /* Disable text selection on the image */
+}
+
+
     </style>
     <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">

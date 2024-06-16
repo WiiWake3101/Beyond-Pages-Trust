@@ -16,6 +16,18 @@
 </head>
 
 <body class="bg-white">
+    <style>
+        body {
+            -webkit-user-select: none;
+            /* Safari */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+        }
+    </style>
     <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -57,7 +69,7 @@
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
                     </li>
                     <li>
-                        <a href="#contact"
+                        <a href="index.html#Volunteers"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
                     </li>
                     <li>
@@ -479,7 +491,7 @@
             amountInput.addEventListener('blur', function () {
                 const amount = parseFloat(amountInput.value);
         
-                if (amount < 250) {
+                if (amount < 100) {
                     amountInput.classList.add('border-red-500'); // Add red border on blur if amount is still less than 250
                     amountError.classList.remove('hidden'); // Show the error message
                 } else {
@@ -488,8 +500,6 @@
                 }
             });
         });
-        
-
     </script>
 </body>
 </html>

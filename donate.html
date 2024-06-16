@@ -27,11 +27,18 @@
             user-select: none;
             /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
         }
+        img {
+        -webkit-touch-callout: none; /* Disable iOS and Android callouts/context menu */
+        touch-action: none; /* Disable default touch actions like pan and zoom */
+        -webkit-user-drag: none; /* Disable dragging on older versions of Safari */
+        user-select: none; /* Disable text selection on the image */
+    }
+
     </style>
     <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="./images/Logo.png" class="h-8" alt="Logo">
+                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false" ondragstart="return false">
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <button id="rzp-button1" type="button"
@@ -196,61 +203,61 @@
             <div class="relative overflow-hidden h-56 md:h-96 lg:h-[650px]">
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/1.jpg"
+                    <img src="./images/1.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                    <img src="./images/2.jpg"
+                    <img src="./images/2.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/3.jpg"
+                    <img src="./images/3.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 4 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/4.jpg"
+                    <img src="./images/4.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 5 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/5.jpg"
+                    <img src="./images/5.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 6 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/6.jpg"
+                    <img src="./images/6.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 7 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                    <img src="./images/7.jpg"
+                    <img src="./images/7.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 8 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/8.jpg"
+                    <img src="./images/8.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 9 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/9.jpg"
+                    <img src="./images/9.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
                 <!-- Item 10 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/10.jpg"
+                    <img src="./images/10.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
                         alt="">
                 </div>
@@ -289,7 +296,7 @@
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" />
+                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo"  oncontextmenu="return false" ondragstart="return false"/>
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-900 sm:mb-0 ">
                     <li>

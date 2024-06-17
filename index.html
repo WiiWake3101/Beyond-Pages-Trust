@@ -91,7 +91,7 @@
     <main>
         <section id="Home">
             <div class="relative w-full overflow-hidden flex flex-col">
-                <img src="./images/1.jpeg" alt="Descriptive Alt Text" oncontextmenu="return false" ondragstart="return false"
+                <img src="./images/Cover Pic.jpg" alt="Descriptive Alt Text" oncontextmenu="return false" ondragstart="return false"
                     class="w-full h-64 object-cover mt-4 sm:h-80 md:h-96 lg:h-auto">
                 <div
                     class="mx-auto mt-[-2rem] bg-white rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
@@ -306,35 +306,30 @@
         <!--Gallery end here-->
         <section id="Gallery">
             <h2
-                class="content max-w-4xl mx-auto text-center mt-10 mb-5 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
+                class="content max-w-4xl mx-auto text-center mt-10 mb-10 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
                 Gallery</h2>
             <div id="gallery" class="relative w-full" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative overflow-hidden h-56 md:h-96 lg:h-[600px]">
                     <!-- Item 1 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://via.placeholder.com/800x600?text=1"
+                        <img src="./images/WWM 1.jpg"
                             class="absolute block w-full h-full object-cover" alt="Image 1" oncontextmenu="return false" ondragstart="return false">
                     </div>
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                        <img src="https://via.placeholder.com/800x600?text=2"
+                        <img src="./images/WWM 2.jpg"
                             class="absolute block w-full h-full object-cover" alt="Image 2" oncontextmenu="return false"  ondragstart="return false"  >
                     </div>
                     <!-- Item 3 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://via.placeholder.com/800x600?text=3"
+                        <img src="./images/WWM 3.jpg"
                             class="absolute block w-full h-full object-cover" alt="Image 3" oncontextmenu="return false" ondragstart="return false" >
                     </div>
                     <!-- Item 4 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://via.placeholder.com/800x600?text=4"
+                        <img src="./images/WWM 4.jpg"
                             class="absolute block w-full h-full object-cover" alt="Image 4" oncontextmenu="return false" ondragstart="return false" >
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://via.placeholder.com/800x600?text=5"
-                            class="absolute block w-full h-full object-cover" alt="Image 5" oncontextmenu="return false" ondragstart="return false">
                     </div>
                 </div>
                 <!-- Slider controls -->
@@ -608,32 +603,36 @@
                 });
             });
 
-            // Carousel functionality
-            const items = document.querySelectorAll('[data-carousel-item]');
-            let activeIndex = 0;
-
-            function showItem(index) {
-                items.forEach((item, idx) => {
-                    item.classList.toggle('hidden', idx !== index);
-                    item.classList.toggle('block', idx === index);
-                });
-            }
-
-            function nextItem() {
-                activeIndex = (activeIndex + 1) % items.length;
-                showItem(activeIndex);
-            }
-
-            function prevItem() {
-                activeIndex = (activeIndex - 1 + items.length) % items.length;
-                showItem(activeIndex);
-            }
-
-            document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
-            document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
-
-            showItem(activeIndex);
-        });
+              // Carousel functionality
+              const items = document.querySelectorAll('[data-carousel-item]');
+              let activeIndex = 0;
+  
+              function showItem(index) {
+                  items.forEach((item, idx) => {
+                      item.classList.toggle('hidden', idx !== index);
+                      item.classList.toggle('block', idx === index);
+                  });
+              }
+  
+              function nextItem() {
+                  activeIndex = (activeIndex + 1) % items.length;
+                  showItem(activeIndex);
+              }
+  
+              function prevItem() {
+                  activeIndex = (activeIndex - 1 + items.length) % items.length;
+                  showItem(activeIndex);
+              }
+  
+              document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
+              document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
+  
+              // Automatically switch items every 5 seconds
+              setInterval(nextItem, 5000);
+  
+              // Show the first item initially
+              showItem(activeIndex);
+          });
 
         //Menu Active section code
         function changeActive(event, clickedElement) {

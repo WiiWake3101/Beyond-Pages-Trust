@@ -135,15 +135,17 @@
                     <!-- Error message for invalid email format -->
                     <div id="email-error" class="text-sm text-red-500 mt-1 hidden">Invalid email format.</div>
                 </div>
+<!-- Phone -->
+<div class="relative z-0 w-full mb-4 group">
+    <input type="tel" name="phone" id="phone"
+           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+           placeholder=" " required autocomplete="off">
+    <label for="phone"
+           class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
+</div>
+<!-- Error message for phone number -->
+<div id="phone-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid phone number (10 digits).</div>
 
-                <!-- Phone -->
-                <div class="relative z-0 w-full mb-4 group">
-                    <input type="tel" name="phone" id="phone"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                        placeholder=" " required autocomplete="off">
-                    <label for="phone"
-                        class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
-                </div>
             </div>
 
             <!-- Donation Information -->
@@ -514,6 +516,31 @@
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to limit phone number input length and show error if less than 10 digits
+            function limitPhoneLength() {
+                const phoneInput = document.getElementById('phone');
+                const errorElement = document.getElementById('phone-error');
+                const maxLength = 10;
+        
+                // Trim any whitespace and update input value
+                const trimmedValue = phoneInput.value.trim();
+                phoneInput.value = trimmedValue;
+        
+                // Show error if the length is less than 10 and input is not empty
+                if (trimmedValue.length < maxLength && trimmedValue.length > 0) {
+                    errorElement.classList.remove('hidden');
+                } else {
+                    errorElement.classList.add('hidden');
+                }
+            }
+        
+            // Event listener for phone input
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', limitPhoneLength);
+        });
+        
     </script>
 </body>
 </html>

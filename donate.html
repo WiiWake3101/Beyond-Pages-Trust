@@ -526,26 +526,26 @@
     </script>
     <script>
         // razorpay.js
-
+    
         // Function to validate email format
         function validateEmail(email) {
             const re = /\S+@\S+\.\S+/;
             return re.test(email);
         }
-
+    
         document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
             const emailInput = document.getElementById('floating_email');
             const phoneInput = document.getElementById('floating_phone');
             const panCardInput = document.getElementById('floating_pan_card');
             const donateButton = document.querySelector('.donate');
-
+    
             donateButton.addEventListener('click', function (e) {
                 const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
                 const email = emailInput.value;
                 const phone = phoneInput.value;
                 const panCard = panCardInput.value;
-
+    
                 // Validate email format
                 if (!validateEmail(email)) {
                     document.getElementById('email-error').classList.remove('hidden');
@@ -553,7 +553,7 @@
                 } else {
                     document.getElementById('email-error').classList.add('hidden');
                 }
-
+    
                 // Validate amount (minimum ₹100)
                 if (amount < 100) {
                     document.getElementById('amount-error').classList.remove('hidden');
@@ -561,7 +561,7 @@
                 } else {
                     document.getElementById('amount-error').classList.add('hidden');
                 }
-
+    
                 // Create a Razorpay instance
                 var options = {
                     key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
@@ -570,12 +570,12 @@
                     name: 'Beyond Pages Trust',  // Updated company name
                     description: 'Donation',
                     handler: function (response) {
-                        // Clear the form
-                        document.getElementById('payment-form').reset();
-
                         // Display custom success message
                         alert('Payment successful: Thank you for your Donation with Reference ID: ' + response.razorpay_payment_id);
-
+    
+                        // Clear the form
+                        document.querySelector('form').reset();
+    
                         // You can handle the payment success here, e.g., update database, show confirmation, etc.
                     },
                     prefill: {
@@ -598,14 +598,13 @@
                         }
                     }
                 };
-
+    
                 var rzp = new Razorpay(options);
                 rzp.open();
                 e.preventDefault();
             });
         });
-
-    </script>
+    </script>    
 </body>
 
 </html>

@@ -13,6 +13,7 @@
     <!-- Include Flowbite JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite/js/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body class="bg-white">
@@ -27,23 +28,28 @@
             user-select: none;
             /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
         }
-        img {
-        -webkit-touch-callout: none; /* Disable iOS and Android callouts/context menu */
-        touch-action: none; /* Disable default touch actions like pan and zoom */
-        -webkit-user-drag: none; /* Disable dragging on older versions of Safari */
-        user-select: none; /* Disable text selection on the image */
-    }
 
+        img {
+            -webkit-touch-callout: none;
+            /* Disable iOS and Android callouts/context menu */
+            touch-action: none;
+            /* Disable default touch actions like pan and zoom */
+            -webkit-user-drag: none;
+            /* Disable dragging on older versions of Safari */
+            user-select: none;
+            /* Disable text selection on the image */
+        }
     </style>
     <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="index.html#Home" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false" ondragstart="return false">
+                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false"
+                    ondragstart="return false">
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <button id="rzp-button1" type="button"
                     class="text-white bg-yellow-900 hover:bg-yellow-900 font-medium rounded-lg text-sm px-4 py-2 text-center"><a
-                    href="donate.html">Donate</a></button>
+                        href="donate.html">Donate</a></button>
                 <button data-collapse-toggle="navbar-sticky" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-900 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 :text-gray-400"
                     aria-controls="navbar-sticky" aria-expanded="false">
@@ -89,11 +95,13 @@
     </nav>
     <style>
         .custom-padding {
-            padding-top: 4rem; /* Adjust to your desired padding top */
-            padding-bottom: 4rem; /* Adjust to your desired padding bottom */
+            padding-top: 4rem;
+            /* Adjust to your desired padding top */
+            padding-bottom: 4rem;
+            /* Adjust to your desired padding bottom */
         }
     </style>
-    
+
     <section id="donation" class="bg-yellow-900 p-5 mt-5 ">
         <div class="container mx-auto mt-10">
             <div class="custom-padding bgImage text-white text-center rounded-xl">
@@ -101,35 +109,35 @@
             </div>
         </div>
     </section>
-    
+
     <section class="max-w-4xl mx-auto p-4 bg-white rounded-md shadow-xl mt-4">
-        <form name="Donations" autocomplete="off" action="POST" data-netlify="true">
+        <form autocomplete="off" method="post" data-netlify="true">
             <!-- Personal Information -->
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <!-- First Name -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="text" name="first_name" id="first_name"
+                    <input type="text" name="floating_first_name" id="floating_first_name"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
-                    <label for="first_name"
+                    <label for="floating_first_name"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
                         Name</label>
                 </div>
                 <!-- Last Name -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="text" name="last_name" id="last_name"
+                    <input type="text" name="floating_last_name" id="floating_last_name"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
-                    <label for="last_name"
+                    <label for="floating_last_name"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
                         Name</label>
                 </div>
                 <!-- Email -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="email" name="email" id="email"
+                    <input type="email" name="floating_email" id="floating_email"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
-                    <label for="email"
+                    <label for="floating_email"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
                         address</label>
                     <!-- Error message for invalid email format -->
@@ -138,19 +146,17 @@
 
                 <!-- Phone -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="tel" name="phone" id="phone"
-                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                           placeholder=" " required autocomplete="off">
-                    <label for="phone"
-                           class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
-                    <!-- Error message for invalid phone format -->
-                    <div id="phone-error" class="text-sm text-red-500 mt-1 hidden">Invalid phone format. Please enter a 10-digit number.</div>
-                </div>                
+                    <input type="tel" name="floating_phone" id="floating_phone"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                        placeholder=" " required autocomplete="off">
+                    <label for="floating_phone"
+                        class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
+                </div>
             </div>
 
             <!-- Donation Information -->
             <div class="relative z-0 w-full mt-6 group">
-                <input id="amount" name=amount type="number"
+                <input id="amount" type="number"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                     placeholder=" " autocomplete="off" min="0">
                 <label for="amount"
@@ -162,7 +168,7 @@
             </div>
 
             <!-- Need Tax Exemption -->
-            <div class="flex items-center mt-4 mb-4">
+            <div class="flex items-center mt-2">
                 <input id="checkbox-2" type="checkbox" name="taxExemption" value="true"
                     class="w-4 h-4 text-yellow-700 bg-gray-100 border-gray-300 rounded focus:ring-yellow-900"
                     autocomplete="off">
@@ -171,21 +177,21 @@
 
             <!-- Pan Card -->
             <div id="panCardSection" class="relative z-0 w-full mt-6 hidden">
-                <input type="text" name="pan_card" id="pan_card"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                placeholder=" " autocomplete="off">            
-                <label for="pan_card"
+                <input type="text" name="floating_pan_card" id="floating_pan_card"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                    placeholder=" " required autocomplete="off">
+                <label for="floating_pan_card"
                     class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter
                     Pan Card</label>
             </div>
 
             <!-- Payment Method -->
-            <div class="mt-2 mb-2">
+            <div class="mt-2">
                 <span class="text-gray-700">Payment Method</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
                         <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="upi" checked>
-                        <span class="ml-2">Razorpay</span>
+                        <span class="ml-2">UPI</span>
                     </label>
                 </div>
             </div>
@@ -197,33 +203,8 @@
                     Now</button>
             </div>
         </form>
-    </section> 
-    <script>
-        // Get the phone input element
-        const phoneInput = document.getElementById('phone');
-        // Get the error message element
-        const phoneError = document.getElementById('phone-error');
-    
-        // Function to validate phone number input
-        function validatePhoneNumber() {
-            const phoneValue = phoneInput.value.trim();
-    
-            // Check if the input value is not empty and does not have exactly 10 digits
-            if (phoneValue !== '' && (phoneValue.length !== 10 || !(/^\d+$/.test(phoneValue)))) {
-                phoneError.classList.remove('hidden');
-                phoneInput.setCustomValidity('Please enter a valid 10-digit phone number.');
-            } else {
-                phoneError.classList.add('hidden');
-                phoneInput.setCustomValidity('');
-            }
-        }
-    
-        // Validate phone number on input change
-        phoneInput.addEventListener('input', validatePhoneNumber);
-    
-        // Validate phone number on blur (when focus moves out of the input)
-        phoneInput.addEventListener('blur', validatePhoneNumber);
-    </script> 
+    </section>
+
     <section class="mt-4">
         <div id="gallery" class="relative w-full" data-carousel="slide">
             <!-- Carousel wrapper -->
@@ -323,7 +304,8 @@
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo"  oncontextmenu="return false" ondragstart="return false"/>
+                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" oncontextmenu="return false"
+                        ondragstart="return false" />
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-900 sm:mb-0 ">
                     <li>
@@ -355,22 +337,22 @@
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-      
+
             toggleButton.addEventListener('click', function () {
-              const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-              toggleButton.setAttribute('aria-expanded', !isExpanded);
-              menu.classList.toggle('hidden');
+                const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                toggleButton.setAttribute('aria-expanded', !isExpanded);
+                menu.classList.toggle('hidden');
             });
-      
+
             menuItems.forEach(item => {
-              item.addEventListener('click', function () {
-                if (window.innerWidth < 768) {  // Only for mobile view
-                  toggleButton.setAttribute('aria-expanded', false);
-                  menu.classList.add('hidden');
-                }
-              });
+                item.addEventListener('click', function () {
+                    if (window.innerWidth < 768) {  // Only for mobile view
+                        toggleButton.setAttribute('aria-expanded', false);
+                        menu.classList.add('hidden');
+                    }
+                });
             });
-          });
+        });
 
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -379,7 +361,7 @@
             const nextButton = document.querySelector('[data-carousel-next]');
             let currentIndex = 0;
             let timer = null;
-    
+
             // Function to show current item with smooth transition
             function showItem(index) {
                 carouselItems.forEach((item, i) => {
@@ -406,46 +388,46 @@
                     }
                 });
             }
-    
+
             // Function to move to next item
             function nextItem() {
                 currentIndex = (currentIndex + 1) % carouselItems.length;
                 showItem(currentIndex);
             }
-    
+
             // Function to move to previous item
             function prevItem() {
                 currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
                 showItem(currentIndex);
             }
-    
+
             // Show initial active item
             showItem(currentIndex);
-    
+
             // Next button click handler
             nextButton.addEventListener('click', function () {
                 clearInterval(timer); // Clear interval to reset timer
                 nextItem();
                 timer = setInterval(nextItem, 7000); // Restart timer
             });
-    
+
             // Previous button click handler
             prevButton.addEventListener('click', function () {
                 clearInterval(timer); // Clear interval to reset timer
                 prevItem();
                 timer = setInterval(nextItem, 7000); // Restart timer
             });
-    
+
             // Auto slide every 7000ms (6s)
             timer = setInterval(nextItem, 7000);
         });
-    
+
         // Document Ready Event Listener for Donation Form
         document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
             const checkBox = document.getElementById('checkbox-2');
             const panCardSection = document.getElementById('panCardSection');
-    
+
             // Function to handle showing/hiding PAN input
             function handlePanCardVisibility() {
                 if (parseFloat(amountInput.value) >= 5000 || checkBox.checked) {
@@ -454,36 +436,36 @@
                     panCardSection.classList.add('hidden');
                 }
             }
-    
+
             // Initial check on page load
             handlePanCardVisibility();
-    
+
             // Event listeners
             amountInput.addEventListener('input', handlePanCardVisibility);
             checkBox.addEventListener('change', handlePanCardVisibility);
-    
+
             // Function to limit phone number input length
             function limitPhoneLength() {
-                const phoneInput = document.getElementById('phone');
+                const phoneInput = document.getElementById('floating_phone');
                 const maxLength = 10;
                 if (phoneInput.value.length > maxLength) {
                     phoneInput.value = phoneInput.value.slice(0, maxLength);
                 }
             }
-    
+
             // Event listener for phone input
-            const phoneInput = document.getElementById('phone');
+            const phoneInput = document.getElementById('floating_phone');
             phoneInput.addEventListener('input', limitPhoneLength);
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Regex pattern to validate email format
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
+
             // Input element
-            var emailInput = document.getElementById("email");
+            var emailInput = document.getElementById("floating_email");
             var emailError = document.getElementById("email-error");
-    
+
             // Function to validate email
             function validateEmail() {
                 var emailValue = emailInput.value.trim();
@@ -497,13 +479,13 @@
                     emailError.classList.remove("hidden"); // Show error message
                 }
             }
-    
+
             // Validate on input change
             emailInput.addEventListener("input", validateEmail);
-    
+
             // Optional: Validate on form submit
             var form = document.querySelector("form");
-            form.addEventListener("submit", function(event) {
+            form.addEventListener("submit", function (event) {
                 if (!emailPattern.test(emailInput.value.trim())) {
                     // Prevent form submission if email is invalid
                     event.preventDefault();
@@ -516,10 +498,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
             const amountError = document.getElementById('amount-error');
-        
+
             amountInput.addEventListener('input', function () {
                 const amount = parseFloat(amountInput.value);
-        
+
                 if (amount < 100) {
                     amountInput.classList.add('border-red-500'); // Add a red border for visual indication
                     amountError.classList.remove('hidden'); // Show the error message
@@ -528,10 +510,10 @@
                     amountError.classList.add('hidden'); // Hide the error message
                 }
             });
-        
+
             amountInput.addEventListener('blur', function () {
                 const amount = parseFloat(amountInput.value);
-        
+
                 if (amount < 100) {
                     amountInput.classList.add('border-red-500'); // Add red border on blur if amount is still less than 250
                     amountError.classList.remove('hidden'); // Show the error message
@@ -542,34 +524,28 @@
             });
         });
     </script>
-</body>
-</html>
     <script>
+        // razorpay.js
+    
         // Function to validate email format
         function validateEmail(email) {
             const re = /\S+@\S+\.\S+/;
             return re.test(email);
         }
-
-        // Function to validate phone number format (Indian phone numbers)
-        function validatePhone(phone) {
-            const re = /^[6-9]\d{9}$/;
-            return re.test(phone) && phone.length === 10;
-        }
-
+    
         document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
-            const emailInput = document.getElementById('email');
-            const phoneInput = document.getElementById('phone');
-            const panCardInput = document.getElementById('pan_card');
+            const emailInput = document.getElementById('floating_email');
+            const phoneInput = document.getElementById('floating_phone');
+            const panCardInput = document.getElementById('floating_pan_card');
             const donateButton = document.querySelector('.donate');
-
+    
             donateButton.addEventListener('click', function (e) {
                 const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
                 const email = emailInput.value;
                 const phone = phoneInput.value;
                 const panCard = panCardInput.value;
-
+    
                 // Validate email format
                 if (!validateEmail(email)) {
                     document.getElementById('email-error').classList.remove('hidden');
@@ -577,15 +553,15 @@
                 } else {
                     document.getElementById('email-error').classList.add('hidden');
                 }
-
+    
                 // Validate amount (minimum ₹100)
-                if (amount < 10000) { // The amount in paise should be at least 10000
+                if (amount < 100) {
                     document.getElementById('amount-error').classList.remove('hidden');
                     return;
                 } else {
                     document.getElementById('amount-error').classList.add('hidden');
                 }
-
+    
                 // Create a Razorpay instance
                 var options = {
                     key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
@@ -594,13 +570,13 @@
                     name: 'Beyond Pages Trust',  // Updated company name
                     description: 'Donation',
                     handler: function (response) {
-                        // Add Razorpay payment ID to form submission
-                        document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-                        // Add Razorpay payment status to form submission
-                        document.getElementById('razorpay_payment_status').value = 'success';
-
-                        // Submit the form to Netlify
-                        document.forms['Donations'].submit();
+                        // Display custom success message
+                        alert('Payment successful: Thank you for your Donation with Reference ID: ' + response.razorpay_payment_id);
+    
+                        // Clear the form
+                        document.querySelector('form').reset();
+    
+                        // You can handle the payment success here, e.g., update database, show confirmation, etc.
                     },
                     prefill: {
                         email: email,  // Use the entered email
@@ -610,26 +586,24 @@
                         address: 'Razorpay Corporate Office'  // Optional notes
                     },
                     theme: {
-                        color: '#472409'  // Optional theme color
+                        color: '#F37254'  // Optional theme color
                     },
                     modal: {
                         ondismiss: function () {
                             // Handle the case where the user closes the payment modal
                             console.log("Payment modal closed");
-                            // Optionally, you can show a message to the user
-                            alert("Payment was not completed. Please try again.");
                         },
                         external: {
                             wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
                         }
                     }
                 };
-
+    
                 var rzp = new Razorpay(options);
                 rzp.open();
-                e.preventDefault(); // Prevent default form submission
+                e.preventDefault();
             });
         });
-    </script>
+    </script>    
 </body>
 </html>

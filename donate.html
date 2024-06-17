@@ -539,18 +539,18 @@
             return re.test(email);
         }
 
+        // Function to validate phone number format (Indian phone numbers)
+        function validatePhone(phone) {
+            const re = /^[6-9]\d{9}$/;
+            return re.test(phone) && phone.length === 10;
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
             const emailInput = document.getElementById('email');
             const phoneInput = document.getElementById('phone');
             const panCardInput = document.getElementById('pan_card');
             const donateButton = document.querySelector('.donate');
-
-            // Function to validate phone number format (Indian phone numbers)
-            function validatePhone(phone) {
-                const re = /^[6-9]\d{9}$/;
-                return re.test(phone);
-            }
 
             donateButton.addEventListener('click', function (e) {
                 const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)

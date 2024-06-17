@@ -571,13 +571,10 @@
                     currency: 'INR',
                     name: 'Beyond Pages Trust',  // Updated company name
                     description: 'Donation',
-                    handler: function (response) {
-                        // Display custom success message
-                        alert('Payment successful: Thank you for your Donation with Reference ID: ' + response.razorpay_payment_id);
-    
+                    handler: function (response) {    
                         // Add Razorpay payment ID to form submission
                         document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-    
+                        
                         // Submit the form to Netlify
                         document.forms['Donations'].submit();
                     },

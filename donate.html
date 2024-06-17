@@ -327,33 +327,35 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Navbar Sticky Toggle
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-    
+      
             toggleButton.addEventListener('click', function () {
-                const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-                toggleButton.setAttribute('aria-expanded', !isExpanded);
-                menu.classList.toggle('hidden');
+              const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+              toggleButton.setAttribute('aria-expanded', !isExpanded);
+              menu.classList.toggle('hidden');
             });
-    
+      
             menuItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    if (window.innerWidth < 768) {
-                        toggleButton.setAttribute('aria-expanded', false);
-                        menu.classList.add('hidden');
-                    }
-                });
+              item.addEventListener('click', function () {
+                if (window.innerWidth < 768) {  // Only for mobile view
+                  toggleButton.setAttribute('aria-expanded', false);
+                  menu.classList.add('hidden');
+                }
+              });
             });
-    
-            // Carousel
+          });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
             const carouselItems = document.querySelectorAll('[data-carousel-item]');
             const prevButton = document.querySelector('[data-carousel-prev]');
             const nextButton = document.querySelector('[data-carousel-next]');
             let currentIndex = 0;
             let timer = null;
     
+            // Function to show current item with smooth transition
             function showItem(index) {
                 carouselItems.forEach((item, i) => {
                     if (i === index) {
@@ -380,126 +382,153 @@
                 });
             }
     
+            // Function to move to next item
             function nextItem() {
                 currentIndex = (currentIndex + 1) % carouselItems.length;
                 showItem(currentIndex);
             }
     
+            // Function to move to previous item
             function prevItem() {
                 currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
                 showItem(currentIndex);
             }
     
+            // Show initial active item
             showItem(currentIndex);
     
+            // Next button click handler
             nextButton.addEventListener('click', function () {
-                clearInterval(timer);
+                clearInterval(timer); // Clear interval to reset timer
                 nextItem();
-                timer = setInterval(nextItem, 7000);
+                timer = setInterval(nextItem, 7000); // Restart timer
             });
     
+            // Previous button click handler
             prevButton.addEventListener('click', function () {
-                clearInterval(timer);
+                clearInterval(timer); // Clear interval to reset timer
                 prevItem();
-                timer = setInterval(nextItem, 7000);
+                timer = setInterval(nextItem, 7000); // Restart timer
             });
     
+            // Auto slide every 7000ms (6s)
             timer = setInterval(nextItem, 7000);
+        });
     
-            // Donation Form
+        // Document Ready Event Listener for Donation Form
+        document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
-            const amountError = document.getElementById('amount-error');
             const checkBox = document.getElementById('checkbox-2');
             const panCardSection = document.getElementById('panCardSection');
-            const phoneInput = document.getElementById('phone');
-            const phoneError = document.getElementById('phone-error');
-            const emailInput = document.getElementById("email");
-            const emailError = document.getElementById("email-error");
     
+            // Function to handle showing/hiding PAN input
             function handlePanCardVisibility() {
-                const amount = parseFloat(amountInput.value);
-                if (isNaN(amount) || amount >= 5000 || checkBox.checked) {
+                if (parseFloat(amountInput.value) >= 5000 || checkBox.checked) {
                     panCardSection.classList.remove('hidden');
                 } else {
                     panCardSection.classList.add('hidden');
                 }
             }
     
-            function validateEmail() {
-                const emailValue = emailInput.value.trim();
-                if (emailPattern.test(emailValue)) {
-                    emailInput.setCustomValidity("");
-                    emailError.classList.add("hidden");
-                } else {
-                    emailInput.setCustomValidity("Invalid email format.");
-                    emailError.classList.remove("hidden");
-                }
-            }
+            // Initial check on page load
+            handlePanCardVisibility();
     
-            function validateAmount() {
-                const amount = parseFloat(amountInput.value);
-                if (isNaN(amount) || amount < 100) {
-                    amountInput.classList.add('border-red-500');
-                    amountError.classList.remove('hidden');
-                } else {
-                    amountInput.classList.remove('border-red-500');
-                    amountError.classList.add('hidden');
-                }
-            }
+            // Event listeners
+            amountInput.addEventListener('input', handlePanCardVisibility);
+            checkBox.addEventListener('change', handlePanCardVisibility);
     
-            function validatePhoneNumber() {
-                const trimmedValue = phoneInput.value.trim();
-                const maxLength = 10;
-                if (trimmedValue.length !== maxLength || !/^\d+$/.test(trimmedValue)) {
-                    phoneError.classList.remove('hidden');
-                } else {
-                    phoneError.classList.add('hidden');
-                }
-            }
-    
+            // Function to limit phone number input length
             function limitPhoneLength() {
+                const phoneInput = document.getElementById('phone');
                 const maxLength = 10;
                 if (phoneInput.value.length > maxLength) {
                     phoneInput.value = phoneInput.value.slice(0, maxLength);
                 }
             }
     
-            handlePanCardVisibility();
-            validateEmail();
-            validateAmount();
-            validatePhoneNumber();
+            // Event listener for phone input
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', limitPhoneLength);
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Regex pattern to validate email format
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-            amountInput.addEventListener('input', function () {
-                handlePanCardVisibility();
-                validateAmount();
-            });
+            // Input element
+            var emailInput = document.getElementById("email");
+            var emailError = document.getElementById("email-error");
     
-            checkBox.addEventListener('change', function () {
-                handlePanCardVisibility();
-            });
-    
-            emailInput.addEventListener('input', validateEmail);
-    
-            phoneInput.addEventListener('input', function () {
-                limitPhoneLength();
-                validatePhoneNumber();
-            });
-    
-            phoneInput.addEventListener('blur', validatePhoneNumber);
-    
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-            const form = document.querySelector("form");
-            form.addEventListener("submit", function (event) {
-                if (!emailPattern.test(emailInput.value.trim())) {
-                    event.preventDefault();
-                    emailInput.reportValidity();
-                    emailError.classList.remove("hidden");
+            // Function to validate email
+            function validateEmail() {
+                var emailValue = emailInput.value.trim();
+                if (emailPattern.test(emailValue)) {
+                    // Valid email format
+                    emailInput.setCustomValidity(""); // Reset validation message
+                    emailError.classList.add("hidden"); // Hide error message
+                } else {
+                    // Invalid email format
+                    emailInput.setCustomValidity("Invalid email format."); // Set validation message
+                    emailError.classList.remove("hidden"); // Show error message
                 }
-                validateAmount();
-                validatePhoneNumber();
+            }
+    
+            // Validate on input change
+            emailInput.addEventListener("input", validateEmail);
+    
+            // Optional: Validate on form submit
+            var form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                if (!emailPattern.test(emailInput.value.trim())) {
+                    // Prevent form submission if email is invalid
+                    event.preventDefault();
+                    emailInput.reportValidity(); // Display validation message
+                    emailError.classList.remove("hidden"); // Show error message
+                }
             });
         });
-    </script>    
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const amountInput = document.getElementById('amount');
+            const amountError = document.getElementById('amount-error');
+        
+            amountInput.addEventListener('input', function () {
+                const amount = parseFloat(amountInput.value);
+        
+                if (amountValue === "" || isNaN(amount) || amount < 10) {
+                    amountInput.classList.add('border-red-500'); // Add a red border for visual indication
+                    amountError.classList.remove('hidden'); // Show the error message
+                } else {
+                    amountInput.classList.remove('border-red-500'); // Remove red border if amount is valid
+                    amountError.classList.add('hidden'); // Hide the error message
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to limit phone number input length and show error if less than 10 digits
+            function limitPhoneLength() {
+                const phoneInput = document.getElementById('phone');
+                const errorElement = document.getElementById('phone-error');
+                const maxLength = 10;
+        
+                // Trim any whitespace and update input value
+                const trimmedValue = phoneInput.value.trim();
+                phoneInput.value = trimmedValue;
+        
+                // Show error if the length is less than 10 and input is not empty
+                if (trimmedValue.length < maxLength && trimmedValue.length > 0) {
+                    errorElement.classList.remove('hidden');
+                } else {
+                    errorElement.classList.add('hidden');
+                }
+            }
+        
+            // Event listener for phone input
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', limitPhoneLength);
+        });
+        
+    </script>
 </body>
 </html>

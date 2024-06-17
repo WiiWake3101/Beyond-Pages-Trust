@@ -1114,6 +1114,11 @@ video {
   background-color: rgb(113 63 18 / var(--tw-bg-opacity));
 }
 
+.bg-yellow-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 138 4 / var(--tw-bg-opacity));
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1361,6 +1366,10 @@ video {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover\:me-4:hover {
+  margin-inline-end: 1rem;
 }
 
 .hover\:scale-105:hover {

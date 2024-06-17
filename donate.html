@@ -89,6 +89,10 @@
                         <a href="index.html#contact"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Contact</a>
                     </li>
+                    <li>
+                        <a href="index.html#faq" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">FAQ</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -147,11 +151,21 @@
                 <!-- Phone -->
                 <div class="relative z-0 w-full mb-4 group">
                     <input type="tel" name="phone" id="phone"
+<<<<<<< HEAD
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
                     <label for="phone"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
                 </div>
+=======
+                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                           placeholder=" " required autocomplete="off">
+                    <label for="phone"
+                           class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
+                    <!-- Error message for invalid phone format -->
+                    <div id="phone-error" class="text-sm text-red-500 mt-1 hidden">Invalid phone format. Please enter a 10-digit number.</div>
+                </div>                
+>>>>>>> main
             </div>
 
             <!-- Donation Information -->
@@ -178,8 +192,13 @@
             <!-- Pan Card -->
             <div id="panCardSection" class="relative z-0 w-full mt-6 hidden">
                 <input type="text" name="pan_card" id="pan_card"
+<<<<<<< HEAD
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                     placeholder=" " autocomplete="off">
+=======
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                placeholder=" " autocomplete="off">            
+>>>>>>> main
                 <label for="pan_card"
                     class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter
                     Pan Card</label>
@@ -190,7 +209,11 @@
                 <span class="text-gray-700">Payment Method</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
+<<<<<<< HEAD
                         <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="Razorpay" checked>
+=======
+                        <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="upi" checked>
+>>>>>>> main
                         <span class="ml-2">Razorpay</span>
                     </label>
                 </div>
@@ -210,8 +233,38 @@
             <input type="hidden" name="razorpay_payment_status" id="razorpay_payment_status">
 
         </form>
+<<<<<<< HEAD
     </section>
 
+=======
+    </section> 
+    <script>
+        // Get the phone input element
+        const phoneInput = document.getElementById('phone');
+        // Get the error message element
+        const phoneError = document.getElementById('phone-error');
+    
+        // Function to validate phone number input
+        function validatePhoneNumber() {
+            const phoneValue = phoneInput.value.trim();
+    
+            // Check if the input value is not empty and does not have exactly 10 digits
+            if (phoneValue !== '' && (phoneValue.length !== 10 || !(/^\d+$/.test(phoneValue)))) {
+                phoneError.classList.remove('hidden');
+                phoneInput.setCustomValidity('Please enter a valid 10-digit phone number.');
+            } else {
+                phoneError.classList.add('hidden');
+                phoneInput.setCustomValidity('');
+            }
+        }
+    
+        // Validate phone number on input change
+        phoneInput.addEventListener('input', validatePhoneNumber);
+    
+        // Validate phone number on blur (when focus moves out of the input)
+        phoneInput.addEventListener('blur', validatePhoneNumber);
+    </script> 
+>>>>>>> main
     <section class="mt-4">
         <div id="gallery" class="relative w-full" data-carousel="slide">
             <!-- Carousel wrapper -->

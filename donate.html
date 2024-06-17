@@ -103,52 +103,54 @@
     </section>
     
     <section class="max-w-4xl mx-auto p-4 bg-white rounded-md shadow-xl mt-4">
-        <form autocomplete="off" method="post" netlify>
+        <form name="donation" method="POST" data-netlify="true" autocomplete="off">
+            <input type="hidden" name="form-name" value="donation"> <!-- Hidden input for Netlify form name -->
+            
             <!-- Personal Information -->
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <!-- First Name -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="text" name="floating_first_name" id="floating_first_name"
+                    <input type="text" name="first_name" id="first_name"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
-                    <label for="floating_first_name"
+                    <label for="first_name"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
                         Name</label>
                 </div>
                 <!-- Last Name -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="text" name="floating_last_name" id="floating_last_name"
+                    <input type="text" name="last_name" id="last_name"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
-                    <label for="floating_last_name"
+                    <label for="last_name"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
                         Name</label>
                 </div>
                 <!-- Email -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="email" name="floating_email" id="floating_email"
+                    <input type="email" name="email" id="email"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
-                    <label for="floating_email"
+                    <label for="email"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
                         address</label>
                     <!-- Error message for invalid email format -->
                     <div id="email-error" class="text-sm text-red-500 mt-1 hidden">Invalid email format.</div>
                 </div>
-
+    
                 <!-- Phone -->
                 <div class="relative z-0 w-full mb-4 group">
-                    <input type="tel" name="floating_phone" id="floating_phone"
+                    <input type="tel" name="phone" id="phone"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                         placeholder=" " required autocomplete="off">
-                    <label for="floating_phone"
+                    <label for="phone"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
                 </div>
             </div>
-
+    
             <!-- Donation Information -->
             <div class="relative z-0 w-full mt-6 group">
-                <input id="amount" type="number"
+                <input id="amount" name="amount" type="number"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
                     placeholder=" " autocomplete="off" min="0">
                 <label for="amount"
@@ -158,7 +160,7 @@
                 <div id="amount-error" class="text-sm text-red-500 mt-1 hidden">Minimum donation amount is ₹ 100/- .
                 </div>
             </div>
-
+    
             <!-- Need Tax Exemption -->
             <div class="flex items-center mt-4 mb-4">
                 <input id="checkbox-2" type="checkbox" name="taxExemption" value="true"
@@ -166,7 +168,7 @@
                     autocomplete="off">
                 <label for="checkbox-2" class="ms-2 text-sm font-medium text-gray-900">Need Tax Exemption</label>
             </div>
-
+    
             <!-- Pan Card -->
             <div id="panCardSection" class="relative z-0 w-full mt-6 hidden">
                 <input type="text" name="floating_pan_card" id="floating_pan_card"
@@ -176,7 +178,7 @@
                     class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter
                     Pan Card</label>
             </div>
-
+    
             <!-- Payment Method -->
             <div class="mt-2 mb-2">
                 <span class="text-gray-700">Payment Method</span>
@@ -437,7 +439,7 @@
     
             // Function to limit phone number input length
             function limitPhoneLength() {
-                const phoneInput = document.getElementById('floating_phone');
+                const phoneInput = document.getElementById('phone');
                 const maxLength = 10;
                 if (phoneInput.value.length > maxLength) {
                     phoneInput.value = phoneInput.value.slice(0, maxLength);
@@ -445,7 +447,7 @@
             }
     
             // Event listener for phone input
-            const phoneInput = document.getElementById('floating_phone');
+            const phoneInput = document.getElementById('phone');
             phoneInput.addEventListener('input', limitPhoneLength);
         });
 
@@ -454,7 +456,7 @@
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
             // Input element
-            var emailInput = document.getElementById("floating_email");
+            var emailInput = document.getElementById("email");
             var emailError = document.getElementById("email-error");
     
             // Function to validate email

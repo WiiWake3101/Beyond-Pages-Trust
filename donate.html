@@ -464,25 +464,51 @@
                 }
             }
     
+            function checkFormCompletion() {
+                const requiredFields = [amountInput, emailInput, phoneInput];
+                let formComplete = true;
+    
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        formComplete = false;
+                    }
+                });
+    
+                if (formComplete) {
+                    // Enable form submission
+                    form.removeAttribute('onsubmit');
+                } else {
+                    // Prevent form submission
+                    form.setAttribute('onsubmit', 'return false;');
+                }
+            }
+    
             handlePanCardVisibility();
             validateEmail();
             validateAmount();
             validatePhoneNumber();
+            checkFormCompletion();
     
             amountInput.addEventListener('input', function () {
                 handlePanCardVisibility();
                 validateAmount();
+                checkFormCompletion();
             });
     
             checkBox.addEventListener('change', function () {
                 handlePanCardVisibility();
+                checkFormCompletion();
             });
     
-            emailInput.addEventListener('input', validateEmail);
+            emailInput.addEventListener('input', function () {
+                validateEmail();
+                checkFormCompletion();
+            });
     
             phoneInput.addEventListener('input', function () {
                 limitPhoneLength();
                 validatePhoneNumber();
+                checkFormCompletion();
             });
     
             phoneInput.addEventListener('blur', validatePhoneNumber);
@@ -498,8 +524,9 @@
                 }
                 validateAmount();
                 validatePhoneNumber();
+                checkFormCompletion();
             });
         });
-    </script>    
+    </script>      
 </body>
 </html>

@@ -194,6 +194,13 @@
                     class="donate px-4 py-2 text-white bg-yellow-900 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-800 focus:ring-opacity-50">Donate
                     Now</button>
             </div>
+
+            <!-- Razorpay payment ID hidden field -->
+            <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+
+            <!-- Razorpay payment status hidden field -->
+            <input type="hidden" name="razorpay_payment_status" id="razorpay_payment_status">
+
         </form>
     </section>
     
@@ -516,81 +523,85 @@
         });
     </script>
     <script>
-            // Function to validate email format
-            function validateEmail(email) {
-                const re = /\S+@\S+\.\S+/;
-                return re.test(email);
+// Function to validate email format
+function validateEmail(email) {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const amountInput = document.getElementById('amount');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const panCardInput = document.getElementById('pan_card');
+    const donateButton = document.querySelector('.donate');
+
+    donateButton.addEventListener('click', function (e) {
+        const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
+        const email = emailInput.value;
+        const phone = phoneInput.value;
+        const panCard = panCardInput.value;
+
+        // Validate email format
+        if (!validateEmail(email)) {
+            document.getElementById('email-error').classList.remove('hidden');
+            return;
+        } else {
+            document.getElementById('email-error').classList.add('hidden');
+        }
+
+        // Validate amount (minimum ₹100)
+        if (amount < 10000) { // The amount in paise should be at least 10000
+            document.getElementById('amount-error').classList.remove('hidden');
+            return;
+        } else {
+            document.getElementById('amount-error').classList.add('hidden');
+        }
+
+        // Create a Razorpay instance
+        var options = {
+            key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
+            amount: amount,
+            currency: 'INR',
+            name: 'Beyond Pages Trust',  // Updated company name
+            description: 'Donation',
+            handler: function (response) {    
+                // Add Razorpay payment ID to form submission
+                document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+                // Add Razorpay payment status to form submission
+                document.getElementById('razorpay_payment_status').value = 'success';
+                
+                // Submit the form to Netlify
+                document.forms['Donations'].submit();
+            },
+            prefill: {
+                email: email,  // Use the entered email
+                contact: phone  // Use the entered phone number
+            },
+            notes: {
+                address: 'Razorpay Corporate Office'  // Optional notes
+            },
+            theme: {
+                color: '#472409'  // Optional theme color
+            },
+            modal: {
+                ondismiss: function () {
+                    // Handle the case where the user closes the payment modal
+                    console.log("Payment modal closed");
+                    // Optionally, you can show a message to the user
+                    alert("Payment was not completed. Please try again.");
+                },
+                external: {
+                    wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
+                }
             }
-        
-            document.addEventListener('DOMContentLoaded', function () {
-                const amountInput = document.getElementById('amount');
-                const emailInput = document.getElementById('email');
-                const phoneInput = document.getElementById('phone');
-                const panCardInput = document.getElementById('pan_card');
-                const donateButton = document.querySelector('.donate');
-        
-                donateButton.addEventListener('click', function (e) {
-                    const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
-                    const email = emailInput.value;
-                    const phone = phoneInput.value;
-                    const panCard = panCardInput.value;
-        
-                    // Validate email format
-                    if (!validateEmail(email)) {
-                        document.getElementById('email-error').classList.remove('hidden');
-                        return;
-                    } else {
-                        document.getElementById('email-error').classList.add('hidden');
-                    }
-        
-                    // Validate amount (minimum ₹100)
-                    if (amount < 100) {
-                        document.getElementById('amount-error').classList.remove('hidden');
-                        return;
-                    } else {
-                        document.getElementById('amount-error').classList.add('hidden');
-                    }
-        
-                    // Create a Razorpay instance
-                    var options = {
-                        key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
-                        amount: amount,
-                        currency: 'INR',
-                        name: 'Beyond Pages Trust',  // Updated company name
-                        description: 'Donation',
-                        handler: function (response) {    
-                            // Add Razorpay payment ID to form submission
-                            document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-                            
-                            // Submit the form to Netlify
-                            document.forms['Donations'].submit();
-                        },
-                        prefill: {
-                            email: email,  // Use the entered email
-                            contact: phone  // Use the entered phone number
-                        },
-                        notes: {
-                            address: 'Razorpay Corporate Office'  // Optional notes
-                        },
-                        theme: {
-                            color: '#472409'  // Optional theme color
-                        },
-                        modal: {
-                            ondismiss: function () {
-                                // Handle the case where the user closes the payment modal
-                                console.log("Payment modal closed");
-                            },
-                            external: {
-                                wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
-                            }
-                        }
-                    };
-        
-                    var rzp = new Razorpay(options);
-                    rzp.open();
-                    e.preventDefault(); // Prevent default form submission
-                });
-            });
-        </script> 
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.open();
+        e.preventDefault(); // Prevent default form submission
+    });
+});
+    </script>    
 </body>
 </html>

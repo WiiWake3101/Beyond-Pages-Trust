@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donation | Beyond Pages Trust</title>
+    <title>Beyond Pages Trust</title>
     <link href="./output.css" rel="stylesheet">
     <link href="./service.css" rel="stylesheet">
     <link rel="icon" href="./images/logo.png" type="image/png">
@@ -13,7 +13,6 @@
     <!-- Include Flowbite JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite/js/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body class="bg-white">
@@ -27,31 +26,27 @@
             /* Internet Explorer/Edge */
             user-select: none;
             /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-        }
+         }
+         img {
+        -webkit-touch-callout: none; /* Disable iOS and Android callouts/context menu */
+        touch-action: none; /* Disable default touch actions like pan and zoom */
+        -webkit-user-drag: none; /* Disable dragging on older versions of Safari */
+        user-select: none; /* Disable text selection on the image */
+    }
 
-        img {
-            -webkit-touch-callout: none;
-            /* Disable iOS and Android callouts/context menu */
-            touch-action: none;
-            /* Disable default touch actions like pan and zoom */
-            -webkit-user-drag: none;
-            /* Disable dragging on older versions of Safari */
-            user-select: none;
-            /* Disable text selection on the image */
-        }
+
     </style>
-    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-700">
+    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="index.html#Home" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false"
-                    ondragstart="return false">
+                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false" ondragstart="return false">
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <button id="rzp-button1" type="button"
+                <button type="button"
                     class="text-white bg-yellow-900 hover:bg-yellow-900 font-medium rounded-lg text-sm px-4 py-2 text-center"><a
                         href="donate.html">Donate</a></button>
                 <button data-collapse-toggle="navbar-sticky" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-900 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 :text-gray-400"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 :text-gray-400"
                     aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -62,562 +57,667 @@
                 </button>
             </div>
             <div class="items-right justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                <ul
-                    class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
+                    id="navigation">
                     <li>
-                        <a href="index.html#Home"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0"
+                        <a href="#Home" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="index.html#About"
+                        <a href="#About" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">About</a>
                     </li>
                     <li>
-                        <a href="index.html#services"
+                        <a href="#services" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
                     </li>
                     <li>
-                        <a href="index.html#Gallery"
+                        <a href="#Gallery" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
                     </li>
                     <li>
-                        <a href="index.html#Volunteers"
+                        <a href="#Volunteers" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
                     </li>
                     <li>
-                        <a href="index.html#contact"
+                        <a href="#contact" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#faq" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">FAQ</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <style>
-        .custom-padding {
-            padding-top: 4rem;
-            /* Adjust to your desired padding top */
-            padding-bottom: 4rem;
-            /* Adjust to your desired padding bottom */
-        }
-    </style>
-
-    <section id="donation" class="bg-yellow-900 p-5 mt-5 ">
-        <div class="container mx-auto mt-10">
-            <div class="custom-padding bgImage text-white text-center rounded-xl">
-                <h2 class="text-5xl font-bold">Donation </h2>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto p-4 bg-white rounded-md shadow-xl mt-4">
-        <form name="Donations" autocomplete="off" action="POST" data-netlify="true">
-            <!-- Personal Information -->
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <!-- First Name -->
-                <div class="relative z-0 w-full mb-4 group">
-                    <input type="text" name="first_name" id="first_name"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                        placeholder=" " required autocomplete="off">
-                    <label for="first_name"
-                        class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
-                        Name</label>
-                </div>
-                <!-- Last Name -->
-                <div class="relative z-0 w-full mb-4 group">
-                    <input type="text" name="last_name" id="last_name"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                        placeholder=" " required autocomplete="off">
-                    <label for="last_name"
-                        class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
-                        Name</label>
-                </div>
-                <!-- Email -->
-                <div class="relative z-0 w-full mb-4 group">
-                    <input type="email" name="email" id="email"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                        placeholder=" " required autocomplete="off">
-                    <label for="email"
-                        class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
-                        address</label>
-                    <!-- Error message for invalid email format -->
-                    <div id="email-error" class="text-sm text-red-500 mt-1 hidden">Invalid email format.</div>
-                </div>
-
-                <!-- Phone -->
-                <div class="relative z-0 w-full mb-4 group">
-                    <input type="tel" name="phone" id="phone"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                        placeholder=" " required autocomplete="off">
-                    <label for="phone"
-                        class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
-                    <span id="phone-error" class="text-red-600 hidden">Please enter a valid phone number.</span>
+    <main>
+        <section id="Home">
+            <div class="relative w-full overflow-hidden flex flex-col">
+                <img src="./images/Cover Pic.jpg" alt="Descriptive Alt Text" oncontextmenu="return false" ondragstart="return false"
+                    class="w-full h-64 object-cover mt-4 sm:h-80 md:h-96 lg:h-auto">
+                <div
+                    class="mx-auto mt-[-2rem] bg-white rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
+                    <!-- Vision Statement -->
+                    <div class="max-w-screen-xl mx-auto">
+                        <p class="Title text-center text-gray-900 font-bold text-md mb-2 sm:text-lg md:text-xl">Our
+                            Vision</p>
+                        <div class="text-center text-gray-900">
+                            <p class="Content text-xs sm:text-md md:text-sm">"Envisioning a world where the
+                                transformative power
+                                of education,
+                                environmental sustainability, and compassionate community support integrate together to
+                                uplift lives. We
+                                aspire to create a future where every individual has the tools to thrive, and hope
+                                transcends
+                                boundaries"</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Donation Information -->
-            <div class="relative z-0 w-full mt-6 group">
-                <input id="amount" name=amount type="number"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                    placeholder=" " autocomplete="off" min="0">
-                <label for="amount"
-                    class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount
-                    (in rupees)</label>
-                <!-- Error message for amount validation -->
-                <div id="amount-error" class="text-sm text-red-500 mt-1 hidden">Minimum donation amount is ₹ 100/- .
+        </section>
+        <!--About Us Starts Here-->
+        <section id="About">
+            <div id="about" class="relative overflow-hidden mt-[-6.5rem] z-[-10]">
+                <div class="max-w-7xl mx-auto">
+                    <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                        <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+                            fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="false">
+                            <polygon points="50,0 100,0 50,100 0,300"></polygon>
+                        </svg>
+                        <div class="pt-1"></div>
+                        <main class="mt-10 mx-auto max-w-8xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                            <div class="sm:text-center lg:text-left">
+                                <br>
+                                <br>
+                                <h2
+                                    class="my-8 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
+                                    About Us
+                                </h2>
+                                <p class="text-sm text-justify">
+                                    Beyond Pages Trust, founded in February 2024 by Mr. Nirmal Repakula, is dedicated to
+                                    holistic community development through education, environmental sustainability,
+                                    sports development, and humanitarian relief. Our vision is to integrate these
+                                    elements to uplift lives globally, transcending boundaries with compassion and
+                                    empowerment. We aim to foster hope and positive change by offering comprehensive
+                                    assistance across various initiatives, ensuring every individual and community
+                                    thrives sustainably. Upheld by values of integrity, empowerment, sustainability,
+                                    compassion, and collaboration, we strive for lasting impact through tailored
+                                    programs in education, environmental awareness, sportsmanship, humanitarian aid,
+                                    food security, women empowerment, clothing donations, and rural development. Led by
+                                    Mr. Nirmal Repakula's leadership and community-centered approach, Beyond Pages Trust
+                                    stands out for its innovation, adaptability, and commitment to creating resilient
+                                    communities and a healthier planet.
+                                </p>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+                <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                    <img class="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full"
+                        src="./images/22.jpg" alt="" oncontextmenu="return false" ondragstart="return false">
                 </div>
             </div>
+        </section>
+        <!--About us Ends Here-->
 
-            <!-- Need Tax Exemption -->
-            <div class="flex items-center mt-4 mb-4">
-                <input id="checkbox-2" type="checkbox" name="taxExemption" value="true"
-                    class="w-4 h-4 text-yellow-700 bg-gray-100 border-gray-300 rounded focus:ring-yellow-900"
-                    autocomplete="off">
-                <label for="checkbox-2" class="ms-2 text-sm font-medium text-gray-900">Need Tax Exemption</label>
+        <!--Services Starts here-->
+        <section id=services class="bg-yellow-900 p-5">
+            <div class="container mx-auto mt-10">
+                <div class="py-28 bgImage text-white text-center rounded-xl">
+                    <h2 class="text-5xl font-bold">Our Services</h2>
+                    <p class="w-3/4 md:w-1/2 mx-auto mt-5">
+                        At Beyond Pages Trust, we are dedicated to addressing various
+                        aspects of community development through a comprehensive range of
+                        programs, ensuring that no aspect of community development is
+                        overlooked.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/8.jpg" alt="Children studying in a classroom" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Education</h3>
+                            <p class="mt-3 text-gray-600">
+                                We provide educational resources and support to help individuals
+                                achieve their academic goals and unlock their potential. Our
+                                initiatives include scholarships, school supplies, computer
+                                skills enhancement, and after-school tutoring programs.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/11.jpg" alt="Tree planting activity" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Environmental Sustainability</h3>
+                            <p class="mt-3 text-gray-600">
+                                We promote sustainable practices and environmental awareness to
+                                protect and preserve our planet. Our projects include tree
+                                planting, waste management workshops, and community clean-up
+                                drives.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/16.jpg" alt="Children playing soccer" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Sports Development</h3>
+                            <p class="mt-3 text-gray-600">
+                                We encourage physical fitness and sportsmanship through various
+                                programs that foster teamwork and personal growth. Our activities
+                                range from organizing local sports events to providing training
+                                and resources for young athletes.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/12.jpg" alt="Volunteers distributing aid" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Humanitarian Relief</h3>
+                            <p class="mt-3 text-gray-600">
+                                We assist communities in crisis, providing essential resources and
+                                support to help them rebuild and recover. Our relief efforts
+                                include disaster response, emergency aid distribution, and
+                                long-term recovery programs.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/13.jpg" alt="Volunteers distributing food" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Food and Hunger</h3>
+                            <p class="mt-3 text-gray-600">
+                                We combat food insecurity by organizing food drives and
+                                distributing nutritious meals to needy people. We aim to ensure
+                                that no one goes hungry and everyone has access to adequate
+                                nutrition.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/BeFunky-collage.jpg" alt="Women in a skill development workshop" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Women Empowerment</h3>
+                            <p class="mt-3 text-gray-600">
+                                We empower women through skill development programs, educational
+                                workshops, and support groups. Our initiatives aim to promote
+                                gender equality, enhance economic opportunities, and support
+                                women's health and well-being.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/10.jpg" alt="Clothing donation drive" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Clothing Donations</h3>
+                            <p class="mt-3 text-gray-600">
+                                We collect and distribute old clothes to needy individuals and
+                                families, ensuring everyone has access to adequate clothing. Our
+                                clothing drives help provide warmth, dignity, and a sense of
+                                belonging to those we serve.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                        <div class="w-full h-40 relative">
+                            <img src="./images/20.jpg" alt="Rural community development project" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800">Rural Development</h3>
+                            <p class="mt-3 text-gray-600">
+                                We focus on improving the quality of life in rural areas through
+                                infrastructure development, healthcare access, and agricultural
+                                support. Our projects aim to create sustainable and
+                                self-sufficient rural communities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Pan Card -->
-            <div id="panCardSection" class="relative z-0 w-full mt-6 hidden">
-                <input type="text" name="pan_card" id="pan_card"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                    placeholder=" " autocomplete="off">
-                <label for="pan_card"
-                    class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter
-                    Pan Card</label>
+        </section>
+        <!--Services end here-->
+        <!--Gallery end here-->
+        <section id="Gallery">
+            <h2
+                class="content max-w-4xl mx-auto text-center mt-10 mb-10 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
+                Gallery</h2>
+            <div id="gallery" class="relative w-full" data-carousel="slide">
+                <!-- Carousel wrapper -->
+                <div class="relative overflow-hidden h-56 md:h-96 lg:h-[600px]">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./images/WWM 1.jpg"
+                            class="absolute block w-full h-full object-cover" alt="Image 1" oncontextmenu="return false" ondragstart="return false">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                        <img src="./images/WWM 2.jpg"
+                            class="absolute block w-full h-full object-cover" alt="Image 2" oncontextmenu="return false"  ondragstart="return false"  >
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./images/WWM 3.jpg"
+                            class="absolute block w-full h-full object-cover" alt="Image 3" oncontextmenu="return false" ondragstart="return false" >
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./images/WWM 4.jpg"
+                            class="absolute block w-full h-full object-cover" alt="Image 4" oncontextmenu="return false" ondragstart="return false" >
+                    </div>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="absolute top-0 left-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="absolute top-0 right-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
             </div>
+        </section>
+        <!--Gallery ends here Here-->
 
-            <!-- Payment Method -->
-            <div class="mt-2 mb-2">
-                <span class="text-gray-700">Payment Method</span>
-                <div class="mt-2">
-                    <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="upi" checked>
-                        <span class="ml-2">Razorpay</span>
-                    </label>
+        <!--Volunteers starts here-->
+        <section id="Volunteers" class="bg-yellow-900 p-5">
+            <div class="container mx-auto">
+                <div class="py-28 bgImage text-white text-center rounded-xl">
+                    <h2 class="text-5xl font-bold">Volunteers</h2>
+                    <p class="w-3/4 md:w-1/2 mx-auto mt-5">
+                        Join Our Community of Changemakers.
+                    </p>
+                </div>
+                <div class="container mx-auto p-4 text-white">
+                    <section id="why-volunteer" class="text-center mt-8">
+                        <h2 class="text-3xl font-semibold mb-4">Why Volunteer with Us?</h2>
+                        <ul class="list-disc list-inside inline-block text-left">
+                            <li class="mb-2"><strong>Make a Difference:</strong> Contribute to
+                                meaningful projects that have a direct impact on individuals and communities.</li>
+                            <li class="mb-2"><strong>Learn and Grow:</strong> Gain new skills,
+                                knowledge, and experiences while working with a diverse group of people.</li>
+                            <li class="mb-2"><strong>Connect and Network:</strong> Meet like-minded
+                                individuals, form lasting friendships, and expand your professional network.</li>
+                            <li class="mb-2"><strong>Flexible Opportunities:</strong> Choose from a
+                                variety of volunteer roles that fit your schedule and interests.</li>
+                        </ul>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false" ondragstart="return false"
+                            src="./images/13.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg"oncontextmenu="return false" ondragstart="return false"
+                            src="./images/12.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false" ondragstart="return false"
+                            src="./images/14.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false" ondragstart="return false"
+                            src="./images/16.jpg" alt="">
+                    </div>
+                </div>
+
+                <hr class="mt-5">
+                <div class="container mx-auto p-4 inline-block mb-6 text-white">
+                    <h2 class="text-3xl text-center font-semibold mt-8 mb-6">Volunteer Opportunities</h2>
+                    <div class="mb-6">
+                        <h3 class=" text-2xl font-semibold mt-6 mb-4">Tutoring and Mentoring</h3>
+                        <ul class="list-disc list-inside">
+                            <li class="mb-2">Help students of all ages improve their literacy and academic skills.
+                            </li>
+                            <li class="mb-2">Provide guidance and support to individuals seeking personal and
+                                professional development.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class=" text-2xl font-semibold mt-6 mb-4">Event Planning and Management</h3>
+                        <ul class="list-disc list-inside">
+                            <li class="mb-2">Assist in organizing and executing educational workshops, cultural
+                                events, and community outreach programs.</li>
+                            <li class="mb-2">Engage with the community and promote our mission through various
+                                events.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class=" text-2xl font-semibold mt-6 mb-4">Administrative Support</h3>
+                        <ul class="list-disc list-inside">
+                            <li class="mb-2">Support our team with administrative tasks, data entry, and office
+                                management.</li>
+                            <li class="mb-2">Ensure the smooth operation of our programs and initiatives.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class=" text-2xl font-semibold mt-6 mb-4">Creative and Technical Roles</h3>
+                        <ul class="list-disc list-inside">
+                            <li class="mb-2">Contribute your skills in graphic design, content creation, web
+                                development, and more.</li>
+                            <li class="mb-2">Help us create engaging materials and maintain our online presence.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class=" text-2xl font-semibold mt-6 mb-4">Community Outreach</h3>
+                        <ul class="list-disc list-inside">
+                            <li class="mb-2">Engage with local communities to raise awareness about our programs and
+                                services.</li>
+                            <li class="mb-2">Build relationships and foster collaboration with community partners.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="mb-6">
+                <section id="how-to-get-involved" class="text-center mb-8 text-white">
+                    <h2 class="text-3xl font-semibold mb-4">How to Get Involved</h2>
+                    <div class="inline-block text-left">
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li><strong>Apply Online:</strong> Fill out our volunteer application
+                                form on the website.</li>
+                            <li><strong>Attend an Orientation:</strong> Learn about our mission,
+                                values, and the various ways you can contribute.</li>
+                            <li><strong>Match with a Role:</strong> Based on your interests and
+                                skills, we'll help you find the perfect volunteer opportunity.</li>
+                            <li><strong>Start Volunteering:</strong> Begin your journey with us
+                                and make a positive impact!</li>
+                        </ol>
+                    </div>
+                    <div class="text-center mt-8">
+                        <a href="#" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Join Now</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <!--Volunteers end here-->
+
+        <!--Contact Us Starts Here-->
+        <section id="contact" class="contact mt-10 mb-10 px-4 md:px-0 flex flex-col justify-center items-center ">
+            <div class="content max-w-4xl mx-auto text-center">
+                <h2 class="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
+                    Contact Us</h2>
+                <p class="mt-4">We'd love to hear from you! Whether you have questions about our programs, need
+                    assistance, or want to get involved, the Beyond Pages Trust team is here to help. Please use the
+                    information below to get in touch with us.</p>
+            </div>
+            <div class="container flex flex-col justify-center items-center mt-10 md:flex-row md:items-start md:w-full">
+                <div class="contactInfo w-full md:w-1/2 mx-auto justify-center lg:ml-20">
+                    <div class="box flex items-center cursor-pointer mb-4">
+                        <div class="icon bg-white w-14 h-14 flex justify-center items-center text-2xl">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+                        <div class="text ml-4">
+                            <h3 class="font-semibold">Address</h3>
+                            <p>2/1446, Lakshmi Nagar 2nd St,<br>Madipakkam,<br>Chennai - 600091.</p>
+                        </div>
+                    </div>
+                    <div class="box flex items-center cursor-pointer mb-4">
+                        <div class="icon bg-white w-14 h-14 flex justify-center items-center text-2xl">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+                        <div class="text ml-4">
+                            <h3 class="font-semibold">Phone</h3>
+                            <p>+91 8248061167</p>
+                        </div>
+                    </div>
+                    <div class="box flex items-center cursor-pointer mb-4">
+                        <div class="icon bg-white w-14 h-14 flex justify-center items-center text-2xl">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                        <div class="text ml-4">
+                            <h3 class="font-semibold">Email</h3>
+                            <p>beyondpagestrust@gmail.com</p>
+                        </div>
+                    </div>
+                    <h2 class="text-xl font-semibold mt-8 mb-2 text-center md:text-left">Connect with us</h2>
+                    <ul class="sci flex gap-4 justify-center md:justify-start">
+                        <li><a href="https://x.com/BeyondPagesTrus"><ion-icon name="logo-twitter"
+                                    class="h-8 w-8 mt-3"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/company/beyond-pages-trust/"><ion-icon
+                                    name="logo-linkedin" class="h-8 w-8 mt-3"></ion-icon></a></li>
+                        <li><a href="https://www.facebook.com/beyondpagestrust/"><ion-icon name="logo-facebook"
+                                    class="h-8 w-8 mt-3"></ion-icon></a></li>
+                        <li><a href="https://www.instagram.com/beyondpagestrust?igsh=dWx0dnZvYXd3cjMx"><ion-icon
+                                    name="logo-instagram" class="h-8 w-8 mt-3"></ion-icon></a></li>
+                        <li><a href="https://youtube.com/@beyondpagestrust?si=bilQw8E-_MWV8ext"><ion-icon
+                                    name="logo-youtube" class="h-8 w-8 mt-3"></ion-icon></a></li>
+                    </ul>
+                </div>
+                <div class="LocationCard w-full md:w-1/2 bg-white py-12 px-8 rounded-lg shadow-lg mt-10 md:mt-0">
+                    <h2 class="text-2xl text-gray-900 font-semibold mb-4">Our Location</h2>
+                    <div class="map-container w-full h-64">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.595013019831!2d80.19186561482655!3d12.958012990855166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f6cfe7d73553%3A0x2e053fa9e2ce0c4e!2s12%C2%B057'28.9%22N%2080%C2%B011'30.7%22E!5e0!3m2!1sen!2sin!4v1623743328290!5m2!1sen!2sin"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
-
-            <!-- Submit Button -->
-            <div class="mt-4">
-                <button type="submit"
-                    class="donate px-4 py-2 text-white bg-yellow-900 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-800 focus:ring-opacity-50">Donate
-                    Now</button>
-            </div>
-
-            <!-- Razorpay payment ID hidden field -->
-            <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
-
-            <!-- Razorpay payment status hidden field -->
-            <input type="hidden" name="razorpay_payment_status" id="razorpay_payment_status">
-
-        </form>
-    </section>
-
-    <section class="mt-4">
-        <div id="gallery" class="relative w-full" data-carousel="slide">
-            <!-- Carousel wrapper -->
-            <div class="relative overflow-hidden h-56 md:h-96 lg:h-[650px]">
-                <!-- Item 1 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/1.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 2 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                    <img src="./images/2.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 3 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/3.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 4 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/4.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 5 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/5.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 6 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/6.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 7 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                    <img src="./images/7.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 8 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/8.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 9 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/9.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
-                </div>
-                <!-- Item 10 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="./images/10.jpg" oncontextmenu="return false" ondragstart="return false"
-                        class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image"
-                        alt="">
+        </section>
+        <!--Contact Us Ends Here-->
+        <!--FAQ starts here-->
+        <section id="faq" class="faq mt-14 mb-10 px-4 md:px-0">
+            <div class="content max-w-4xl mx-auto">
+                <h2 class="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-center">
+                    Frequently Asked Questions</h2>
+                <div class="mt-6">
+                    <div class="accordion">
+                        <details class="faq-item">
+                            <summary class="faq-question bg-gray-200 py-2 px-4 mb-2 rounded-md cursor-pointer">What are your office hours?</summary>
+                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">Our office hours are Monday to Friday, 9:00 AM to 5:00 PM.</div>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question bg-gray-200 py-2 px-4 mt-2 mb-2 rounded-md cursor-pointer">How can I volunteer with Beyond Pages Trust?</summary>
+                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">To volunteer with us, please visit our <a href="https://example.com/volunteer" class="text-blue-500">volunteer page</a> for more information.</div>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question bg-gray-200 py-2 px-4 mt-2 mb-2 rounded-md cursor-pointer">Do you accept donations?</summary>
+                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">Yes, we appreciate donations! Please visit our <a href="donate.html" class="text-blue-500">donation page</a> to contribute.</div>
+                        </details>
+                        <!-- Add more FAQ items as needed -->
+                    </div>
                 </div>
             </div>
-            <!-- Slider controls -->
-            <button type="button"
-                class="absolute top-0 start-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-prev>
-                <span
-                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 1 1 5l4 4" />
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button"
-                class="absolute top-0 end-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-next>
-                <span
-                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 9 4-4-4-4" />
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
-        </div>
-    </section>
+        </section>
+        <!--FAQ ends here-->                        
+    </main>
+
     <!--Footer Starts Here-->
-    <footer class="bg-white rounded-lg shadow m-4 mt-4">
+    <footer class="bg-white rounded-lg shadow m-4 mt-auto">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" oncontextmenu="return false"
-                        ondragstart="return false" />
+                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" oncontextmenu="return false" ondragstart="return false"  />
                 </a>
-                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-900 sm:mb-0 ">
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
                     <li>
-                        <a href="index.html#About" class="hover:underline me-4 md:me-6">About</a>
+                        <a href="#About" class="hover: me-4 md:me-6">About</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                        <a href="#" class="hover: me-4 md:me-6">Privacy Policy</a>
                     </li>
                     <li>
-                        <a href="index.html#Contact" class="hover:underline">Contact</a>
+                        <a href="#contact" class="hover:">Contact</a>
                     </li>
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
-            <span class="block text-sm text-gray-900 sm:text-center ">© 2023 <a href="#" class="hover:underline">BEYOND
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2023 <a href="#" class="hover:">BEYOND
                     PAGES TRUST</a>. All Rights Reserved.</span>
         </div>
     </footer>
     <!--Footer Ends Here-->
-    <style>
-        .carousel-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
 
+            // Toggle menu visibility on button click
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-                toggleButton.setAttribute('aria-expanded', !isExpanded);
+                toggleButton.setAttribute('aria-expanded', String(!isExpanded));
                 menu.classList.toggle('hidden');
             });
 
+            // Hide menu on item click (only for mobile view)
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
-                    if (window.innerWidth < 768) {  // Only for mobile view
-                        toggleButton.setAttribute('aria-expanded', false);
+                    if (window.innerWidth < 768) {
+                        toggleButton.setAttribute('aria-expanded', 'false');
                         menu.classList.add('hidden');
                     }
                 });
             });
-        });
 
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const carouselItems = document.querySelectorAll('[data-carousel-item]');
-            const prevButton = document.querySelector('[data-carousel-prev]');
-            const nextButton = document.querySelector('[data-carousel-next]');
-            let currentIndex = 0;
-            let timer = null;
-
-            // Function to show current item with smooth transition
-            function showItem(index) {
-                carouselItems.forEach((item, i) => {
-                    if (i === index) {
-                        item.classList.add('block');
-                        item.classList.remove('hidden');
-                        anime({
-                            targets: item,
-                            opacity: [0, 1],
-                            duration: 1000,
-                            easing: 'easeInOutQuad'
-                        });
-                    } else {
-                        anime({
-                            targets: item,
-                            opacity: [1, 0],
-                            duration: 1000,
-                            easing: 'easeInOutQuad',
-                            complete: function (anim) {
-                                item.classList.remove('block');
-                                item.classList.add('hidden');
-                            }
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop,
+                            behavior: 'smooth'
                         });
                     }
                 });
-            }
-
-            // Function to move to next item
-            function nextItem() {
-                currentIndex = (currentIndex + 1) % carouselItems.length;
-                showItem(currentIndex);
-            }
-
-            // Function to move to previous item
-            function prevItem() {
-                currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-                showItem(currentIndex);
-            }
-
-            // Show initial active item
-            showItem(currentIndex);
-
-            // Next button click handler
-            nextButton.addEventListener('click', function () {
-                clearInterval(timer); // Clear interval to reset timer
-                nextItem();
-                timer = setInterval(nextItem, 7000); // Restart timer
             });
 
-            // Previous button click handler
-            prevButton.addEventListener('click', function () {
-                clearInterval(timer); // Clear interval to reset timer
-                prevItem();
-                timer = setInterval(nextItem, 7000); // Restart timer
+              // Carousel functionality
+              const items = document.querySelectorAll('[data-carousel-item]');
+              let activeIndex = 0;
+  
+              function showItem(index) {
+                  items.forEach((item, idx) => {
+                      item.classList.toggle('hidden', idx !== index);
+                      item.classList.toggle('block', idx === index);
+                  });
+              }
+  
+              function nextItem() {
+                  activeIndex = (activeIndex + 1) % items.length;
+                  showItem(activeIndex);
+              }
+  
+              function prevItem() {
+                  activeIndex = (activeIndex - 1 + items.length) % items.length;
+                  showItem(activeIndex);
+              }
+  
+              document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
+              document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
+  
+              // Automatically switch items every 5 seconds
+              setInterval(nextItem, 5000);
+  
+              // Show the first item initially
+              showItem(activeIndex);
+          });
+
+        //Menu Active section code
+        function changeActive(event, clickedElement) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get all <a> elements inside the navigation menu
+            const links = document.querySelectorAll('#navigation a');
+
+            // Loop through each link to reset their classes
+            links.forEach(link => {
+                link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
             });
 
-            // Auto slide every 7000ms (6s)
-            timer = setInterval(nextItem, 7000);
-        });
+            // Set the clicked link to active style
+            clickedElement.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
+        }
+        // Function to determine which section is currently in view
+        function getActiveSection() {
+            const sections = document.querySelectorAll('section'); // Adjust this selector to match your sections
+            let scrollPosition = window.scrollY + 200; // Adjust offset as needed
 
-        // Document Ready Event Listener for Donation Form
-        document.addEventListener('DOMContentLoaded', function () {
-            const amountInput = document.getElementById('amount');
-            const checkBox = document.getElementById('checkbox-2');
-            const panCardSection = document.getElementById('panCardSection');
+            for (const section of sections) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
 
-            // Function to handle showing/hiding PAN input
-            function handlePanCardVisibility() {
-                if (parseFloat(amountInput.value) >= 5000 || checkBox.checked) {
-                    panCardSection.classList.remove('hidden');
-                } else {
-                    panCardSection.classList.add('hidden');
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    return section.getAttribute('id');
                 }
             }
-
-            // Initial check on page load
-            handlePanCardVisibility();
-
-            // Event listeners
-            amountInput.addEventListener('input', handlePanCardVisibility);
-            checkBox.addEventListener('change', handlePanCardVisibility);
-
-            // Function to limit phone number input length
-            function limitPhoneLength() {
-                const phoneInput = document.getElementById('phone');
-                const maxLength = 10;
-                if (phoneInput.value.length > maxLength) {
-                    phoneInput.value = phoneInput.value.slice(0, maxLength);
-                }
-            }
-
-            // Event listener for phone input
-            const phoneInput = document.getElementById('phone');
-            phoneInput.addEventListener('input', limitPhoneLength);
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            // Regex pattern to validate email format
-            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            // Input element
-            var emailInput = document.getElementById("email");
-            var emailError = document.getElementById("email-error");
-
-            // Function to validate email
-            function validateEmail() {
-                var emailValue = emailInput.value.trim();
-                if (emailPattern.test(emailValue)) {
-                    // Valid email format
-                    emailInput.setCustomValidity(""); // Reset validation message
-                    emailError.classList.add("hidden"); // Hide error message
-                } else {
-                    // Invalid email format
-                    emailInput.setCustomValidity("Invalid email format."); // Set validation message
-                    emailError.classList.remove("hidden"); // Show error message
-                }
-            }
-
-            // Validate on input change
-            emailInput.addEventListener("input", validateEmail);
-
-            // Optional: Validate on form submit
-            var form = document.querySelector("form");
-            form.addEventListener("submit", function (event) {
-                if (!emailPattern.test(emailInput.value.trim())) {
-                    // Prevent form submission if email is invalid
-                    event.preventDefault();
-                    emailInput.reportValidity(); // Display validation message
-                    emailError.classList.remove("hidden"); // Show error message
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const amountInput = document.getElementById('amount');
-            const amountError = document.getElementById('amount-error');
-
-            amountInput.addEventListener('input', function () {
-                const amount = parseFloat(amountInput.value);
-
-                if (amount < 100) {
-                    amountInput.classList.add('border-red-500'); // Add a red border for visual indication
-                    amountError.classList.remove('hidden'); // Show the error message
-                } else {
-                    amountInput.classList.remove('border-red-500'); // Remove red border if amount is valid
-                    amountError.classList.add('hidden'); // Hide the error message
-                }
-            });
-
-            amountInput.addEventListener('blur', function () {
-                const amount = parseFloat(amountInput.value);
-
-                if (amount < 100) {
-                    amountInput.classList.add('border-red-500'); // Add red border on blur if amount is still less than 250
-                    amountError.classList.remove('hidden'); // Show the error message
-                } else {
-                    amountInput.classList.remove('border-red-500'); // Remove red border if amount is valid on blur
-                    amountError.classList.add('hidden'); // Hide the error message
-                }
-            });
-        });
-    </script>
-    <script>
-        // Function to validate email format
-        function validateEmail(email) {
-            const re = /\S+@\S+\.\S+/;
-            return re.test(email);
+            return 'Home'; // Default to Home if no section is in view
         }
 
-        // Function to validate phone number format (Indian phone numbers)
-        function validatePhone(phone) {
-            const re = /^[6-9]\d{9}$/;
-            return re.test(phone) && phone.length === 10;
+        // Function to update active navigation link based on scroll
+        function updateActiveLink() {
+            const currentSection = getActiveSection();
+            const links = document.querySelectorAll('#navigation a');
+
+            links.forEach(link => {
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
+                } else {
+                    link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
+                }
+            });
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const amountInput = document.getElementById('amount');
-            const emailInput = document.getElementById('email');
-            const phoneInput = document.getElementById('phone');
-            const panCardInput = document.getElementById('pan_card');
-            const donateButton = document.querySelector('.donate');
+        // Initial call to set active link on page load
+        updateActiveLink();
 
-            donateButton.addEventListener('click', function (e) {
-                const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
-                const email = emailInput.value;
-                const phone = phoneInput.value;
-                const panCard = panCardInput.value;
-
-                // Validate email format
-                if (!validateEmail(email)) {
-                    document.getElementById('email-error').classList.remove('hidden');
-                    return;
-                } else {
-                    document.getElementById('email-error').classList.add('hidden');
-                }
-
-                // Validate amount (minimum ₹100)
-                if (amount < 10000) { // The amount in paise should be at least 10000
-                    document.getElementById('amount-error').classList.remove('hidden');
-                    return;
-                } else {
-                    document.getElementById('amount-error').classList.add('hidden');
-                }
-
-                // Create a Razorpay instance
-                var options = {
-                    key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
-                    amount: amount,
-                    currency: 'INR',
-                    name: 'Beyond Pages Trust',  // Updated company name
-                    description: 'Donation',
-                    handler: function (response) {
-                        // Add Razorpay payment ID to form submission
-                        document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-                        // Add Razorpay payment status to form submission
-                        document.getElementById('razorpay_payment_status').value = 'success';
-
-                        // Submit the form to Netlify
-                        document.forms['Donations'].submit();
-                    },
-                    prefill: {
-                        email: email,  // Use the entered email
-                        contact: phone  // Use the entered phone number
-                    },
-                    notes: {
-                        address: 'Razorpay Corporate Office'  // Optional notes
-                    },
-                    theme: {
-                        color: '#472409'  // Optional theme color
-                    },
-                    modal: {
-                        ondismiss: function () {
-                            // Handle the case where the user closes the payment modal
-                            console.log("Payment modal closed");
-                            // Optionally, you can show a message to the user
-                            alert("Payment was not completed. Please try again.");
-                        },
-                        external: {
-                            wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
-                        }
-                    }
-                };
-
-                var rzp = new Razorpay(options);
-                rzp.open();
-                e.preventDefault(); // Prevent default form submission
-            });
-        });
+        // Event listener for scroll to update active link
+        window.addEventListener('scroll', updateActiveLink);
     </script>
+    
 </body>
+
 </html>

@@ -151,6 +151,7 @@
                         placeholder=" " required autocomplete="off">
                     <label for="phone"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
+                    <span id="phone-error" class="text-red-600 hidden">Please enter a valid phone number.</span>
                 </div>
             </div>
 
@@ -178,8 +179,8 @@
             <!-- Pan Card -->
             <div id="panCardSection" class="relative z-0 w-full mt-6 hidden">
                 <input type="text" name="pan_card" id="pan_card"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                placeholder=" " autocomplete="off">            
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                    placeholder=" " autocomplete="off">
                 <label for="pan_card"
                     class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter
                     Pan Card</label>
@@ -532,85 +533,91 @@
         });
     </script>
     <script>
-// Function to validate email format
-function validateEmail(email) {
-    const re = /\S+@\S+\.\S+/;
-    return re.test(email);
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const amountInput = document.getElementById('amount');
-    const emailInput = document.getElementById('email');
-    const phoneInput = document.getElementById('phone');
-    const panCardInput = document.getElementById('pan_card');
-    const donateButton = document.querySelector('.donate');
-
-    donateButton.addEventListener('click', function (e) {
-        const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
-        const email = emailInput.value;
-        const phone = phoneInput.value;
-        const panCard = panCardInput.value;
-
-        // Validate email format
-        if (!validateEmail(email)) {
-            document.getElementById('email-error').classList.remove('hidden');
-            return;
-        } else {
-            document.getElementById('email-error').classList.add('hidden');
+        // Function to validate email format
+        function validateEmail(email) {
+            const re = /\S+@\S+\.\S+/;
+            return re.test(email);
         }
 
-        // Validate amount (minimum ₹100)
-        if (amount < 10000) { // The amount in paise should be at least 10000
-            document.getElementById('amount-error').classList.remove('hidden');
-            return;
-        } else {
-            document.getElementById('amount-error').classList.add('hidden');
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const amountInput = document.getElementById('amount');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const panCardInput = document.getElementById('pan_card');
+            const donateButton = document.querySelector('.donate');
 
-        // Create a Razorpay instance
-        var options = {
-            key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
-            amount: amount,
-            currency: 'INR',
-            name: 'Beyond Pages Trust',  // Updated company name
-            description: 'Donation',
-            handler: function (response) {    
-                // Add Razorpay payment ID to form submission
-                document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-                // Add Razorpay payment status to form submission
-                document.getElementById('razorpay_payment_status').value = 'success';
-                
-                // Submit the form to Netlify
-                document.forms['Donations'].submit();
-            },
-            prefill: {
-                email: email,  // Use the entered email
-                contact: phone  // Use the entered phone number
-            },
-            notes: {
-                address: 'Razorpay Corporate Office'  // Optional notes
-            },
-            theme: {
-                color: '#472409'  // Optional theme color
-            },
-            modal: {
-                ondismiss: function () {
-                    // Handle the case where the user closes the payment modal
-                    console.log("Payment modal closed");
-                    // Optionally, you can show a message to the user
-                    alert("Payment was not completed. Please try again.");
-                },
-                external: {
-                    wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
-                }
+            // Function to validate phone number format (Indian phone numbers)
+            function validatePhone(phone) {
+                const re = /^[6-9]\d{9}$/;
+                return re.test(phone);
             }
-        };
 
-        var rzp = new Razorpay(options);
-        rzp.open();
-        e.preventDefault(); // Prevent default form submission
-    });
-});
-    </script>    
+            donateButton.addEventListener('click', function (e) {
+                const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
+                const email = emailInput.value;
+                const phone = phoneInput.value;
+                const panCard = panCardInput.value;
+
+                // Validate email format
+                if (!validateEmail(email)) {
+                    document.getElementById('email-error').classList.remove('hidden');
+                    return;
+                } else {
+                    document.getElementById('email-error').classList.add('hidden');
+                }
+
+                // Validate amount (minimum ₹100)
+                if (amount < 10000) { // The amount in paise should be at least 10000
+                    document.getElementById('amount-error').classList.remove('hidden');
+                    return;
+                } else {
+                    document.getElementById('amount-error').classList.add('hidden');
+                }
+
+                // Create a Razorpay instance
+                var options = {
+                    key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
+                    amount: amount,
+                    currency: 'INR',
+                    name: 'Beyond Pages Trust',  // Updated company name
+                    description: 'Donation',
+                    handler: function (response) {
+                        // Add Razorpay payment ID to form submission
+                        document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+                        // Add Razorpay payment status to form submission
+                        document.getElementById('razorpay_payment_status').value = 'success';
+
+                        // Submit the form to Netlify
+                        document.forms['Donations'].submit();
+                    },
+                    prefill: {
+                        email: email,  // Use the entered email
+                        contact: phone  // Use the entered phone number
+                    },
+                    notes: {
+                        address: 'Razorpay Corporate Office'  // Optional notes
+                    },
+                    theme: {
+                        color: '#472409'  // Optional theme color
+                    },
+                    modal: {
+                        ondismiss: function () {
+                            // Handle the case where the user closes the payment modal
+                            console.log("Payment modal closed");
+                            // Optionally, you can show a message to the user
+                            alert("Payment was not completed. Please try again.");
+                        },
+                        external: {
+                            wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
+                        }
+                    }
+                };
+
+                var rzp = new Razorpay(options);
+                rzp.open();
+                e.preventDefault(); // Prevent default form submission
+            });
+        });
+    </script>
 </body>
 </html>

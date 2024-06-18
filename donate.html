@@ -147,11 +147,13 @@
                 <!-- Phone -->
                 <div class="relative z-0 w-full mb-4 group">
                     <input type="tel" name="phone" id="phone"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                        placeholder=" " required autocomplete="off">
+                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                      placeholder=" " required autocomplete="off" pattern="[6-9][0-9]{9}">
                     <label for="phone"
                         class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
-                </div>
+                    <!-- Error message for invalid phone format -->
+                    <div id="phone-error" class="text-sm text-red-500 mt-1 hidden"></div>
+                </div>         
             </div>
 
             <!-- Donation Information -->
@@ -178,8 +180,8 @@
             <!-- Pan Card -->
             <div id="panCardSection" class="relative z-0 w-full mt-6 hidden">
                 <input type="text" name="pan_card" id="pan_card"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                    placeholder=" " autocomplete="off">
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                placeholder=" " autocomplete="off">            
                 <label for="pan_card"
                     class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter
                     Pan Card</label>
@@ -190,7 +192,7 @@
                 <span class="text-gray-700">Payment Method</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="Razorpay" checked>
+                        <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="upi" checked>
                         <span class="ml-2">Razorpay</span>
                     </label>
                 </div>
@@ -202,15 +204,8 @@
                     class="donate px-4 py-2 text-white bg-yellow-900 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-800 focus:ring-opacity-50">Donate
                     Now</button>
             </div>
-
-            <!-- Razorpay payment ID hidden field -->
-            <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
-
-            <!-- Razorpay payment status hidden field -->
-            <input type="hidden" name="razorpay_payment_status" id="razorpay_payment_status">
-
         </form>
-    </section>
+    </section> 
 
     <section class="mt-4">
         <div id="gallery" class="relative w-full" data-carousel="slide">
@@ -341,16 +336,17 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Navbar toggle functionality
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-
+    
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                 toggleButton.setAttribute('aria-expanded', !isExpanded);
                 menu.classList.toggle('hidden');
             });
-
+    
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
                     if (window.innerWidth < 768) {  // Only for mobile view
@@ -359,17 +355,14 @@
                     }
                 });
             });
-        });
-
-
-        document.addEventListener("DOMContentLoaded", function () {
+    
+            // Carousel functionality
             const carouselItems = document.querySelectorAll('[data-carousel-item]');
             const prevButton = document.querySelector('[data-carousel-prev]');
             const nextButton = document.querySelector('[data-carousel-next]');
             let currentIndex = 0;
             let timer = null;
-
-            // Function to show current item with smooth transition
+    
             function showItem(index) {
                 carouselItems.forEach((item, i) => {
                     if (i === index) {
@@ -395,47 +388,45 @@
                     }
                 });
             }
-
-            // Function to move to next item
+    
             function nextItem() {
                 currentIndex = (currentIndex + 1) % carouselItems.length;
                 showItem(currentIndex);
             }
-
-            // Function to move to previous item
+    
             function prevItem() {
                 currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
                 showItem(currentIndex);
             }
-
-            // Show initial active item
+    
             showItem(currentIndex);
-
-            // Next button click handler
+    
             nextButton.addEventListener('click', function () {
-                clearInterval(timer); // Clear interval to reset timer
+                clearInterval(timer);
                 nextItem();
-                timer = setInterval(nextItem, 7000); // Restart timer
+                timer = setInterval(nextItem, 7000);
             });
-
-            // Previous button click handler
+    
             prevButton.addEventListener('click', function () {
-                clearInterval(timer); // Clear interval to reset timer
+                clearInterval(timer);
                 prevItem();
-                timer = setInterval(nextItem, 7000); // Restart timer
+                timer = setInterval(nextItem, 7000);
             });
-
-            // Auto slide every 7000ms (6s)
+    
             timer = setInterval(nextItem, 7000);
-        });
-
-        // Document Ready Event Listener for Donation Form
-        document.addEventListener('DOMContentLoaded', function () {
+    
+            // Donation form functionality
             const amountInput = document.getElementById('amount');
             const checkBox = document.getElementById('checkbox-2');
             const panCardSection = document.getElementById('panCardSection');
-
-            // Function to handle showing/hiding PAN input
+            const amountError = document.getElementById('amount-error');
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const panCardInput = document.getElementById('pan_card');
+            const donateButton = document.querySelector('.donate');
+    
             function handlePanCardVisibility() {
                 if (parseFloat(amountInput.value) >= 5000 || checkBox.checked) {
                     panCardSection.classList.remove('hidden');
@@ -443,173 +434,140 @@
                     panCardSection.classList.add('hidden');
                 }
             }
-
-            // Initial check on page load
-            handlePanCardVisibility();
-
-            // Event listeners
-            amountInput.addEventListener('input', handlePanCardVisibility);
-            checkBox.addEventListener('change', handlePanCardVisibility);
-
-            // Function to limit phone number input length
-            function limitPhoneLength() {
-                const phoneInput = document.getElementById('phone');
-                const maxLength = 10;
-                if (phoneInput.value.length > maxLength) {
-                    phoneInput.value = phoneInput.value.slice(0, maxLength);
+    
+            function validateAmount() {
+                const amount = parseFloat(amountInput.value);
+                if (isNaN(amount) || amount < 100) {
+                    amountInput.classList.add('border-red-500');
+                    amountError.classList.remove('hidden');
+                    return false;
+                } else {
+                    amountInput.classList.remove('border-red-500');
+                    amountError.classList.add('hidden');
+                    return true;
                 }
             }
-
-            // Event listener for phone input
-            const phoneInput = document.getElementById('phone');
-            phoneInput.addEventListener('input', limitPhoneLength);
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            // Regex pattern to validate email format
-            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            // Input element
-            var emailInput = document.getElementById("email");
-            var emailError = document.getElementById("email-error");
-
-            // Function to validate email
+    
+            function validatePhoneNumber() {
+                const phoneValue = phoneInput.value.trim();
+                const startsWithValidDigit = /^[6-9]/.test(phoneValue);
+                const isTenDigitsLong = /^\d{10}$/.test(phoneValue);
+                const isNumeric = /^\d*$/.test(phoneValue);
+    
+                if (phoneValue === '') {
+                    phoneError.classList.add('hidden');
+                    phoneInput.setCustomValidity('');
+                    return false;
+                } else if (!isNumeric) {
+                    phoneError.textContent = 'The phone number must contain only digits.';
+                    phoneError.classList.remove('hidden');
+                    phoneInput.setCustomValidity('Invalid phone number.');
+                    return false;
+                } else if (!startsWithValidDigit) {
+                    phoneError.textContent = 'The phone number must start with a digit between 6 and 9.';
+                    phoneError.classList.remove('hidden');
+                    phoneInput.setCustomValidity('Invalid phone number.');
+                    return false;
+                } else if (!isTenDigitsLong) {
+                    phoneError.textContent = 'The phone number must be exactly 10 digits long.';
+                    phoneError.classList.remove('hidden');
+                    phoneInput.setCustomValidity('Invalid phone number.');
+                    return false;
+                } else {
+                    phoneError.classList.add('hidden');
+                    phoneInput.setCustomValidity('');
+                    return true;
+                }
+            }
+    
             function validateEmail() {
-                var emailValue = emailInput.value.trim();
-                if (emailPattern.test(emailValue)) {
-                    // Valid email format
-                    emailInput.setCustomValidity(""); // Reset validation message
-                    emailError.classList.add("hidden"); // Hide error message
+                const emailValue = emailInput.value.trim();
+                if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+                    emailInput.setCustomValidity("");
+                    emailError.classList.add("hidden");
+                    return true;
                 } else {
-                    // Invalid email format
-                    emailInput.setCustomValidity("Invalid email format."); // Set validation message
-                    emailError.classList.remove("hidden"); // Show error message
+                    emailInput.setCustomValidity("Invalid email format.");
+                    emailError.classList.remove("hidden");
+                    return false;
                 }
             }
-
-            // Validate on input change
-            emailInput.addEventListener("input", validateEmail);
-
-            // Optional: Validate on form submit
-            var form = document.querySelector("form");
-            form.addEventListener("submit", function (event) {
-                if (!emailPattern.test(emailInput.value.trim())) {
-                    // Prevent form submission if email is invalid
-                    event.preventDefault();
-                    emailInput.reportValidity(); // Display validation message
-                    emailError.classList.remove("hidden"); // Show error message
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const amountInput = document.getElementById('amount');
-            const amountError = document.getElementById('amount-error');
-
-            amountInput.addEventListener('input', function () {
-                const amount = parseFloat(amountInput.value);
-
-                if (amount < 100) {
-                    amountInput.classList.add('border-red-500'); // Add a red border for visual indication
-                    amountError.classList.remove('hidden'); // Show the error message
+    
+            function validateForm() {
+                const isAmountValid = validateAmount();
+                const isPhoneValid = validatePhoneNumber();
+                const isEmailValid = validateEmail();
+                const isPanCardRequired = parseFloat(amountInput.value) >= 5000 || checkBox.checked;
+                const isPanCardValid = isPanCardRequired ? panCardInput.value.trim() !== '' : true;
+    
+                if (!isPanCardValid) {
+                    panCardInput.classList.add('border-red-500');
+                    return false;
                 } else {
-                    amountInput.classList.remove('border-red-500'); // Remove red border if amount is valid
-                    amountError.classList.add('hidden'); // Hide the error message
+                    panCardInput.classList.remove('border-red-500');
                 }
-            });
-
-            amountInput.addEventListener('blur', function () {
-                const amount = parseFloat(amountInput.value);
-
-                if (amount < 100) {
-                    amountInput.classList.add('border-red-500'); // Add red border on blur if amount is still less than 250
-                    amountError.classList.remove('hidden'); // Show the error message
-                } else {
-                    amountInput.classList.remove('border-red-500'); // Remove red border if amount is valid on blur
-                    amountError.classList.add('hidden'); // Hide the error message
-                }
-            });
-        });
-    </script>
-    <script>
-        // Function to validate email format
-        function validateEmail(email) {
-            const re = /\S+@\S+\.\S+/;
-            return re.test(email);
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const amountInput = document.getElementById('amount');
-            const emailInput = document.getElementById('email');
-            const phoneInput = document.getElementById('phone');
-            const panCardInput = document.getElementById('pan_card');
-            const donateButton = document.querySelector('.donate');
-
+    
+                return isAmountValid && isPhoneValid && isEmailValid && isPanCardValid;
+            }
+    
+            handlePanCardVisibility();
+    
+            amountInput.addEventListener('input', handlePanCardVisibility);
+            amountInput.addEventListener('input', validateAmount);
+            checkBox.addEventListener('change', handlePanCardVisibility);
+            phoneInput.addEventListener('input', validatePhoneNumber);
+            phoneInput.addEventListener('blur', validatePhoneNumber);
+            emailInput.addEventListener('input', validateEmail);
+    
             donateButton.addEventListener('click', function (e) {
-                const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
-                const email = emailInput.value;
-                const phone = phoneInput.value;
-                const panCard = panCardInput.value;
-
-                // Validate email format
-                if (!validateEmail(email)) {
-                    document.getElementById('email-error').classList.remove('hidden');
-                    return;
-                } else {
-                    document.getElementById('email-error').classList.add('hidden');
-                }
-
-                // Validate amount (minimum ₹100)
-                if (amount < 10000) { // The amount in paise should be at least 10000
-                    document.getElementById('amount-error').classList.remove('hidden');
-                    return;
-                } else {
-                    document.getElementById('amount-error').classList.add('hidden');
-                }
-
-                // Create a Razorpay instance
-                var options = {
-                    key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
-                    amount: amount,
-                    currency: 'INR',
-                    name: 'Beyond Pages Trust',  // Updated company name
-                    description: 'Donation',
-                    handler: function (response) {
-                        // Add Razorpay payment ID to form submission
-                        document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-                        // Add Razorpay payment status to form submission
-                        document.getElementById('razorpay_payment_status').value = 'success';
-                        // Submit the form to Netlify
-                        document.forms['Donations'].submit();
-                    },
-                    prefill: {
-                        email: email,  // Use the entered email
-                        contact: phone  // Use the entered phone number
-                    },
-                    notes: {
-                        address: 'Razorpay Corporate Office'  // Optional notes
-                    },
-                    theme: {
-                        color: '#472409'  // Optional theme color
-                    },
-                    modal: {
-                        ondismiss: function () {
-                            // Handle the case where the user closes the payment modal
-                            console.log("Payment modal closed");
-                            // Optionally, you can show a message to the user
-                            alert("Payment was not completed. Please try again.");
-                        },
-                        external: {
-                            wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
-                        }
-                    }
-                };
-
-                var rzp = new Razorpay(options);
-                rzp.open();
                 e.preventDefault(); // Prevent default form submission
+    
+                if (validateForm()) {
+                    const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
+                    const email = emailInput.value;
+                    const phone = phoneInput.value;
+                    const panCard = panCardInput.value;
+    
+                    // Create a Razorpay instance
+                    const options = {
+                        key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
+                        amount: amount,
+                        currency: 'INR',
+                        name: 'Beyond Pages Trust',
+                        description: 'Donation',
+                        handler: function (response) {
+                            document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+                            document.getElementById('razorpay_payment_status').value = 'success';
+                            document.forms['Donations'].submit();
+                        },
+                        prefill: {
+                            email: email,
+                            contact: phone
+                        },
+                        notes: {
+                            address: 'Razorpay Corporate Office'
+                        },
+                        theme: {
+                            color: '#472409'
+                        },
+                        modal: {
+                            ondismiss: function () {
+                                console.log("Payment modal closed");
+                                alert("Payment was not completed. Please try again.");
+                            },
+                            external: {
+                                wallets: ['upi', 'netbanking']
+                            }
+                        }
+                    };
+    
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                } else {
+                    alert("Please fill all required fields correctly.");
+                }
             });
         });
-    </script>
+    </script>    
 </body>
 </html>

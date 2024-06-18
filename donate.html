@@ -340,13 +340,13 @@
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-    
+        
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                 toggleButton.setAttribute('aria-expanded', !isExpanded);
                 menu.classList.toggle('hidden');
             });
-    
+        
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
                     if (window.innerWidth < 768) {  // Only for mobile view
@@ -355,14 +355,14 @@
                     }
                 });
             });
-    
+        
             // Carousel functionality
             const carouselItems = document.querySelectorAll('[data-carousel-item]');
             const prevButton = document.querySelector('[data-carousel-prev]');
             const nextButton = document.querySelector('[data-carousel-next]');
             let currentIndex = 0;
             let timer = null;
-    
+        
             function showItem(index) {
                 carouselItems.forEach((item, i) => {
                     if (i === index) {
@@ -388,33 +388,33 @@
                     }
                 });
             }
-    
+        
             function nextItem() {
                 currentIndex = (currentIndex + 1) % carouselItems.length;
                 showItem(currentIndex);
             }
-    
+        
             function prevItem() {
                 currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
                 showItem(currentIndex);
             }
-    
+        
             showItem(currentIndex);
-    
+        
             nextButton.addEventListener('click', function () {
                 clearInterval(timer);
                 nextItem();
                 timer = setInterval(nextItem, 7000);
             });
-    
+        
             prevButton.addEventListener('click', function () {
                 clearInterval(timer);
                 prevItem();
                 timer = setInterval(nextItem, 7000);
             });
-    
+        
             timer = setInterval(nextItem, 7000);
-    
+        
             // Donation form functionality
             const amountInput = document.getElementById('amount');
             const checkBox = document.getElementById('checkbox-2');
@@ -426,7 +426,8 @@
             const emailError = document.getElementById('email-error');
             const panCardInput = document.getElementById('pan_card');
             const donateButton = document.querySelector('.donate');
-    
+            const donationForm = document.forms['Donations'];
+        
             function handlePanCardVisibility() {
                 if (parseFloat(amountInput.value) >= 5000 || checkBox.checked) {
                     panCardSection.classList.remove('hidden');
@@ -434,7 +435,7 @@
                     panCardSection.classList.add('hidden');
                 }
             }
-    
+        
             function validateAmount() {
                 const amount = parseFloat(amountInput.value);
                 if (isNaN(amount) || amount < 100) {
@@ -447,13 +448,13 @@
                     return true;
                 }
             }
-    
+        
             function validatePhoneNumber() {
                 const phoneValue = phoneInput.value.trim();
                 const startsWithValidDigit = /^[6-9]/.test(phoneValue);
                 const isTenDigitsLong = /^\d{10}$/.test(phoneValue);
                 const isNumeric = /^\d*$/.test(phoneValue);
-    
+        
                 if (phoneValue === '') {
                     phoneError.classList.add('hidden');
                     phoneInput.setCustomValidity('');
@@ -479,7 +480,7 @@
                     return true;
                 }
             }
-    
+        
             function validateEmail() {
                 const emailValue = emailInput.value.trim();
                 if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
@@ -492,42 +493,42 @@
                     return false;
                 }
             }
-    
+        
             function validateForm() {
                 const isAmountValid = validateAmount();
                 const isPhoneValid = validatePhoneNumber();
                 const isEmailValid = validateEmail();
                 const isPanCardRequired = parseFloat(amountInput.value) >= 5000 || checkBox.checked;
                 const isPanCardValid = isPanCardRequired ? panCardInput.value.trim() !== '' : true;
-    
+        
                 if (!isPanCardValid) {
                     panCardInput.classList.add('border-red-500');
                     return false;
                 } else {
                     panCardInput.classList.remove('border-red-500');
                 }
-    
+        
                 return isAmountValid && isPhoneValid && isEmailValid && isPanCardValid;
             }
-    
+        
             handlePanCardVisibility();
-    
+        
             amountInput.addEventListener('input', handlePanCardVisibility);
             amountInput.addEventListener('input', validateAmount);
             checkBox.addEventListener('change', handlePanCardVisibility);
             phoneInput.addEventListener('input', validatePhoneNumber);
             phoneInput.addEventListener('blur', validatePhoneNumber);
             emailInput.addEventListener('input', validateEmail);
-    
+        
             donateButton.addEventListener('click', function (e) {
                 e.preventDefault(); // Prevent default form submission
-    
+        
                 if (validateForm()) {
                     const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
                     const email = emailInput.value;
                     const phone = phoneInput.value;
                     const panCard = panCardInput.value;
-    
+        
                     // Create a Razorpay instance
                     const options = {
                         key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
@@ -538,7 +539,10 @@
                         handler: function (response) {
                             document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
                             document.getElementById('razorpay_payment_status').value = 'success';
-                            document.forms['Donations'].submit();
+        
+                            donationForm.submit();
+                            // Clear form fields after successful submission
+                            donationForm.reset();
                         },
                         prefill: {
                             email: email,
@@ -560,7 +564,7 @@
                             }
                         }
                     };
-    
+        
                     const rzp = new Razorpay(options);
                     rzp.open();
                 } else {
@@ -568,6 +572,6 @@
                 }
             });
         });
-    </script>    
+        </script>           
 </body>
 </html>

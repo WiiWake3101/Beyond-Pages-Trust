@@ -139,13 +139,13 @@
                 <!-- Phone -->
                 <div class="relative z-0 w-full mb-4 group">
                     <input type="tel" name="phone" id="phone"
-                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
-                           placeholder=" " required autocomplete="off">
+                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-700 dark:focus:border-yellow-900 focus:outline-none focus:ring-0 focus:border-yellow-700 peer"
+                      placeholder=" " required autocomplete="off" pattern="[6-9][0-9]{9}">
                     <label for="phone"
-                           class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
+                        class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
                     <!-- Error message for invalid phone format -->
-                    <div id="phone-error" class="text-sm text-red-500 mt-1 hidden">Invalid phone format. Please enter a 10-digit number.</div>
-                </div>                
+                    <div id="phone-error" class="text-sm text-red-500 mt-1 hidden"></div>
+                </div>         
             </div>
 
             <!-- Donation Information -->
@@ -207,23 +207,40 @@
         // Function to validate phone number input
         function validatePhoneNumber() {
             const phoneValue = phoneInput.value.trim();
+            const startsWithValidDigit = /^[6-9]/.test(phoneValue);
+            const isTenDigitsLong = /^\d{10,}$/.test(phoneValue);
+            const isNumeric = /^\d*$/.test(phoneValue);
     
-            // Check if the input value is not empty and does not have exactly 10 digits
-            if (phoneValue !== '' && (phoneValue.length !== 10 || !(/^\d+$/.test(phoneValue)))) {
+            if (phoneValue === '') {
+                // If the input is empty, hide the error message
+                phoneError.classList.add('hidden');
+                phoneInput.setCustomValidity('');
+            } else if (!isNumeric) {
+                // If the phone number contains non-numeric characters
+                phoneError.textContent = 'The phone number must contain only digits.';
                 phoneError.classList.remove('hidden');
-                phoneInput.setCustomValidity('Please enter a valid 10-digit phone number.');
+                phoneInput.setCustomValidity('Invalid phone number.');
+            } else if (!startsWithValidDigit) {
+                // If the phone number does not start with a digit between 6 and 9
+                phoneError.textContent = 'The phone number must start with a digit between 6 and 9.';
+                phoneError.classList.remove('hidden');
+                phoneInput.setCustomValidity('Invalid phone number.');
+            } else if (!isTenDigitsLong) {
+                // If the phone number is not exactly 10 digits long
+                phoneError.textContent = 'The phone number must be exactly 10 digits long.';
+                phoneError.classList.remove('hidden');
+                phoneInput.setCustomValidity('Invalid phone number.');
             } else {
+                // If the phone number is valid
                 phoneError.classList.add('hidden');
                 phoneInput.setCustomValidity('');
             }
         }
     
-        // Validate phone number on input change
+        // Validate phone number on input change and blur events
         phoneInput.addEventListener('input', validatePhoneNumber);
-    
-        // Validate phone number on blur (when focus moves out of the input)
         phoneInput.addEventListener('blur', validatePhoneNumber);
-    </script> 
+    </script>
     <section class="mt-4">
         <div id="gallery" class="relative w-full" data-carousel="slide">
             <!-- Carousel wrapper -->

@@ -73,6 +73,33 @@
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
                     </li>
                     <li>
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 md:w-auto ">Dropdown <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              </svg></button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                            <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                              <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Dashboard</a>
+                              </li>
+                                <div id="doubleDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                    <ul class="py-2 text-sm text-black" aria-labelledby="doubleDropdownButton">
+                                      <li>
+                                      </li>
+                                    </ul>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Earnings</a>
+                              </li>
+                            </li>
+                            <li>
+                              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Earnings</a>
+                            </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
                         <a href="#Gallery" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
                     </li>
@@ -94,12 +121,12 @@
                 <img src="./images/Cover Pic.jpg" alt="Descriptive Alt Text" oncontextmenu="return false" ondragstart="return false"
                     class="w-full h-64 object-cover mt-4 sm:h-80 md:h-96 lg:h-auto">
                 <div
-                    class="mx-auto mt-[-2rem] bg-white rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
+                    class="mx-auto mt-[-2rem] bg-yellow-900 rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
                     <!-- Vision Statement -->
                     <div class="max-w-screen-xl mx-auto">
-                        <p class="Title text-center text-gray-900 font-bold text-md mb-2 sm:text-lg md:text-xl">Our
+                        <p class="Title text-center text-white font-bold text-md mb-2 sm:text-lg md:text-xl">Our
                             Vision</p>
-                        <div class="text-center text-gray-900">
+                        <div class="text-center text-white">
                             <p class="Content text-xs sm:text-md md:text-sm">"Envisioning a world where the
                                 transformative power
                                 of education,
@@ -713,7 +740,6 @@
         // Event listener for scroll to update active link
         window.addEventListener('scroll', updateActiveLink);
     </script>
-    
 </body>
 
 </html>

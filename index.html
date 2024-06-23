@@ -10,156 +10,162 @@
     <link rel="icon" href="./images/logo.png" type="image/png">
     <!-- Include Flowbite CSS -->
     <link href="https://cdn.jsdelivr.net/npm/flowbite/css/flowbite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" integrity="sha512-tS3FZc+GZ+hdmOXIbFq0bJIoQw4v9GcNq23JlS+Fz5XBVR9z+JnOS1GJQgs2sNC5GghjRukR0D5tln1ksuILxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Include Flowbite JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite/js/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 
 <body class="bg-white">
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Beyond Pages Trust</title>
-        <link href="./output.css" rel="stylesheet">
-        <link href="./service.css" rel="stylesheet">
-        <link rel="icon" href="./images/logo.png" type="image/png">
-        <!-- Include Flowbite CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/flowbite/css/flowbite.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" integrity="sha512-tS3FZc+GZ+hdmOXIbFq0bJIoQw4v9GcNq23JlS+Fz5XBVR9z+JnOS1GJQgs2sNC5GghjRukR0D5tln1ksuILxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <!-- Include Flowbite JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/flowbite/js/flowbite.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    </head>
-    
-    <body class="bg-white">
-        <style>
-            body {
-                -webkit-user-select: none;
-                /* Safari */
-                -moz-user-select: none;
-                /* Firefox */
-                -ms-user-select: none;
-                /* Internet Explorer/Edge */
-                user-select: none;
-                /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-             }
-             img {
-            -webkit-touch-callout: none; /* Disable iOS and Android callouts/context menu */
-            touch-action: none; /* Disable default touch actions like pan and zoom */
-            -webkit-user-drag: none; /* Disable dragging on older versions of Safari */
-            user-select: none; /* Disable text selection on the image */
-            }
-    
-            /* Dropdown for mobile*/ 
-    
-            .relative {
-                position: relative;
-            }
-            .absolute {
-                position: absolute;
+    <style>
+        body {
+            -webkit-user-select: none;
+            /* Safari */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+         }
+         img {
+        -webkit-touch-callout: none; /* Disable iOS and Android callouts/context menu */
+        touch-action: none; /* Disable default touch actions like pan and zoom */
+        -webkit-user-drag: none; /* Disable dragging on older versions of Safari */
+        user-select: none; /* Disable text selection on the image */
+        }
+
+        /* Dropdown for mobile*/ 
+
+        .relative {
+            position: relative;
+        }
+        .absolute {
+            position: absolute;
+        }
+        #dropdownNavbar {
+            top: 100%; /* Position the dropdown below the button */
+            left: 0;
+        }
+        @media (max-width: 767px) {
+            #navbar-sticky {
+                justify-content: flex-end; /* Right align items in flex container */
             }
             #dropdownNavbar {
-                top: 100%; /* Position the dropdown below the button */
-                left: 0;
+                left: auto;
+                right: 0;
             }
-            @media (max-width: 767px) {
-                #navbar-sticky {
-                    justify-content: flex-end; /* Right align items in flex container */
-                }
-                #dropdownNavbar {
-                    left: auto;
-                    right: 0;
-                }
-            }
-        </style>
-        <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="index.html#Home" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false" ondragstart="return false">
-                </a>
-                <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                    <button type="button"
-                        class="text-white bg-yellow-900 hover:bg-yellow-900 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                        <a href="donate.html">Donate</a>
-                    </button>
-                    <button data-collapse-toggle="navbar-sticky" type="button"
-                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                        aria-controls="navbar-sticky" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M1 1h15M1 7h15M1 13h15" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="items-right justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
-                        id="navigation">
-                        <li>
-                            <a href="#Home" onclick="changeActive(event, this)"
-                                class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0"
-                                aria-current="page">Home</a>
-                        </li>
-                        <li>
-                            <a href="#About" onclick="changeActive(event, this)"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">About</a>
-                        </li>
-                        <li>
-                            <a href="#services" onclick="changeActive(event, this)"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
-                        </li>
-                        <li class="relative">
-                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:w-auto">Students
-                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                                </svg>
-                            </button>
-                            <!-- Dropdown menu -->
-                            <div id="dropdownNavbar" class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                                
-                                <div class="py-1">
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"  style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
-                                </div>
-                                <div class="py-1">
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
-                                </div>
-                                <div class="py-1">
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#Gallery" onclick="changeActive(event, this)"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
-                        </li>
-                        <li>
-                            <a href="#Volunteers" onclick="changeActive(event, this)"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
-                        </li>
-                        <li>
-                            <a href="#contact" onclick="changeActive(event, this)"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+        }
+    </style>
+    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="index.html#Home" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false" ondragstart="return false">
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <button type="button"
+                    class="text-white bg-yellow-900 hover:bg-yellow-900 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                    <a href="donate.html">Donate</a>
+                </button>
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
             </div>
-        </nav>
+            <div class="items-right justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
+                    id="navigation">
+                    <li>
+                        <a href="#Home" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="#About" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">About</a>
+                    </li>
+                    <li>
+                        <a href="#services" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
+                    </li>
+                    <li class="relative">
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:w-auto">Students
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar" class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                            
+                            <div class="py-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"  style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
+                            </div>
+                            <div class="py-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
+                            </div>
+                            <div class="py-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#Gallery" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#Volunteers" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
+                    </li>
+                    <li>
+                        <a href="#contact" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Toggle for dropdown-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownToggle = document.querySelector('[data-dropdown-toggle="dropdownNavbar"]');
+            const dropdownMenu = document.getElementById('dropdownNavbar');
+    
+            dropdownToggle.addEventListener('click', function() {
+                const isHidden = dropdownMenu.classList.contains('hidden');
+                if (isHidden) {
+                    dropdownMenu.classList.remove('hidden');
+                } else {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+    
+            // Close dropdown when clicking outside of it
+            document.addEventListener('click', function(event) {
+                if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    
     <main>
         <section id="Home">
             <div class="relative w-full overflow-hidden flex flex-col">
                 <img src="./images/Cover Pic.jpg" alt="Descriptive Alt Text" oncontextmenu="return false" ondragstart="return false"
                     class="w-full h-64 object-cover mt-4 sm:h-80 md:h-96 lg:h-auto">
                 <div
-                    class="mx-auto mt-[-2rem] bg-white rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
+                    class="mx-auto mt-[-2rem] bg-[#967A3B] rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
                     <!-- Vision Statement -->
                     <div class="max-w-screen-xl mx-auto">
-                        <p class="Title text-center text-gray-900 font-bold text-md mb-2 sm:text-lg md:text-xl">Our
+                        <p class="Title text-center text-white font-bold text-md mb-2 sm:text-lg md:text-xl">Our
                             Vision</p>
-                        <div class="text-center text-gray-900">
+                        <div class="text-center text-white">
                             <p class="Content text-xs sm:text-md md:text-sm">"Envisioning a world where the
                                 transformative power
                                 of education,
@@ -654,42 +660,19 @@
     <!--Footer Ends Here-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!--Toggle for dropdown-->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdownToggle = document.querySelector('[data-dropdown-toggle="dropdownNavbar"]');
-            const dropdownMenu = document.getElementById('dropdownNavbar');
-    
-            dropdownToggle.addEventListener('click', function() {
-                const isHidden = dropdownMenu.classList.contains('hidden');
-                if (isHidden) {
-                    dropdownMenu.classList.remove('hidden');
-                } else {
-                    dropdownMenu.classList.add('hidden');
-                }
-            });
-    
-            // Close dropdown when clicking outside of it
-            document.addEventListener('click', function(event) {
-                if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                    dropdownMenu.classList.add('hidden');
-                }
-            });
-        });
-    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-
+        
             // Toggle menu visibility on button click
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                 toggleButton.setAttribute('aria-expanded', String(!isExpanded));
                 menu.classList.toggle('hidden');
             });
-
+        
             // Hide menu on item click (only for mobile view)
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
@@ -699,104 +682,122 @@
                     }
                 });
             });
-
-            // Smooth scrolling for anchor links
+        
+            // Smooth scrolling for anchor links with custom offsets
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    let offset = 100; // Default offset
+        
+                    // Custom offsets for specific sections
+                    if (targetId === '#About') {
+                        offset = 0; // Custom offset for About section
+                    } else if (targetId === '#contact') {
+                        offset = 100; // Custom offset for Contact section
+                    }
+                    else if (targetId === '#Volunteers') {
+                        offset = 65; // Custom offset for Contact section
+                    }
+                    else if (targetId === '#services') {
+                        offset = 65; // Custom offset for Contact section
+                    }
+        
+                    // Calculate the target position accounting for the offset
                     if (target) {
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
                         window.scrollTo({
-                            top: target.offsetTop,
+                            top: targetPosition,
                             behavior: 'smooth'
                         });
                     }
                 });
             });
-
-              // Carousel functionality
-              const items = document.querySelectorAll('[data-carousel-item]');
-              let activeIndex = 0;
-  
-              function showItem(index) {
-                  items.forEach((item, idx) => {
-                      item.classList.toggle('hidden', idx !== index);
-                      item.classList.toggle('block', idx === index);
-                  });
-              }
-  
-              function nextItem() {
-                  activeIndex = (activeIndex + 1) % items.length;
-                  showItem(activeIndex);
-              }
-  
-              function prevItem() {
-                  activeIndex = (activeIndex - 1 + items.length) % items.length;
-                  showItem(activeIndex);
-              }
-  
-              document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
-              document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
-  
-              // Automatically switch items every 5 seconds
-              setInterval(nextItem, 5000);
-  
-              // Show the first item initially
-              showItem(activeIndex);
-          });
-
-        //Menu Active section code
-        function changeActive(event, clickedElement) {
-            event.preventDefault(); // Prevent default link behavior
-
-            // Get all <a> elements inside the navigation menu
-            const links = document.querySelectorAll('#navigation a');
-
-            // Loop through each link to reset their classes
-            links.forEach(link => {
-                link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
-            });
-
-            // Set the clicked link to active style
-            clickedElement.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
-        }
-        // Function to determine which section is currently in view
-        function getActiveSection() {
-            const sections = document.querySelectorAll('section'); // Adjust this selector to match your sections
-            let scrollPosition = window.scrollY + 200; // Adjust offset as needed
-
-            for (const section of sections) {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    return section.getAttribute('id');
-                }
+        
+            // Carousel functionality
+            const items = document.querySelectorAll('[data-carousel-item]');
+            let activeIndex = 0;
+        
+            function showItem(index) {
+                items.forEach((item, idx) => {
+                    item.classList.toggle('hidden', idx !== index);
+                    item.classList.toggle('block', idx === index);
+                });
             }
-            return 'Home'; // Default to Home if no section is in view
-        }
-
-        // Function to update active navigation link based on scroll
-        function updateActiveLink() {
-            const currentSection = getActiveSection();
-            const links = document.querySelectorAll('#navigation a');
-
-            links.forEach(link => {
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
-                } else {
+        
+            function nextItem() {
+                activeIndex = (activeIndex + 1) % items.length;
+                showItem(activeIndex);
+            }
+        
+            function prevItem() {
+                activeIndex = (activeIndex - 1 + items.length) % items.length;
+                showItem(activeIndex);
+            }
+        
+            document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
+            document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
+        
+            // Automatically switch items every 5 seconds
+            setInterval(nextItem, 5000);
+        
+            // Show the first item initially
+            showItem(activeIndex);
+        
+            // Menu Active section code
+            function changeActive(event, clickedElement) {
+                event.preventDefault(); // Prevent default link behavior
+        
+                // Get all <a> elements inside the navigation menu
+                const links = document.querySelectorAll('#navigation a');
+        
+                // Loop through each link to reset their classes
+                links.forEach(link => {
                     link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
+                });
+        
+                // Set the clicked link to active style
+                clickedElement.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
+            }
+        
+            // Function to determine which section is currently in view
+            function getActiveSection() {
+                const sections = document.querySelectorAll('section'); // Adjust this selector to match your sections
+                const scrollPosition = window.scrollY + 100; // Adjust this offset to match your fixed header height
+        
+                for (const section of sections) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+        
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        return section.getAttribute('id');
+                    }
                 }
-            });
-        }
-
-        // Initial call to set active link on page load
-        updateActiveLink();
-
-        // Event listener for scroll to update active link
-        window.addEventListener('scroll', updateActiveLink);
+                return 'Home'; // Default to Home if no section is in view
+            }
+        
+            // Function to update active navigation link based on scroll
+            function updateActiveLink() {
+                const currentSection = getActiveSection();
+                const links = document.querySelectorAll('#navigation a');
+        
+                links.forEach(link => {
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
+                    } else {
+                        link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
+                    }
+                });
+            }
+        
+            // Initial call to set active link on page load
+            updateActiveLink();
+        
+            // Event listener for scroll to update active link
+            window.addEventListener('scroll', updateActiveLink);
+        });                
     </script>
-    
 </body>
 
 </html>

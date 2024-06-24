@@ -601,12 +601,11 @@
                     document.getElementById('amount-error').classList.add('hidden');
                 }
 
-                // Create a Razorpay instance
                 var options = {
-                    key: '{$RAZORPAY_TOKEN}',  // Replace with your actual key_id
+                    key: process.env.RAZORPAY_TOKEN,  // Use environment variable
                     amount: amount,
                     currency: 'INR',
-                    name: 'Beyond Pages Trust',  // Updated company name
+                    name: 'Beyond Pages Trust',
                     description: 'Donation',
                     handler: function (response) {
                         // Add Razorpay payment ID to form submission
@@ -617,28 +616,26 @@
                         document.forms['Donations'].submit();
                     },
                     prefill: {
-                        email: email,  // Use the entered email
-                        contact: phone  // Use the entered phone number
+                        email: email,
+                        contact: phone
                     },
                     notes: {
-                        address: 'Razorpay Corporate Office'  // Optional notes
+                        address: '2/1446, Lakshmi Nagar 2nd St,Madipakkam,Chennai - 600091.'
                     },
                     theme: {
-                        color: '#472409'  // Optional theme color
+                        color: '#472409'
                     },
                     modal: {
                         ondismiss: function () {
-                            // Handle the case where the user closes the payment modal
                             console.log("Payment modal closed");
-                            // Optionally, you can show a message to the user
                             alert("Payment was not completed. Please try again.");
                         },
                         external: {
-                            wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
+                            wallets: ['upi', 'netbanking']
                         }
                     }
                 };
-
+        
                 var rzp = new Razorpay(options);
                 rzp.open();
                 e.preventDefault(); // Prevent default form submission

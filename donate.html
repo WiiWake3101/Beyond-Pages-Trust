@@ -571,20 +571,20 @@
             const re = /\S+@\S+\.\S+/;
             return re.test(email);
         }
-    
+
         document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
             const emailInput = document.getElementById('email');
             const phoneInput = document.getElementById('phone');
             const panCardInput = document.getElementById('pan_card');
             const donateButton = document.querySelector('.donate');
-    
+
             donateButton.addEventListener('click', function (e) {
                 const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
                 const email = emailInput.value;
                 const phone = phoneInput.value;
                 const panCard = panCardInput.value;
-    
+
                 // Validate email format
                 if (!validateEmail(email)) {
                     document.getElementById('email-error').classList.remove('hidden');
@@ -592,7 +592,7 @@
                 } else {
                     document.getElementById('email-error').classList.add('hidden');
                 }
-    
+
                 // Validate amount (minimum ₹100)
                 if (amount < 10000) { // The amount in paise should be at least 10000
                     document.getElementById('amount-error').classList.remove('hidden');
@@ -600,10 +600,10 @@
                 } else {
                     document.getElementById('amount-error').classList.add('hidden');
                 }
-    
+
                 // Create a Razorpay instance
                 var options = {
-                    key: 'RAZORPAY_TOKEN',  // Placeholder for API key
+                    key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
                     amount: amount,
                     currency: 'INR',
                     name: 'Beyond Pages Trust',  // Updated company name
@@ -638,7 +638,7 @@
                         }
                     }
                 };
-    
+
                 var rzp = new Razorpay(options);
                 rzp.open();
                 e.preventDefault(); // Prevent default form submission

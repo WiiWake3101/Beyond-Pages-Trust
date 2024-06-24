@@ -1,3 +1,0 @@
-[build]
-  command = "sed -i 's/_RAZORPAY_API_KEY_/$RAZORPAY_API_KEY/' donate.html"
-  publish = "."

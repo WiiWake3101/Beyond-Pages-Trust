@@ -571,20 +571,20 @@
             const re = /\S+@\S+\.\S+/;
             return re.test(email);
         }
-
+    
         document.addEventListener('DOMContentLoaded', function () {
             const amountInput = document.getElementById('amount');
             const emailInput = document.getElementById('email');
             const phoneInput = document.getElementById('phone');
             const panCardInput = document.getElementById('pan_card');
             const donateButton = document.querySelector('.donate');
-
+    
             donateButton.addEventListener('click', function (e) {
                 const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
                 const email = emailInput.value;
                 const phone = phoneInput.value;
                 const panCard = panCardInput.value;
-
+    
                 // Validate email format
                 if (!validateEmail(email)) {
                     document.getElementById('email-error').classList.remove('hidden');
@@ -592,7 +592,7 @@
                 } else {
                     document.getElementById('email-error').classList.add('hidden');
                 }
-
+    
                 // Validate amount (minimum ₹100)
                 if (amount < 10000) { // The amount in paise should be at least 10000
                     document.getElementById('amount-error').classList.remove('hidden');
@@ -600,12 +600,13 @@
                 } else {
                     document.getElementById('amount-error').classList.add('hidden');
                 }
-
+    
+                // Create a Razorpay instance
                 var options = {
                     key: process.env.RAZORPAY_TOKEN,  // Use environment variable
                     amount: amount,
                     currency: 'INR',
-                    name: 'Beyond Pages Trust',
+                    name: 'Beyond Pages Trust',  // Updated company name
                     description: 'Donation',
                     handler: function (response) {
                         // Add Razorpay payment ID to form submission
@@ -616,31 +617,33 @@
                         document.forms['Donations'].submit();
                     },
                     prefill: {
-                        email: email,
-                        contact: phone
+                        email: email,  // Use the entered email
+                        contact: phone  // Use the entered phone number
                     },
                     notes: {
-                        address: '2/1446, Lakshmi Nagar 2nd St,Madipakkam,Chennai - 600091.'
+                        address: 'Razorpay Corporate Office'  // Optional notes
                     },
                     theme: {
-                        color: '#472409'
+                        color: '#472409'  // Optional theme color
                     },
                     modal: {
                         ondismiss: function () {
+                            // Handle the case where the user closes the payment modal
                             console.log("Payment modal closed");
+                            // Optionally, you can show a message to the user
                             alert("Payment was not completed. Please try again.");
                         },
                         external: {
-                            wallets: ['upi', 'netbanking']
+                            wallets: ['upi', 'netbanking']  // Enable UPI and NetBanking options
                         }
                     }
                 };
-        
+    
                 var rzp = new Razorpay(options);
                 rzp.open();
                 e.preventDefault(); // Prevent default form submission
             });
         });
-    </script>
+    </script>    
 </body>
 </html>

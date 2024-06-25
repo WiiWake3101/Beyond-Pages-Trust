@@ -157,28 +157,137 @@
     <main>
         <section id="Home">
             <div class="relative w-full overflow-hidden flex flex-col">
-                <img src="./images/Cover Pic.jpg" alt="Descriptive Alt Text" oncontextmenu="return false" ondragstart="return false"
-                    class="w-full h-64 object-cover mt-4 sm:h-80 md:h-96 lg:h-auto">
-                <div
-                    class="mx-auto mt-[-2rem] bg-[#967A3B] rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
-                    <!-- Vision Statement -->
+                <!-- Carousel wrapper -->
+                <div id="custom-carousel-wrapper" class="relative w-full" data-custom-carousel="slide">
+                    <div class="relative h-64 mt-14 md:h-96 2xl:h-[600px] z-[-10] overflow-hidden">
+                        <!-- Carousel items -->
+                        <div class="custom-carousel-item hidden" data-custom-carousel-item>
+                            <img src="./images/Cover Pic.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Cover Pic">
+                        </div>
+                        <div class="custom-carousel-item hidden" data-custom-carousel-item>
+                            <img src="./images/Page top 1.jpg" class="absolute inset-0 w-full h-full object-center" alt="Page top 1">
+                        </div>
+                        <div class="custom-carousel-item hidden" data-custom-carousel-item>
+                            <img src="./images/Page top 3.jpg" class="absolute inset-0 w-full h-full object-center" alt="Page top 3">
+                        </div>
+                    </div>
+                </div>
+                <!-- Vision Statement -->
+                <div class="mx-auto mt-[-2rem] bg-[#967A3B] rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
                     <div class="max-w-screen-xl mx-auto">
-                        <p class="Title text-center text-white font-bold text-md mb-2 sm:text-lg md:text-xl">Our
-                            Vision</p>
+                        <p class="Title text-center text-white font-bold text-md mb-2 sm:text-lg md:text-xl">Our Vision</p>
                         <div class="text-center text-white">
-                            <p class="Content text-xs sm:text-md md:text-sm">"Envisioning a world where the
-                                transformative power
-                                of education,
-                                environmental sustainability, and compassionate community support integrate together to
-                                uplift lives. We
-                                aspire to create a future where every individual has the tools to thrive, and hope
-                                transcends
-                                boundaries"</p>
+                            <p class="Content text-xs sm:text-md md:text-sm">"Envisioning a world where the transformative power of education, environmental sustainability, and compassionate community support integrate together to uplift lives. We aspire to create a future where every individual has the tools to thrive, and hope transcends boundaries"</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+             
+        
+        
+           
+                            
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const carousel = document.getElementById('custom-carousel-wrapper');
+                const carouselItems = carousel.querySelectorAll('[data-custom-carousel-item]');
+                const totalItems = carouselItems.length; // Use dynamic length of carousel items
+                let currentIndex = 0;
+                let intervalId;
+        
+                // Function to show a specific carousel item
+                function showItem(index) {
+                    // Hide all items
+                    carouselItems.forEach(item => {
+                        item.style.display = 'none';
+                    });
+                    // Show the item at the specified index
+                    carouselItems[index].style.display = 'block';
+                }
+        
+                // Function to go to the next carousel item
+                function goToNext() {
+                    currentIndex = (currentIndex + 1) % totalItems;
+                    showItem(currentIndex);
+                    restartCarousel();
+                }
+        
+                // Function to go to the previous carousel item
+                function goToPrevious() {
+                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                    showItem(currentIndex);
+                    restartCarousel();
+                }
+        
+                // Function to start automatic sliding
+                function startCarousel() {
+                    intervalId = setInterval(goToNext, 4000); // Adjust the interval as needed (in milliseconds)
+                }
+        
+                // Function to stop automatic sliding
+                function stopCarousel() {
+                    clearInterval(intervalId);
+                }
+        
+                // Function to restart automatic sliding
+                function restartCarousel() {
+                    stopCarousel();
+                    startCarousel();
+                }
+        
+                // Event listeners for left and right arrow buttons
+                const leftArrowBtn = document.createElement('button');
+                leftArrowBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>';
+                leftArrowBtn.classList.add('absolute', 'top-1/2', 'left-4', 'transform', '-translate-y-1/2', 'bg-gray-800', 'text-white', 'rounded-full', 'px-3', 'py-1', 'opacity-0', 'hover:opacity-100', 'transition-opacity', 'duration-300');
+                leftArrowBtn.addEventListener('click', () => {
+                    stopCarousel(); // Stop automatic sliding on manual navigation
+                    goToPrevious();
+                });
+                carousel.appendChild(leftArrowBtn);
+        
+                const rightArrowBtn = document.createElement('button');
+                rightArrowBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>';
+                rightArrowBtn.classList.add('absolute', 'top-1/2', 'right-4', 'transform', '-translate-y-1/2', 'bg-gray-800', 'text-white', 'rounded-full', 'px-3', 'py-1', 'opacity-0', 'hover:opacity-100', 'transition-opacity', 'duration-300');
+                rightArrowBtn.addEventListener('click', () => {
+                    stopCarousel(); // Stop automatic sliding on manual navigation
+                    goToNext();
+                });
+                carousel.appendChild(rightArrowBtn);
+        
+                // Show navigation buttons on carousel hover
+                carousel.addEventListener('mouseenter', () => {
+                    leftArrowBtn.style.opacity = '100';
+                    rightArrowBtn.style.opacity = '100';
+                });
+        
+                // Hide navigation buttons when mouse leaves carousel
+                carousel.addEventListener('mouseleave', () => {
+                    leftArrowBtn.style.opacity = '0';
+                    rightArrowBtn.style.opacity = '0';
+                });
+        
+                // Start automatic sliding
+                startCarousel();
+        
+                // Show the first item initially
+                showItem(currentIndex);
+            });
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <!--About Us Starts Here-->
         <section id="About">
             <div id="about" class="relative overflow-hidden mt-[-6.5rem] z-[-10]">

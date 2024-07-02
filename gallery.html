@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Beyond Pages Trust</title>
+    <link href="./output.css" rel="stylesheet">
+    <link href="./service.css" rel="stylesheet">
+    <link rel="icon" href="./images/logo.png" type="image/png">
+    <!-- Include Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite/css/flowbite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"
+        integrity="sha512-tS3FZc+GZ+hdmOXIbFq0bJIoQw4v9GcNq23JlS+Fz5XBVR9z+JnOS1GJQgs2sNC5GghjRukR0D5tln1ksuILxg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Include Flowbite JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/js/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+
+<body class="bg-white">
+    <style>
+        body {
+            -webkit-user-select: none;
+            /* Safari */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+        }
+
+        img {
+            -webkit-touch-callout: none;
+            /* Disable iOS and Android callouts/context menu */
+            touch-action: none;
+            /* Disable default touch actions like pan and zoom */
+            -webkit-user-drag: none;
+            /* Disable dragging on older versions of Safari */
+            user-select: none;
+            /* Disable text selection on the image */
+        }
+
+        /* Dropdown for mobile*/
+
+        .relative {
+            position: relative;
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        #dropdownNavbar {
+            top: 100%;
+            /* Position the dropdown below the button */
+            left: 0;
+        }
+
+        @media (max-width: 767px) {
+            #navbar-sticky {
+                justify-content: flex-end;
+                /* Right align items in flex container */
+            }
+
+            #dropdownNavbar {
+                left: auto;
+                right: 0;
+            }
+        }
+    </style>
+    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="index.html#Home" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false"
+                    ondragstart="return false">
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <button type="button"
+                    class="text-white bg-yellow-900 hover:bg-yellow-900 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                    <a href="donate.html">Donate</a>
+                </button>
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            <div class="items-right justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
+                    id="navigation">
+                    <li>
+                        <a href="index.html#Home" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="index.html#About" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">About</a>
+                    </li>
+                    <li>
+                        <a href="index.html#services" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
+                    </li>
+                    <li class="relative">
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:w-auto">Students
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar"
+                            class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+
+                            <div class="py-1">
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"
+                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
+                            </div>
+                            <div class="py-1">
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"
+                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
+                            </div>
+                            <div class="py-1">
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"
+                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="gallery.html" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="index.html#Volunteers" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
+                    </li>
+                    <li>
+                        <a href="index.html#contact" onclick="changeActive(event, this)"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Toggle for dropdown-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownToggle = document.querySelector('[data-dropdown-toggle="dropdownNavbar"]');
+            const dropdownMenu = document.getElementById('dropdownNavbar');
+
+            dropdownToggle.addEventListener('click', function () {
+                const isHidden = dropdownMenu.classList.contains('hidden');
+                if (isHidden) {
+                    dropdownMenu.classList.remove('hidden');
+                } else {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+
+            // Close dropdown when clicking outside of it
+            document.addEventListener('click', function (event) {
+                if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <main>
+        <section class="bg-yellow-900 p-5 mt-5">
+            <div class="container mx-auto mt-10">
+                <div class="py-28 bgImage text-white text-center rounded-xl">
+                    <h2 class="text-5xl font-bold">Gallery</h2>
+        </section>
+        <section id="gallery" class="py-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Photos Section -->
+                <div class="mt-10 mb-5">
+                    <h3 class="my-8 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">Photos</h3>
+                    <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Replace with your photo URLs -->
+                        <img src="./images/1.jpeg" alt="Gallery Photo 1" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/1.jpg" alt="Gallery Photo 2" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="photo3.jpg" alt="Gallery Photo 3" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="photo4.jpg" alt="Gallery Photo 4" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <!-- Add more photos as needed -->
+                    </div>
+                </div>
+                <!-- Videos Section -->
+                <div>
+                    <h3 class="my-8 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">Videos</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Replace with your video URLs -->
+                        <div class="relative w-full h-64 sm:h-48">
+                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video1" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="relative w-full h-64 sm:h-48">
+                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video2" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="relative w-full h-64 sm:h-48">
+                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video3" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="relative w-full h-64 sm:h-48">
+                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video4" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <!-- Add more videos as needed -->
+                    </div>
+                </div>
+            </div>
+        </section>                
+    </main>
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75">
+        <div class="relative bg-white p-5 rounded-lg">
+            <button class="absolute top-2 right-2 text-white hover:text-gray-300" onclick="closeModal()">✕</button>
+            <img id="modalImage" src="" alt="Zoomed Image" class="w-full h-auto rounded-lg">
+        </div>
+    </div>
+    <!--Footer Starts Here-->
+    <footer class="bg-white rounded-lg shadow m-4">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="index.html#Home" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" oncontextmenu="return false"
+                        ondragstart="return false" />
+                </a>
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
+                    <li>
+                        <a href="Terms & Conditions.html" class="hover: me-4 md:me-6">Terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="privacy.html" class="hover: me-4 md:me-6">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="Refund Policy.html" class="hover:">Refund Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2023 <a href="#" class="hover:">BEYOND
+                    PAGES TRUST</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+            const menu = document.getElementById('navbar-sticky');
+            const menuItems = document.querySelectorAll('#navbar-sticky a');
+        
+            // Toggle menu visibility on button click
+            toggleButton.addEventListener('click', function () {
+                const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                toggleButton.setAttribute('aria-expanded', String(!isExpanded));
+                menu.classList.toggle('hidden');
+            });
+        
+            // Hide menu on item click (only for mobile view)
+            menuItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    if (window.innerWidth < 768) {
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                        menu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        function openModal(img) {
+            var modal = document.getElementById('modal');
+            var modalImage = document.getElementById('modalImage');
+            modalImage.src = img.src;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>

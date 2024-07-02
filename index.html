@@ -115,7 +115,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#Gallery" onclick="changeActive(event, this)"
+                        <a href="gallery.html" onclick="changeActive(event, this)"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
                     </li>
                     <li>
@@ -153,7 +153,6 @@
             });
         });
     </script>
-    
     <main>
         <section id="Home">
             <div class="relative w-full overflow-hidden flex flex-col">
@@ -161,9 +160,6 @@
                 <div id="custom-carousel-wrapper" class="relative w-full" data-custom-carousel="slide">
                     <div class="relative h-64 mt-14 md:h-96 2xl:h-[600px] z-[-10] overflow-hidden">
                         <!-- Carousel items -->
-                        <div class="custom-carousel-item hidden" data-custom-carousel-item>
-                            <img src="./images/Cover Pic.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Cover Pic">
-                        </div>
                         <div class="custom-carousel-item hidden" data-custom-carousel-item>
                             <img src="./images/Page top 1.jpg" class="absolute inset-0 w-full h-full object-center" alt="Page top 1">
                         </div>
@@ -182,13 +178,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        
-             
-        
-        
-           
-                            
+        </section>   
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const carousel = document.getElementById('custom-carousel-wrapper');
@@ -237,37 +227,6 @@
                     startCarousel();
                 }
         
-                // Event listeners for left and right arrow buttons
-                const leftArrowBtn = document.createElement('button');
-                leftArrowBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>';
-                leftArrowBtn.classList.add('absolute', 'top-1/2', 'left-4', 'transform', '-translate-y-1/2', 'bg-gray-800', 'text-white', 'rounded-full', 'px-3', 'py-1', 'opacity-0', 'hover:opacity-100', 'transition-opacity', 'duration-300');
-                leftArrowBtn.addEventListener('click', () => {
-                    stopCarousel(); // Stop automatic sliding on manual navigation
-                    goToPrevious();
-                });
-                carousel.appendChild(leftArrowBtn);
-        
-                const rightArrowBtn = document.createElement('button');
-                rightArrowBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>';
-                rightArrowBtn.classList.add('absolute', 'top-1/2', 'right-4', 'transform', '-translate-y-1/2', 'bg-gray-800', 'text-white', 'rounded-full', 'px-3', 'py-1', 'opacity-0', 'hover:opacity-100', 'transition-opacity', 'duration-300');
-                rightArrowBtn.addEventListener('click', () => {
-                    stopCarousel(); // Stop automatic sliding on manual navigation
-                    goToNext();
-                });
-                carousel.appendChild(rightArrowBtn);
-        
-                // Show navigation buttons on carousel hover
-                carousel.addEventListener('mouseenter', () => {
-                    leftArrowBtn.style.opacity = '100';
-                    rightArrowBtn.style.opacity = '100';
-                });
-        
-                // Hide navigation buttons when mouse leaves carousel
-                carousel.addEventListener('mouseleave', () => {
-                    leftArrowBtn.style.opacity = '0';
-                    rightArrowBtn.style.opacity = '0';
-                });
-        
                 // Start automatic sliding
                 startCarousel();
         
@@ -275,19 +234,6 @@
                 showItem(currentIndex);
             });
         </script>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         <!--About Us Starts Here-->
         <section id="About">
             <div id="about" class="relative overflow-hidden mt-[-6.5rem] z-[-10]">
@@ -475,66 +421,6 @@
             </div>
         </section>
         <!--Services end here-->
-        <!--Gallery end here-->
-        <section id="Gallery">
-            <h2
-                class="content max-w-4xl mx-auto text-center mt-10 mb-10 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl md:text-4xl">
-                Gallery</h2>
-            <div id="gallery" class="relative w-full" data-carousel="slide">
-                <!-- Carousel wrapper -->
-                <div class="relative overflow-hidden h-56 md:h-96 lg:h-[600px]">
-                    <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="./images/WWM 1.jpg"
-                            class="absolute block w-full h-full object-cover" alt="Image 1" oncontextmenu="return false" ondragstart="return false">
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                        <img src="./images/WWM 2.jpg"
-                            class="absolute block w-full h-full object-cover" alt="Image 2" oncontextmenu="return false"  ondragstart="return false"  >
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="./images/WWM 3.jpg"
-                            class="absolute block w-full h-full object-cover" alt="Image 3" oncontextmenu="return false" ondragstart="return false" >
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="./images/WWM 4.jpg"
-                            class="absolute block w-full h-full object-cover" alt="Image 4" oncontextmenu="return false" ondragstart="return false" >
-                    </div>
-                </div>
-                <!-- Slider controls -->
-                <button type="button"
-                    class="absolute top-0 left-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                    data-carousel-prev>
-                    <span
-                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
-                </button>
-                <button type="button"
-                    class="absolute top-0 right-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                    data-carousel-next>
-                    <span
-                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-6 h-6 text-white dark:text-gray-800" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
-            </div>
-        </section>
-        <!--Gallery ends here Here-->
-
         <!--Volunteers starts here-->
         <section id="Volunteers" class="bg-yellow-900 p-5">
             <div class="container mx-auto">
@@ -914,5 +800,4 @@
         });                
     </script>
 </body>
-
 </html>

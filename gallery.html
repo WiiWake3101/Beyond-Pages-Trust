@@ -191,9 +191,13 @@
                     <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <!-- Replace with your photo URLs -->
                         <img src="./images/1.jpeg" alt="Gallery Photo 1" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/1.jpg" alt="Gallery Photo 2" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="photo3.jpg" alt="Gallery Photo 3" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="photo4.jpg" alt="Gallery Photo 4" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/CC 5.jpg" alt="Gallery Photo 2" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/S_CC 3.jpg" alt="Gallery Photo 3" class="w-full h-64 sm:h-48 object-fill rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/EDU 1.jpg" alt="Gallery Photo 4" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/CC 2.jpg" alt="Gallery Photo 5" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/CC 6.jpg" alt="Gallery Photo 6" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/CC 8.jpg" alt="Gallery Photo 7" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/Class 1.jpg" alt="Gallery Photo 8" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
                         <!-- Add more photos as needed -->
                     </div>
                 </div>
@@ -203,17 +207,29 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <!-- Replace with your video URLs -->
                         <div class="relative w-full h-64 sm:h-48">
-                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video1" frameborder="0" allowfullscreen></iframe>
+                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/O94P-5eG_IA" frameborder="0" allowfullscreen></iframe>
                         </div>
+
                         <div class="relative w-full h-64 sm:h-48">
-                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video2" frameborder="0" allowfullscreen></iframe>
+                            <video class="absolute inset-0 w-full h-full object-fill rounded-lg" controls>
+                                <source src="/images/video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
+
                         <div class="relative w-full h-64 sm:h-48">
-                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video3" frameborder="0" allowfullscreen></iframe>
+                            <video class="absolute inset-0 w-full h-full object-fill rounded-lg" controls>
+                                <source src="/images/video 2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
+                                                                     
                         <div class="relative w-full h-64 sm:h-48">
-                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/video4" frameborder="0" allowfullscreen></iframe>
-                        </div>
+                            <video class="absolute inset-0 w-full h-full object-fill rounded-lg" controls>
+                                <source src="/images/video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>                   
                         <!-- Add more videos as needed -->
                     </div>
                 </div>
@@ -222,11 +238,12 @@
     </main>
     <!-- Modal -->
     <div id="modal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75">
-        <div class="relative bg-white p-5 rounded-lg">
-            <button class="absolute top-2 right-2 text-white hover:text-gray-300" onclick="closeModal()">✕</button>
+        <div class="relative bg-white p-5 rounded-lg max-w-full max-h-full overflow-hidden">
+            <button class="absolute top-2 right-2 text-white hover:text-gray-300" onclick="closeModal()"><p>✕</button>
             <img id="modalImage" src="" alt="Zoomed Image" class="w-full h-auto rounded-lg">
         </div>
     </div>
+        
     <!--Footer Starts Here-->
     <footer class="bg-white rounded-lg shadow m-4">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">

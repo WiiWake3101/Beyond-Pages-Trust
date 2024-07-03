@@ -710,8 +710,13 @@
                         offset = -40; // Custom offset for About section
                     } else if (targetId === '#Contact') {
                         offset = 0; // Custom offset for Contact section
+                        
                     } else if (targetId === '#Volunteers' || targetId === '#Services') {
                         offset = 65; // Custom offset for Volunteers and Services sections
+                    }
+                    if(targetId==="#services")
+                    {
+                        offset = 65; // Custom offset for About section
                     }
     
                     // Calculate the target position accounting for the offset

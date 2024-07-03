@@ -1820,11 +1820,6 @@ video {
     color: rgb(17 24 39 / var(--tw-text-opacity));
   }
 
-  .md\:text-yellow-700 {
-    --tw-text-opacity: 1;
-    color: rgb(161 98 7 / var(--tw-text-opacity));
-  }
-
   .md\:hover\:bg-transparent:hover {
     background-color: transparent;
   }

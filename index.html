@@ -83,8 +83,8 @@
                     id="navigation">
                     <li>
                         <a href="#Home" onclick="changeActive(event, this)"
-                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0"
-                            aria-current="page">Home</a>
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0"
+                            >Home</a>
                     </li>
                     <li>
                         <a href="#About" onclick="changeActive(event, this)"
@@ -129,29 +129,41 @@
             </div>
         </div>
     </nav>
+
+    
     <!--Toggle for dropdown-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const dropdownToggle = document.querySelector('[data-dropdown-toggle="dropdownNavbar"]');
             const dropdownMenu = document.getElementById('dropdownNavbar');
     
-            dropdownToggle.addEventListener('click', function() {
-                const isHidden = dropdownMenu.classList.contains('hidden');
-                if (isHidden) {
-                    dropdownMenu.classList.remove('hidden');
-                } else {
-                    dropdownMenu.classList.add('hidden');
-                }
-            });
+            if (dropdownToggle && dropdownMenu) {
+                console.log('Dropdown elements found');
+                
+                dropdownToggle.addEventListener('click', function(event) {
+                    console.log('Dropdown toggle clicked');
+                    event.stopPropagation();
+                    const isHidden = dropdownMenu.classList.contains('hidden');
+                    if (isHidden) {
+                        dropdownMenu.classList.remove('hidden');
+                    } else {
+                        dropdownMenu.classList.add('hidden');
+                    }
+                });
     
-            // Close dropdown when clicking outside of it
-            document.addEventListener('click', function(event) {
-                if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                    dropdownMenu.classList.add('hidden');
-                }
-            });
+                // Close dropdown when clicking outside of it
+                document.addEventListener('click', function(event) {
+                    if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        console.log('Click outside dropdown, hiding menu');
+                        dropdownMenu.classList.add('hidden');
+                    }
+                });
+            } else {
+                console.error('Dropdown elements not found');
+            }
         });
     </script>
+    
     <main>
         <section id="Home">
             <div class="relative w-full overflow-hidden flex flex-col">
@@ -665,14 +677,16 @@
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-        
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#navigation a');
+    
             // Toggle menu visibility on button click
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                 toggleButton.setAttribute('aria-expanded', String(!isExpanded));
                 menu.classList.toggle('hidden');
             });
-        
+    
             // Hide menu on item click (only for mobile view)
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
@@ -682,7 +696,7 @@
                     }
                 });
             });
-        
+    
             // Smooth scrolling for anchor links with custom offsets
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -690,18 +704,16 @@
                     const targetId = this.getAttribute('href');
                     const target = document.querySelector(targetId);
                     let offset = 100; // Default offset
-        
+    
                     // Custom offsets for specific sections
                     if (targetId === '#About') {
                         offset = -40; // Custom offset for About section
                     } else if (targetId === '#Contact') {
-                        offset = 100; // Custom offset for Contact section
-                    } else if (targetId === '#Volunteers') {
-                        offset = 65; // Custom offset for Volunteers section
-                    } else if (targetId === '#Services') {
-                        offset = 65; // Custom offset for Services section
+                        offset = 0; // Custom offset for Contact section
+                    } else if (targetId === '#Volunteers' || targetId === '#Services') {
+                        offset = 65; // Custom offset for Volunteers and Services sections
                     }
-        
+    
                     // Calculate the target position accounting for the offset
                     if (target) {
                         const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
@@ -712,89 +724,41 @@
                     }
                 });
             });
-        
-            // Carousel functionality
-            const items = document.querySelectorAll('[data-carousel-item]');
-            let activeIndex = 0;
-        
-            function showItem(index) {
-                items.forEach((item, idx) => {
-                    item.classList.toggle('hidden', idx !== index);
-                    item.classList.toggle('block', idx === index);
-                });
-            }
-        
-            function nextItem() {
-                activeIndex = (activeIndex + 1) % items.length;
-                showItem(activeIndex);
-            }
-        
-            function prevItem() {
-                activeIndex = (activeIndex - 1 + items.length) % items.length;
-                showItem(activeIndex);
-            }
-        
-            document.querySelector('[data-carousel-next]').addEventListener('click', nextItem);
-            document.querySelector('[data-carousel-prev]').addEventListener('click', prevItem);
-        
-            // Automatically switch items every 5 seconds
-            setInterval(nextItem, 5000);
-        
-            // Show the first item initially
-            showItem(activeIndex);
-        
-            // Menu Active section code
-            function changeActive(event, clickedElement) {
-                event.preventDefault(); // Prevent default link behavior
-        
-                // Get all <a> elements inside the navigation menu
-                const links = document.querySelectorAll('#navigation a');
-        
-                // Loop through each link to reset their classes
-                links.forEach(link => {
-                    link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
-                });
-        
-                // Set the clicked link to active style
-                clickedElement.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
-            }
-        
+    
             // Function to determine which section is currently in view
             function getActiveSection() {
-                const sections = document.querySelectorAll('section'); // Adjust this selector to match your sections
-                const scrollPosition = window.scrollY + 100; // Adjust this offset to match your fixed header height
-        
+                const scrollPosition = window.scrollY + 250; // Adjust this offset to match your fixed header height
+    
                 for (const section of sections) {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
-        
+    
                     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                         return section.getAttribute('id');
                     }
                 }
                 return 'Home'; // Default to Home if no section is in view
             }
-        
+    
             // Function to update active navigation link based on scroll
             function updateActiveLink() {
                 const currentSection = getActiveSection();
-                const links = document.querySelectorAll('#navigation a');
-        
-                links.forEach(link => {
+    
+                navLinks.forEach(link => {
                     if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.className = "block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0";
+                        link.classList.add('text-yellow-700');
                     } else {
-                        link.className = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0";
+                        link.classList.remove('text-yellow-700');
                     }
                 });
             }
-        
+    
             // Initial call to set active link on page load
             updateActiveLink();
-        
+    
             // Event listener for scroll to update active link
             window.addEventListener('scroll', updateActiveLink);
         });
-    </script>    
+    </script>
 </body>
 </html>

@@ -96,16 +96,16 @@
                 <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
                     id="navigation">
                     <li>
-                        <a href="index.html#Home" onclick="changeActive(event, this)"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0"
+                        <a href="index.html#Home"
+                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-gray-900 md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="index.html#About" onclick="changeActive(event, this)"
+                        <a href="index.html#About"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">About</a>
                     </li>
                     <li>
-                        <a href="index.html#services" onclick="changeActive(event, this)"
+                        <a href="index.html#services"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
                     </li>
                     <li class="relative">
@@ -120,34 +120,33 @@
                         <!-- Dropdown menu -->
                         <div id="dropdownNavbar"
                             class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-
                             <div class="py-1">
                                 <a href="https://forms.gle/DCh3fMzHran8WxHF8"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
                                     style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
                             </div>
                             <div class="py-1">
                                 <a href="https://forms.gle/DCh3fMzHran8WxHF8"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
                                     style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
                             </div>
                             <div class="py-1">
                                 <a href="https://forms.gle/DCh3fMzHran8WxHF8"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-900"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
                                     style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <a href="gallery.html" onclick="changeActive(event, this)"
-                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0">Gallery</a>
+                        <a href="gallery.html"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Gallery</a>
                     </li>
                     <li>
-                        <a href="index.html#Volunteers" onclick="changeActive(event, this)"
+                        <a href="index.html#Volunteers"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-600 md:p-0">Volunteers</a>
                     </li>
                     <li>
-                        <a href="index.html#contact" onclick="changeActive(event, this)"
+                        <a href="index.html#contact"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Contact</a>
                     </li>
                 </ul>
@@ -182,32 +181,56 @@
             <div class="container mx-auto mt-10">
                 <div class="py-28 bgImage text-white text-center rounded-xl">
                     <h2 class="text-5xl font-bold">Gallery</h2>
+                </div>
+            </div>
         </section>
         <section id="gallery" class="py-10">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Photos Section -->
-                <div class="mt-10 mb-5">
-                    <h3 class="my-8 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">Photos</h3>
+                <div>
+                    <h3
+                        class="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
+                        Photos</h3>
                     <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <!-- Replace with your photo URLs -->
-                        <img src="./images/1.jpeg" alt="Gallery Photo 1" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/CC 5.jpg" alt="Gallery Photo 2" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/S_CC 3.jpg" alt="Gallery Photo 3" class="w-full h-64 sm:h-48 object-fill rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/EDU 1.jpg" alt="Gallery Photo 4" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/CC 2.jpg" alt="Gallery Photo 5" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/CC 6.jpg" alt="Gallery Photo 6" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/CC 8.jpg" alt="Gallery Photo 7" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
-                        <img src="./images/Class 1.jpg" alt="Gallery Photo 8" class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105" onclick="openModal(this)">
+                        <img src="./images/1.jpeg" alt="Gallery Photo 1"
+                            class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
+                        <img src="./images/CC 5.jpg" alt="Gallery Photo 2"
+                            class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
+                        <img src="./images/S_CC 3.jpg" alt="Gallery Photo 3"
+                            class="w-full h-64 sm:h-48 object-fill rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
+                        <img src="./images/EDU 1.jpg" alt="Gallery Photo 4"
+                            class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
+                        <img src="./images/CC 2.jpg" alt="Gallery Photo 5"
+                            class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
+                        <img src="./images/CC 6.jpg" alt="Gallery Photo 6"
+                            class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
+                        <img src="./images/CC 8.jpg" alt="Gallery Photo 7"
+                            class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
+                        <img src="./images/Class 1.jpg" alt="Gallery Photo 8"
+                            class="w-full h-64 sm:h-48 object-cover rounded-lg cursor-pointer transition duration-500 transform hover:scale-105"
+                            onclick="openModal(this)">
                         <!-- Add more photos as needed -->
                     </div>
                 </div>
                 <!-- Videos Section -->
                 <div>
-                    <h3 class="my-8 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">Videos</h3>
+                    <h3
+                        class="my-8 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl text-center md:text-4xl">
+                        Videos</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         <!-- Replace with your video URLs -->
                         <div class="relative w-full h-64 sm:h-48">
-                            <iframe class="absolute inset-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/O94P-5eG_IA" frameborder="0" allowfullscreen></iframe>
+                            <iframe class="absolute inset-0 w-full h-full rounded-lg"
+                                src="https://www.youtube.com/embed/O94P-5eG_IA" frameborder="0"
+                                allowfullscreen></iframe>
                         </div>
 
                         <div class="relative w-full h-64 sm:h-48">
@@ -223,27 +246,29 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                                                                     
+
                         <div class="relative w-full h-64 sm:h-48">
                             <video class="absolute inset-0 w-full h-full object-fill rounded-lg" controls>
                                 <source src="/images/video.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
-                        </div>                   
+                        </div>
                         <!-- Add more videos as needed -->
                     </div>
                 </div>
             </div>
-        </section>                
+        </section>
     </main>
     <!-- Modal -->
-    <div id="modal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75">
-        <div class="relative bg-white p-5 rounded-lg max-w-full max-h-full overflow-hidden">
-            <button class="absolute top-2 right-2 text-white hover:text-gray-300" onclick="closeModal()"><p>✕</button>
+    <div id="modal"
+        class="my-5 hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75">
+        <div class="relative bg-white p-5 rounded-lg w-11/12 md:w-3/4 lg:w-1/2 h-auto">
+            <button class="absolute top-8 left-10 text-white hover:text-gray-700" onclick="closeModal()">
+                ✕
+            </button>
             <img id="modalImage" src="" alt="Zoomed Image" class="w-full h-auto rounded-lg">
         </div>
     </div>
-        
     <!--Footer Starts Here-->
     <footer class="bg-white rounded-lg shadow m-4">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -274,14 +299,14 @@
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-        
+
             // Toggle menu visibility on button click
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                 toggleButton.setAttribute('aria-expanded', String(!isExpanded));
                 menu.classList.toggle('hidden');
             });
-        
+
             // Hide menu on item click (only for mobile view)
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
@@ -295,15 +320,15 @@
     </script>
     <script>
         function openModal(img) {
-            var modal = document.getElementById('modal');
-            var modalImage = document.getElementById('modalImage');
-            modalImage.src = img.src;
-            modal.classList.remove('hidden');
+            document.getElementById("modal").classList.remove("hidden");
+            document.getElementById("modalImage").src = img.src;
+            document.body.style.overflow = 'hidden'; // Disable scrolling
         }
 
         function closeModal() {
-            var modal = document.getElementById('modal');
-            modal.classList.add('hidden');
+            document.getElementById("modal").classList.add("hidden");
+            document.getElementById("modalImage").src = "";
+            document.body.style.overflow = 'auto'; // Enable scrolling
         }
     </script>
 </body>

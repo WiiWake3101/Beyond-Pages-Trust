@@ -26,41 +26,30 @@
             /* Internet Explorer/Edge */
             user-select: none;
             /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+         }
+         img {
+        -webkit-touch-callout: none; /* Disable iOS and Android callouts/context menu */
+        touch-action: none; /* Disable default touch actions like pan and zoom */
+        -webkit-user-drag: none; /* Disable dragging on older versions of Safari */
+        user-select: none; /* Disable text selection on the image */
         }
 
-        img {
-            -webkit-touch-callout: none;
-            /* Disable iOS and Android callouts/context menu */
-            touch-action: none;
-            /* Disable default touch actions like pan and zoom */
-            -webkit-user-drag: none;
-            /* Disable dragging on older versions of Safari */
-            user-select: none;
-            /* Disable text selection on the image */
-        }
-
-        /* Dropdown for mobile*/
+        /* Dropdown for mobile*/ 
 
         .relative {
             position: relative;
         }
-
         .absolute {
             position: absolute;
         }
-
         #dropdownNavbar {
-            top: 100%;
-            /* Position the dropdown below the button */
+            top: 100%; /* Position the dropdown below the button */
             left: 0;
         }
-
         @media (max-width: 767px) {
             #navbar-sticky {
-                justify-content: flex-end;
-                /* Right align items in flex container */
+                justify-content: flex-end; /* Right align items in flex container */
             }
-
             #dropdownNavbar {
                 left: auto;
                 right: 0;
@@ -70,8 +59,7 @@
     <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="index.html#Home" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false"
-                    ondragstart="return false">
+                <img src="./images/Logo.png" class="h-8" alt="Logo" oncontextmenu="return false" ondragstart="return false">
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <button type="button"
@@ -94,7 +82,8 @@
                     id="navigation">
                     <li>
                         <a href="#Home" onclick="changeActive(event, this)"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Home</a>
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0"
+                            >Home</a>
                     </li>
                     <li>
                         <a href="#About" onclick="changeActive(event, this)"
@@ -105,31 +94,21 @@
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Services</a>
                     </li>
                     <li class="relative">
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:w-auto">Students
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 md:w-auto">Students
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                             </svg>
                         </button>
                         <!-- Dropdown menu -->
-                        <div id="dropdownNavbar"
-                            class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <div id="dropdownNavbar" class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                             <div class="py-1">
-                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
-                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8" class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"  style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
                             </div>
                             <div class="py-1">
-                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
-                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8" class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
                             </div>
                             <div class="py-1">
-                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
-                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8" class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
                             </div>
                         </div>
                     </li>
@@ -150,17 +129,17 @@
         </div>
     </nav>
 
-
+    
     <!--Toggle for dropdown-->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const dropdownToggle = document.querySelector('[data-dropdown-toggle="dropdownNavbar"]');
             const dropdownMenu = document.getElementById('dropdownNavbar');
-
+    
             if (dropdownToggle && dropdownMenu) {
                 console.log('Dropdown elements found');
-
-                dropdownToggle.addEventListener('click', function (event) {
+                
+                dropdownToggle.addEventListener('click', function(event) {
                     console.log('Dropdown toggle clicked');
                     event.stopPropagation();
                     const isHidden = dropdownMenu.classList.contains('hidden');
@@ -170,9 +149,9 @@
                         dropdownMenu.classList.add('hidden');
                     }
                 });
-
+    
                 // Close dropdown when clicking outside of it
-                document.addEventListener('click', function (event) {
+                document.addEventListener('click', function(event) {
                     if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
                         console.log('Click outside dropdown, hiding menu');
                         dropdownMenu.classList.add('hidden');
@@ -183,7 +162,7 @@
             }
         });
     </script>
-
+    
     <main>
         <section id="Home">
             <div class="relative w-full overflow-hidden flex flex-col">
@@ -192,39 +171,32 @@
                     <div class="relative h-64 mt-14 md:h-96 2xl:h-[600px] z-[-10] overflow-hidden">
                         <!-- Carousel items -->
                         <div class="custom-carousel-item hidden" data-custom-carousel-item>
-                            <img src="./images/Page top 1.jpg" class="absolute inset-0 w-full h-full object-center"
-                                alt="Page top 1">
+                            <img src="./images/Page top 1.jpg" class="absolute inset-0 w-full h-full object-center" alt="Page top 1">
                         </div>
                         <div class="custom-carousel-item hidden" data-custom-carousel-item>
-                            <img src="./images/Page top 3.jpg" class="absolute inset-0 w-full h-full object-center"
-                                alt="Page top 3">
+                            <img src="./images/Page top 3.jpg" class="absolute inset-0 w-full h-full object-center" alt="Page top 3">
                         </div>
                     </div>
                 </div>
                 <!-- Vision Statement -->
-                <div
-                    class="mx-auto mt-[-2rem] bg-[#967A3B] rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
+                <div class="mx-auto mt-[-2rem] bg-[#967A3B] rounded-lg shadow-md p-4 w-4/5 sm:w-11/12 md:w-11/12 lg:w-4/5 sm:p-2 md:p-3 order-1 mb-4">
                     <div class="max-w-screen-xl mx-auto">
-                        <p class="Title text-center text-white font-bold text-md mb-2 sm:text-lg md:text-xl">Our Vision
-                        </p>
+                        <p class="Title text-center text-white font-bold text-md mb-2 sm:text-lg md:text-xl">Our Vision</p>
                         <div class="text-center text-white">
-                            <p class="Content text-xs sm:text-md md:text-sm">"Envisioning a world where the
-                                transformative power of education, environmental sustainability, and compassionate
-                                community support integrate together to uplift lives. We aspire to create a future where
-                                every individual has the tools to thrive, and hope transcends boundaries"</p>
+                            <p class="Content text-xs sm:text-md md:text-sm">"Envisioning a world where the transformative power of education, environmental sustainability, and compassionate community support integrate together to uplift lives. We aspire to create a future where every individual has the tools to thrive, and hope transcends boundaries"</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>   
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const carousel = document.getElementById('custom-carousel-wrapper');
                 const carouselItems = carousel.querySelectorAll('[data-custom-carousel-item]');
                 const totalItems = carouselItems.length; // Use dynamic length of carousel items
                 let currentIndex = 0;
                 let intervalId;
-
+        
                 // Function to show a specific carousel item
                 function showItem(index) {
                     // Hide all items
@@ -234,40 +206,40 @@
                     // Show the item at the specified index
                     carouselItems[index].style.display = 'block';
                 }
-
+        
                 // Function to go to the next carousel item
                 function goToNext() {
                     currentIndex = (currentIndex + 1) % totalItems;
                     showItem(currentIndex);
                     restartCarousel();
                 }
-
+        
                 // Function to go to the previous carousel item
                 function goToPrevious() {
                     currentIndex = (currentIndex - 1 + totalItems) % totalItems;
                     showItem(currentIndex);
                     restartCarousel();
                 }
-
+        
                 // Function to start automatic sliding
                 function startCarousel() {
                     intervalId = setInterval(goToNext, 4000); // Adjust the interval as needed (in milliseconds)
                 }
-
+        
                 // Function to stop automatic sliding
                 function stopCarousel() {
                     clearInterval(intervalId);
                 }
-
+        
                 // Function to restart automatic sliding
                 function restartCarousel() {
                     stopCarousel();
                     startCarousel();
                 }
-
+        
                 // Start automatic sliding
                 startCarousel();
-
+        
                 // Show the first item initially
                 showItem(currentIndex);
             });
@@ -333,8 +305,7 @@
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/School.jpg" alt="Children studying in a classroom"
-                                oncontextmenu="return false" ondragstart="return false"
+                            <img src="./images/School.jpg" alt="Children studying in a classroom" oncontextmenu="return false" ondragstart="return false"
                                 class="w-full h-full object-fit" />
                         </div>
                         <div class="p-5">
@@ -350,8 +321,8 @@
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/11.jpg" alt="Tree planting activity" oncontextmenu="return false"
-                                ondragstart="return false" class="w-full h-full object-cover" />
+                            <img src="./images/11.jpg" alt="Tree planting activity" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
                         </div>
                         <div class="p-5">
                             <h3 class="text-xl font-semibold text-gray-800">Environmental Sustainability</h3>
@@ -366,8 +337,8 @@
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/S_CC 4.jpg" alt="Children playing soccer" oncontextmenu="return false"
-                                ondragstart="return false" class="w-full h-full object-cover" />
+                            <img src="./images/S_CC 4.jpg" alt="Children playing soccer" oncontextmenu="return false" ondragstart="return false"
+                                class="w-full h-full object-cover" />
                         </div>
                         <div class="p-5">
                             <h3 class="text-xl font-semibold text-gray-800">Sports Development</h3>
@@ -382,8 +353,7 @@
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/S_CC 7.jpg" alt="Volunteers distributing aid"
-                                oncontextmenu="return false" ondragstart="return false"
+                            <img src="./images/S_CC 7.jpg" alt="Volunteers distributing aid" oncontextmenu="return false" ondragstart="return false"
                                 class="w-full h-full object-cover" />
                         </div>
                         <div class="p-5">
@@ -399,26 +369,20 @@
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/S_Medi 1.jpg" alt="Volunteers distributing food"
-                                oncontextmenu="return false" ondragstart="return false"
+                            <img src="./images/S_Medi 1.jpg" alt="Volunteers distributing food" oncontextmenu="return false" ondragstart="return false"
                                 class="w-full h-full object-fit" />
                         </div>
                         <div class="p-5">
                             <h3 class="text-xl font-semibold text-gray-800">Medicine Distribution</h3>
                             <p class="mt-3 text-gray-600">
-                                At our NGO, we are dedicated to improving the health and well-being of under-privileged
-                                individuals by providing essential medical support. Our primary focus is on supplying
-                                life-saving medicines to diabetic patients on a regular basis. Through this initiative,
-                                we aim to provide necessary medications to manage their diabetes and lead healthier and
-                                quality lives.
+                                At our NGO, we are dedicated to improving the health and well-being of under-privileged individuals by providing essential medical support. Our primary focus is on supplying life-saving medicines to diabetic patients on a regular basis. Through this initiative, we aim to provide necessary medications to manage their diabetes and lead healthier and quality lives.
                             </p>
                         </div>
                     </div>
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/Works 1.jpg" alt="Women in a skill development workshop"
-                                oncontextmenu="return false" ondragstart="return false"
+                            <img src="./images/Works 1.jpg" alt="Women in a skill development workshop" oncontextmenu="return false" ondragstart="return false"
                                 class="w-full h-full object-full" />
                         </div>
                         <div class="p-5">
@@ -434,8 +398,7 @@
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/S_CC 1 Croped.jpg" alt="Clothing donation drive"
-                                oncontextmenu="return false" ondragstart="return false"
+                            <img src="./images/S_CC 1 Croped.jpg" alt="Clothing donation drive" oncontextmenu="return false" ondragstart="return false"
                                 class="w-full h-full object-fit" />
                         </div>
                         <div class="p-5">
@@ -451,8 +414,7 @@
                     <div
                         class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105">
                         <div class="w-full h-40 relative">
-                            <img src="./images/S_20.jpg" alt="Rural community development project"
-                                oncontextmenu="return false" ondragstart="return false"
+                            <img src="./images/S_20.jpg" alt="Rural community development project" oncontextmenu="return false" ondragstart="return false"
                                 class="w-full h-full object-cover" />
                         </div>
                         <div class="p-5">
@@ -495,20 +457,20 @@
 
                 <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <img class="h-full max-w-full rounded-lg" oncontextmenu="return false"
-                            ondragstart="return false" src="./images/Outside 1.jpg" alt="">
+                        <img class="h-full max-w-full rounded-lg" oncontextmenu="return false" ondragstart="return false"
+                            src="./images/Outside 1.jpg" alt="">
                     </div>
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false"
-                            ondragstart="return false" src="./images/12.jpg" alt="">
+                        <img class="h-auto max-w-full rounded-lg"oncontextmenu="return false" ondragstart="return false"
+                            src="./images/12.jpg" alt="">
                     </div>
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false"
-                            ondragstart="return false" src="./images/14.jpg" alt="">
+                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false" ondragstart="return false"
+                            src="./images/14.jpg" alt="">
                     </div>
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false"
-                            ondragstart="return false" src="./images/16.jpg" alt="">
+                        <img class="h-auto max-w-full rounded-lg" oncontextmenu="return false" ondragstart="return false"
+                            src="./images/16.jpg" alt="">
                     </div>
                 </div>
 
@@ -578,20 +540,16 @@
                     <div class="text-center mt-8 flex flex-wrap justify-center gap-4">
                         <div class="inline-flex items-center bg-white p-1 rounded">
                             <span class="mr-2 text-yellow-600 font-bold">Volunteership</span>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvB1LHuc6dG-zxNGtWMSSTTYZ0QEQgonugNn2peQteZTM4HQ/viewform?usp=sf_link"
-                                class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Join
-                                Now</a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvB1LHuc6dG-zxNGtWMSSTTYZ0QEQgonugNn2peQteZTM4HQ/viewform?usp=sf_link" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Join Now</a>
                         </div>
                         <div class="inline-flex items-center bg-white p-1 rounded">
                             <span class="mr-2 text-yellow-600 font-bold">Mentorship</span>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvB1LHuc6dG-zxNGtWMSSTTYZ0QEQgonugNn2peQteZTM4HQ/viewform?usp=sf_link"
-                                class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Join
-                                Now</a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvB1LHuc6dG-zxNGtWMSSTTYZ0QEQgonugNn2peQteZTM4HQ/viewform?usp=sf_link" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Join Now</a>
                         </div>
                     </div>
-
-            </div>
-        </section>
+                    
+                </div>
+            </section>
         </section>
         <!--Volunteers end here-->
 
@@ -636,9 +594,8 @@
                     <h2 class="text-xl font-semibold mt-8 mb-2 text-center md:text-left">Connect with us</h2>
                     <ul class="sci flex gap-4 justify-center md:justify-start">
                         <li><a href="https://x.com/BeyondPagesTrus" target="_blank">
-                                <img src="https://img.icons8.com/ios-filled/50/fJp7hepMryiw/twitterx.png" alt="TwitterX"
-                                    class="h-8 w-8 mt-3">
-                            </a></li>
+                            <img src="https://img.icons8.com/ios-filled/50/fJp7hepMryiw/twitterx.png" alt="TwitterX" class="h-8 w-8 mt-3">
+                        </a></li>
                         <li><a href="https://www.linkedin.com/company/beyond-pages-trust/"><ion-icon
                                     name="logo-linkedin" class="h-8 w-8 mt-3"></ion-icon></a></li>
                         <li><a href="https://www.facebook.com/beyondpagestrust/"><ion-icon name="logo-facebook"
@@ -668,31 +625,23 @@
                 <div class="mt-6">
                     <div class="accordion">
                         <details class="faq-item">
-                            <summary class="faq-question bg-gray-200 py-2 px-4 mb-2 rounded-md cursor-pointer">What are
-                                your office hours?</summary>
-                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">Our office hours are Monday to
-                                Friday, 9:00 AM to 5:00 PM.</div>
+                            <summary class="faq-question bg-gray-200 py-2 px-4 mb-2 rounded-md cursor-pointer">What are your office hours?</summary>
+                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">Our office hours are Monday to Friday, 9:00 AM to 5:00 PM.</div>
                         </details>
                         <details class="faq-item">
-                            <summary class="faq-question bg-gray-200 py-2 px-4 mt-2 mb-2 rounded-md cursor-pointer">How
-                                can I volunteer with Beyond Pages Trust?</summary>
-                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">To volunteer with us, please visit
-                                our <a href="https://example.com/volunteer" class="text-blue-500">volunteer page</a> for
-                                more information.</div>
+                            <summary class="faq-question bg-gray-200 py-2 px-4 mt-2 mb-2 rounded-md cursor-pointer">How can I volunteer with Beyond Pages Trust?</summary>
+                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">To volunteer with us, please visit our <a href="https://example.com/volunteer" class="text-blue-500">volunteer page</a> for more information.</div>
                         </details>
                         <details class="faq-item">
-                            <summary class="faq-question bg-gray-200 py-2 px-4 mt-2 mb-2 rounded-md cursor-pointer">Do
-                                you accept donations?</summary>
-                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">Yes, we appreciate donations!
-                                Please visit our <a href="donate.html" class="text-blue-500">donation page</a> to
-                                contribute.</div>
+                            <summary class="faq-question bg-gray-200 py-2 px-4 mt-2 mb-2 rounded-md cursor-pointer">Do you accept donations?</summary>
+                            <div class="faq-answer mt-2 text-gray-600 px-4 text-left">Yes, we appreciate donations! Please visit our <a href="donate.html" class="text-blue-500">donation page</a> to contribute.</div>
                         </details>
                         <!-- Add more FAQ items as needed -->
                     </div>
                 </div>
             </div>
         </section>
-        <!--FAQ ends here-->
+        <!--FAQ ends here-->                        
     </main>
 
     <!--Footer Starts Here-->
@@ -700,8 +649,7 @@
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="index.html#Home" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" oncontextmenu="return false"
-                        ondragstart="return false" />
+                    <img src="./images/Logo.png" class="h-11" alt="BEYOND PAGES TRUST Logo" oncontextmenu="return false" ondragstart="return false"  />
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
                     <li>
@@ -834,5 +782,4 @@
         });
     </script>
 </body>
-
 </html>

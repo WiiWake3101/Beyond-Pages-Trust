@@ -10,6 +10,9 @@
     <link rel="icon" href="./images/logo.png" type="image/png">
     <!-- Include Flowbite CSS -->
     <link href="https://cdn.jsdelivr.net/npm/flowbite/css/flowbite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"
+        integrity="sha512-tS3FZc+GZ+hdmOXIbFq0bJIoQw4v9GcNq23JlS+Fz5XBVR9z+JnOS1GJQgs2sNC5GghjRukR0D5tln1ksuILxg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Include Flowbite JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite/js/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
@@ -94,8 +97,7 @@
                     id="navigation">
                     <li>
                         <a href="index.html#Home"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0"
-                            aria-current="page">Home</a>
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-yellow-700 md:p-0">Home</a>
                     </li>
                     <li>
                         <a href="index.html#About"
@@ -136,7 +138,8 @@
                     </li>
                     <li>
                         <a href="gallery.html"
-                            class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-yellow-700 md:p-0">Gallery</a>
+                        class="block py-2 px-3 text-white bg-yellow-900 rounded md:bg-transparent md:text-gray-900 md:p-0"
+                        aria-current="page">Gallery</a>
                     </li>
                     <li>
                         <a href="index.html#Volunteers"
@@ -239,14 +242,14 @@
 
                         <div class="relative w-full h-64 sm:h-48">
                             <video class="absolute inset-0 w-full h-full object-fill rounded-lg" controls>
-                                <source src="/images/video 2.mp4" type="video/mp4">
+                                <source src="/images/video 3.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
 
                         <div class="relative w-full h-64 sm:h-48">
                             <video class="absolute inset-0 w-full h-full object-fill rounded-lg" controls>
-                                <source src="/images/video.mp4" type="video/mp4">
+                                <source src="/images/video 4.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -260,7 +263,7 @@
     <div id="modal"
         class="my-5 hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75">
         <div class="relative bg-white p-5 rounded-lg w-11/12 md:w-3/4 lg:w-1/2 h-auto">
-            <button class="absolute top-8 left-10 text-white hover:text-gray-700" onclick="closeModal()">
+            <button class="absolute top-8 left-10 text-red-900 hover:text-red-600" onclick="closeModal()">
                 ✕
             </button>
             <img id="modalImage" src="" alt="Zoomed Image" class="w-full h-auto rounded-lg">
@@ -317,16 +320,36 @@
     </script>
     <script>
         function openModal(img) {
-            document.getElementById("modal").classList.remove("hidden");
+            const modal = document.getElementById("modal");
+            modal.classList.remove("hidden");
             document.getElementById("modalImage").src = img.src;
             document.body.style.overflow = 'hidden'; // Disable scrolling
+        
+            // Add the event listener for outside click
+            setTimeout(() => {
+                document.addEventListener('click', outsideClickListener);
+            }, 0); // Ensure this runs after the current call stack
         }
-
+        
         function closeModal() {
-            document.getElementById("modal").classList.add("hidden");
+            const modal = document.getElementById("modal");
+            modal.classList.add("hidden");
             document.getElementById("modalImage").src = "";
             document.body.style.overflow = 'auto'; // Enable scrolling
+        
+            // Remove the event listener for outside click
+            document.removeEventListener('click', outsideClickListener);
         }
+        
+        function outsideClickListener(event) {
+            const modal = document.getElementById("modal");
+            const modalContent = modal.querySelector('.relative');
+        
+            if (!modalContent.contains(event.target)) {
+                closeModal();
+            }
+        }
+        
     </script>
 </body>
 

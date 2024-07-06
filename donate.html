@@ -362,14 +362,14 @@
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-
+        
             // Toggle menu visibility on button click
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                 toggleButton.setAttribute('aria-expanded', String(!isExpanded));
                 menu.classList.toggle('hidden');
             });
-
+        
             // Hide menu on item click (only for mobile view)
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
@@ -379,14 +379,14 @@
                     }
                 });
             });
-
+        
             // Carousel functionality
             const carouselItems = document.querySelectorAll('[data-carousel-item]');
             const prevButton = document.querySelector('[data-carousel-prev]');
             const nextButton = document.querySelector('[data-carousel-next]');
             let currentIndex = 0;
             let timer = null;
-
+        
             function showItem(index) {
                 carouselItems.forEach((item, i) => {
                     if (i === index) {
@@ -412,39 +412,39 @@
                     }
                 });
             }
-
+        
             function nextItem() {
                 currentIndex = (currentIndex + 1) % carouselItems.length;
                 showItem(currentIndex);
             }
-
+        
             function prevItem() {
                 currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
                 showItem(currentIndex);
             }
-
+        
             showItem(currentIndex);
-
+        
             nextButton.addEventListener('click', function () {
                 clearInterval(timer);
                 nextItem();
                 timer = setInterval(nextItem, 7000);
             });
-
+        
             prevButton.addEventListener('click', function () {
                 clearInterval(timer);
                 prevItem();
                 timer = setInterval(nextItem, 7000);
             });
-
+        
             timer = setInterval(nextItem, 7000);
-
+        
             // Donation form functionality
             const amountInput = document.getElementById('amount');
             const checkBox = document.getElementById('checkbox-2');
             const panCardSection = document.getElementById('panCardSection');
             const amountError = document.getElementById('amount-error');
-
+        
             function handlePanCardVisibility() {
                 if (parseFloat(amountInput.value) >= 5000 || checkBox.checked) {
                     panCardSection.classList.remove('hidden');
@@ -452,7 +452,7 @@
                     panCardSection.classList.add('hidden');
                 }
             }
-
+        
             function validateAmount() {
                 const amount = parseFloat(amountInput.value);
                 if (isNaN(amount) || amount < 100) {
@@ -465,110 +465,105 @@
                     return true;
                 }
             }
-
+        
             handlePanCardVisibility();
-
+        
             amountInput.addEventListener('input', handlePanCardVisibility);
             amountInput.addEventListener('input', validateAmount);
             checkBox.addEventListener('change', handlePanCardVisibility);
-
+        
             const phoneInput = document.getElementById('phone');
             const phoneError = document.getElementById('phone-error');
-
+        
             function validatePhoneNumber() {
                 const phoneValue = phoneInput.value.trim();
                 const startsWithValidDigit = /^[6-9]/.test(phoneValue);
                 const isTenDigitsLong = /^\d{10,}$/.test(phoneValue);
                 const isNumeric = /^\d*$/.test(phoneValue);
-
+        
                 if (phoneValue === '') {
                     phoneError.classList.add('hidden');
                     phoneInput.setCustomValidity('');
+                    return true;
                 } else if (!isNumeric) {
                     phoneError.textContent = 'The phone number must contain only digits.';
                     phoneError.classList.remove('hidden');
                     phoneInput.setCustomValidity('Invalid phone number.');
+                    return false;
                 } else if (!startsWithValidDigit) {
                     phoneError.textContent = 'The phone number must start with a digit between 6 and 9.';
                     phoneError.classList.remove('hidden');
                     phoneInput.setCustomValidity('Invalid phone number.');
+                    return false;
                 } else if (!isTenDigitsLong) {
                     phoneError.textContent = 'The phone number must be exactly 10 digits long.';
                     phoneError.classList.remove('hidden');
                     phoneInput.setCustomValidity('Invalid phone number.');
+                    return false;
                 } else {
                     phoneError.classList.add('hidden');
                     phoneInput.setCustomValidity('');
+                    return true;
                 }
             }
-
+        
             phoneInput.addEventListener('input', validatePhoneNumber);
             phoneInput.addEventListener('blur', validatePhoneNumber);
-
+        
             // Email validation
-            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            var emailInput = document.getElementById("email");
-            var emailError = document.getElementById("email-error");
-
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailInput = document.getElementById("email");
+            const emailError = document.getElementById("email-error");
+        
             function validateEmail() {
-                var emailValue = emailInput.value.trim();
+                const emailValue = emailInput.value.trim();
                 if (emailPattern.test(emailValue)) {
                     emailInput.setCustomValidity("");
                     emailError.classList.add("hidden");
+                    return true;
                 } else {
                     emailInput.setCustomValidity("Invalid email format.");
                     emailError.classList.remove("hidden");
+                    return false;
                 }
             }
-
+        
             emailInput.addEventListener("input", validateEmail);
-
-            var form = document.querySelector("form");
+        
+            const form = document.querySelector("form");
             form.addEventListener("submit", function (event) {
-                if (!validateAmount() || !emailPattern.test(emailInput.value.trim())) {
+                if (!validateAmount() || !validateEmail() || !validatePhoneNumber()) {
                     event.preventDefault();
-                    emailInput.reportValidity();
-                    emailError.classList.remove("hidden");
+                    return false;
                 }
             });
-        });
-    </script>
-    <script>
-        // Function to validate email format
-        function validateEmail(email) {
-            const re = /\S+@\S+\.\S+/;
-            return re.test(email);
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const amountInput = document.getElementById('amount');
-            const emailInput = document.getElementById('email');
-            const phoneInput = document.getElementById('phone');
-            const panCardInput = document.getElementById('pan_card');
+        
             const donateButton = document.querySelector('.donate');
-
+        
             donateButton.addEventListener('click', function (e) {
                 const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
                 const email = emailInput.value;
                 const phone = phoneInput.value;
-                const panCard = panCardInput.value;
-
+                const panCard = document.getElementById('pan_card').value;
+        
                 // Validate email format
-                if (!validateEmail(email)) {
-                    document.getElementById('email-error').classList.remove('hidden');
+                if (!validateEmail()) {
+                    emailInput.reportValidity();
                     return;
-                } else {
-                    document.getElementById('email-error').classList.add('hidden');
                 }
-
+        
+                // Validate phone number
+                if (!validatePhoneNumber()) {
+                    phoneInput.reportValidity();
+                    return;
+                }
+        
                 // Validate amount (minimum ₹100)
-                if (amount < 10000) { // The amount in paise should be at least 10000
-                    document.getElementById('amount-error').classList.remove('hidden');
+                if (!validateAmount()) {
+                    amountInput.reportValidity();
                     return;
-                } else {
-                    document.getElementById('amount-error').classList.add('hidden');
                 }
-
+        
                 // Create a Razorpay instance
                 var options = {
                     key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
@@ -606,12 +601,12 @@
                         }
                     }
                 };
-
+        
                 var rzp = new Razorpay(options);
                 rzp.open();
                 e.preventDefault(); // Prevent default form submission
             });
         });
-    </script>
+    </script>        
 </body>
 </html>

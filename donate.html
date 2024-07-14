@@ -210,6 +210,7 @@
                 <label for="pan_card"
                     class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-700 peer-focus:dark:text-yellow-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter
                     Pan Card</label>
+                <div id="pan_card_error" class="hidden text-red-500 text-sm mt-2">Invalid PAN card format.</div>
             </div>
 
             <!-- Payment Method -->
@@ -538,10 +539,44 @@
             }
         
             emailInput.addEventListener("input", validateEmail);
-        
+            
+           // PAN card validation
+           const panCardInput = document.getElementById('pan_card');
+           const panCardError = document.getElementById('pan_card_error');
+
+           function validatePanCard() {
+               const panCardValue = panCardInput.value.trim();
+               const panCardPattern = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+
+               if (panCardValue === '') {
+                   panCardError.classList.add('hidden');
+                   panCardInput.setCustomValidity('');
+                   return true;
+                } else if (panCardValue.length !== 10) {
+                   panCardError.textContent = 'PAN card must be exactly 10 alphanumeric characters long.';
+                   panCardError.classList.remove('hidden');
+                   panCardInput.setCustomValidity('Invalid PAN card length.');
+                   return false;
+                } else if (!panCardPattern.test(panCardValue)) {
+                   panCardError.textContent = 'PAN card format is invalid. Example format: ABCTY1234D';
+                   panCardError.classList.remove('hidden');
+                   panCardInput.setCustomValidity('Invalid PAN card format.');
+                   return false;
+                } else {
+                    panCardError.classList.add('hidden');
+                    panCardInput.setCustomValidity('');
+                    return true;
+                }
+            }
+
+            panCardInput.addEventListener('input', validatePanCard);
+            panCardInput.addEventListener('blur', validatePanCard);
+
+            
+            // Form submission
             const form = document.querySelector("form");
             form.addEventListener("submit", function (event) {
-                if (!validateAmount() || !validateEmail() || !validatePhoneNumber()) {
+                if (!validateAmount() || !validateEmail() || !validatePhoneNumber() || !validatePanCard()) {
                     event.preventDefault();
                     return false;
                 }
@@ -570,6 +605,12 @@
                 // Validate amount (minimum ₹100)
                 if (!validateAmount()) {
                     amountInput.reportValidity();
+                    return;
+                }
+
+                // Validate PAN card
+                if (!validatePanCard()) {
+                    panCardInput.reportValidity();
                     return;
                 }
         

@@ -88,15 +88,22 @@
                             </svg>
                         </button>
                         <!-- Dropdown menu -->
-                        <div id="dropdownNavbar" class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <div id="dropdownNavbar"
+                            class="absolute z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                             <div class="py-1">
-                                <a href="https://forms.gle/DCh3fMzHran8WxHF8" class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"  style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
+                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Books</a>
                             </div>
                             <div class="py-1">
-                                <a href="https://forms.gle/DCh3fMzHran8WxHF8" class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
+                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Stationary</a>
                             </div>
                             <div class="py-1">
-                                <a href="https://forms.gle/DCh3fMzHran8WxHF8" class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900" style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
+                                <a href="https://forms.gle/DCh3fMzHran8WxHF8"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-yellow-900"
+                                    style="padding-left: 10px; padding-bottom:5px; padding-top:5px;">Free Mentor</a>
                             </div>
                         </div>
                     </li>
@@ -218,7 +225,8 @@
                 <span class="text-gray-700">Payment Method</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="Razorpay" checked>
+                        <input type="radio" class="form-radio text-indigo-700" name="paymentMethod" value="Razorpay"
+                            checked>
                         <span class="ml-2">Razorpay</span>
                     </label>
                 </div>
@@ -244,8 +252,8 @@
         <div id="gallery" class="relative w-full" data-carousel="slide">
             <!-- Carousel wrapper -->
             <div class="relative overflow-hidden h-56 md:h-96 lg:h-[650px]">
-                   <!-- Item 1 -->
-                   <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <!-- Item 1 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="./images/Timeline-01.jpg" oncontextmenu="return false" ondragstart="return false"
                         class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 carousel-image object-fit"
                         alt="">
@@ -310,8 +318,8 @@
             </button>
         </div>
     </section>
-    <!--Image Carousel Starts here-->       
-    
+    <!--Image Carousel Starts here-->
+
     <!--Footer Starts Here-->
     <footer class="bg-white rounded-lg shadow m-4">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -372,14 +380,14 @@
             const toggleButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
             const menu = document.getElementById('navbar-sticky');
             const menuItems = document.querySelectorAll('#navbar-sticky a');
-        
+
             // Toggle menu visibility on button click
             toggleButton.addEventListener('click', function () {
                 const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
                 toggleButton.setAttribute('aria-expanded', String(!isExpanded));
                 menu.classList.toggle('hidden');
             });
-        
+
             // Hide menu on item click (only for mobile view)
             menuItems.forEach(item => {
                 item.addEventListener('click', function () {
@@ -389,14 +397,14 @@
                     }
                 });
             });
-        
+
             // Carousel functionality
             const carouselItems = document.querySelectorAll('[data-carousel-item]');
             const prevButton = document.querySelector('[data-carousel-prev]');
             const nextButton = document.querySelector('[data-carousel-next]');
             let currentIndex = 0;
             let timer = null;
-        
+
             function showItem(index) {
                 carouselItems.forEach((item, i) => {
                     if (i === index) {
@@ -422,47 +430,102 @@
                     }
                 });
             }
-        
+
             function nextItem() {
                 currentIndex = (currentIndex + 1) % carouselItems.length;
                 showItem(currentIndex);
             }
-        
+
             function prevItem() {
                 currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
                 showItem(currentIndex);
             }
-        
+
             showItem(currentIndex);
-        
+
             nextButton.addEventListener('click', function () {
                 clearInterval(timer);
                 nextItem();
                 timer = setInterval(nextItem, 7000);
             });
-        
+
             prevButton.addEventListener('click', function () {
                 clearInterval(timer);
                 prevItem();
                 timer = setInterval(nextItem, 7000);
             });
-        
+
             timer = setInterval(nextItem, 7000);
-        
+
             // Donation form functionality
             const amountInput = document.getElementById('amount');
             const checkBox = document.getElementById('checkbox-2');
             const panCardSection = document.getElementById('panCardSection');
             const amountError = document.getElementById('amount-error');
-        
+
+            // Assuming you have a variable to store the previous amount value
+            let previousAmount = '';
+
             function handlePanCardVisibility() {
-                if (parseFloat(amountInput.value) >= 5000 || checkBox.checked) {
-                    panCardSection.classList.remove('hidden');
-                } else {
+                const amountValue = amountInput.value.trim(); // Trim to remove any leading or trailing whitespace
+
+                if (amountValue === '') {
+                    // If amount is empty, hide panCardSection and deselect checkBox
                     panCardSection.classList.add('hidden');
+                    checkBox.checked = false;
+                    previousAmount = ''; // Reset previous amount when amount is empty
+                } else {
+                    const amount = parseFloat(amountValue);
+
+                    // Compare with previous amount only if it's not the first input
+                    if (previousAmount !== '') {
+                        const previous = parseFloat(previousAmount);
+
+                        // Check if new amount is greater than previous
+                        if (amount > previous) {
+                            // Check against 5000 and set checkBox and panCardSection visibility
+                            if (amount >= 5000) {
+                                panCardSection.classList.remove('hidden');
+                                checkBox.checked = true;
+                            } else {
+                                panCardSection.classList.add('hidden');
+                                checkBox.checked = false;
+                            }
+                        } else if (amount < previous) {
+                            // Check against 5000 for decreasing values
+                            if (amount >= 5000) {
+                                panCardSection.classList.remove('hidden');
+                                checkBox.checked = true;
+                            } else {
+                                panCardSection.classList.add('hidden');
+                                checkBox.checked = false;
+                            }
+                        } else {
+                            // Amount is equal to previous
+                            if (amount >= 5000 || checkBox.checked) {
+                                panCardSection.classList.remove('hidden');
+                                checkBox.checked = true;
+                            } else {
+                                panCardSection.classList.add('hidden');
+                                checkBox.checked = false;
+                            }
+                        }
+                    } else {
+                        // Initial case or first input
+                        if (amount >= 5000 || checkBox.checked) {
+                            panCardSection.classList.remove('hidden');
+                            checkBox.checked = true;
+                        } else {
+                            panCardSection.classList.add('hidden');
+                            checkBox.checked = false;
+                        }
+                    }
+
+                    // Update previousAmount with current amountValue
+                    previousAmount = amountValue;
                 }
             }
-        
+
             function validateAmount() {
                 const amount = parseFloat(amountInput.value);
                 if (isNaN(amount) || amount < 100) {
@@ -475,22 +538,22 @@
                     return true;
                 }
             }
-        
+
             handlePanCardVisibility();
-        
+
             amountInput.addEventListener('input', handlePanCardVisibility);
             amountInput.addEventListener('input', validateAmount);
             checkBox.addEventListener('change', handlePanCardVisibility);
-        
+
             const phoneInput = document.getElementById('phone');
             const phoneError = document.getElementById('phone-error');
-        
+
             function validatePhoneNumber() {
                 const phoneValue = phoneInput.value.trim();
                 const startsWithValidDigit = /^[6-9]/.test(phoneValue);
                 const isTenDigitsLong = /^\d{10,}$/.test(phoneValue);
                 const isNumeric = /^\d*$/.test(phoneValue);
-        
+
                 if (phoneValue === '') {
                     phoneError.classList.add('hidden');
                     phoneInput.setCustomValidity('');
@@ -516,15 +579,15 @@
                     return true;
                 }
             }
-        
+
             phoneInput.addEventListener('input', validatePhoneNumber);
             phoneInput.addEventListener('blur', validatePhoneNumber);
-        
+
             // Email validation
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const emailInput = document.getElementById("email");
             const emailError = document.getElementById("email-error");
-        
+
             function validateEmail() {
                 const emailValue = emailInput.value.trim();
                 if (emailPattern.test(emailValue)) {
@@ -537,31 +600,31 @@
                     return false;
                 }
             }
-        
+
             emailInput.addEventListener("input", validateEmail);
-            
-           // PAN card validation
-           const panCardInput = document.getElementById('pan_card');
-           const panCardError = document.getElementById('pan_card_error');
 
-           function validatePanCard() {
-               const panCardValue = panCardInput.value.trim();
-               const panCardPattern = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+            const panCardInput = document.getElementById('pan_card');
+            const panCardError = document.getElementById('pan_card_error');
 
-               if (panCardValue === '') {
-                   panCardError.classList.add('hidden');
-                   panCardInput.setCustomValidity('');
-                   return true;
+            function validatePanCard() {
+                const panCardValue = panCardInput.value.trim();
+                const panCardPattern = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+
+                if (panCardValue === '') {
+                    panCardError.textContent = 'PAN card number is required.';
+                    panCardError.classList.remove('hidden');
+                    panCardInput.setCustomValidity('PAN card number is required.');
+                    return false;
                 } else if (panCardValue.length !== 10) {
-                   panCardError.textContent = 'PAN card must be exactly 10 alphanumeric characters long.';
-                   panCardError.classList.remove('hidden');
-                   panCardInput.setCustomValidity('Invalid PAN card length.');
-                   return false;
+                    panCardError.textContent = 'PAN card must be exactly 10 alphanumeric characters long.';
+                    panCardError.classList.remove('hidden');
+                    panCardInput.setCustomValidity('Invalid PAN card length.');
+                    return false;
                 } else if (!panCardPattern.test(panCardValue)) {
-                   panCardError.textContent = 'PAN card format is invalid. Example format: ABCTY1234D';
-                   panCardError.classList.remove('hidden');
-                   panCardInput.setCustomValidity('Invalid PAN card format.');
-                   return false;
+                    panCardError.textContent = 'PAN card format is invalid. Example format: ABCTY1234D';
+                    panCardError.classList.remove('hidden');
+                    panCardInput.setCustomValidity('Invalid PAN card format.');
+                    return false;
                 } else {
                     panCardError.classList.add('hidden');
                     panCardInput.setCustomValidity('');
@@ -572,7 +635,6 @@
             panCardInput.addEventListener('input', validatePanCard);
             panCardInput.addEventListener('blur', validatePanCard);
 
-            
             // Form submission
             const form = document.querySelector("form");
             form.addEventListener("submit", function (event) {
@@ -581,27 +643,27 @@
                     return false;
                 }
             });
-        
+
             const donateButton = document.querySelector('.donate');
-        
+
             donateButton.addEventListener('click', function (e) {
                 const amount = parseFloat(amountInput.value) * 100;  // Convert amount to paise (Indian currency)
                 const email = emailInput.value;
                 const phone = phoneInput.value;
                 const panCard = document.getElementById('pan_card').value;
-        
+
                 // Validate email format
                 if (!validateEmail()) {
                     emailInput.reportValidity();
                     return;
                 }
-        
+
                 // Validate phone number
                 if (!validatePhoneNumber()) {
                     phoneInput.reportValidity();
                     return;
                 }
-        
+
                 // Validate amount (minimum ₹100)
                 if (!validateAmount()) {
                     amountInput.reportValidity();
@@ -613,7 +675,7 @@
                     panCardInput.reportValidity();
                     return;
                 }
-        
+
                 // Create a Razorpay instance
                 var options = {
                     key: 'rzp_test_0Yxfki7yPplo5p',  // Replace with your actual key_id
@@ -651,12 +713,13 @@
                         }
                     }
                 };
-        
+
                 var rzp = new Razorpay(options);
                 rzp.open();
                 e.preventDefault(); // Prevent default form submission
             });
         });
-    </script>        
+    </script>
 </body>
+
 </html>

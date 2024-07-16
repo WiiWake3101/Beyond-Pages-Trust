@@ -609,7 +609,12 @@
             function validatePanCard() {
                 const panCardValue = panCardInput.value.trim();
                 const panCardPattern = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
-
+                if (!checkBox.checked) {
+                    // If the checkbox is not checked, clear any previous errors and return true
+                    panCardError.classList.add('hidden');
+                    panCardInput.setCustomValidity('');
+                    return true;
+                }
                 if (panCardValue === '') {
                     panCardError.textContent = 'PAN card number is required.';
                     panCardError.classList.remove('hidden');
